@@ -36,7 +36,8 @@ type Environment struct {
 	ClusterId     string                        `json:"cluster_id"`
 	ClusterName   *string                       `json:"cluster_name,omitempty"`
 	// Date after which the environment is automatically deleted. Null when the environment never expires, which is the case for every environment except the throwaway ones created for a single agentic workflow run.
-	ExpiresAt            NullableTime `json:"expires_at,omitempty"`
+	ExpiresAt            NullableTime                 `json:"expires_at,omitempty"`
+	RoutingCapabilities  *RoutingCapabilitiesResponse `json:"routing_capabilities,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -398,6 +399,38 @@ func (o *Environment) UnsetExpiresAt() {
 	o.ExpiresAt.Unset()
 }
 
+// GetRoutingCapabilities returns the RoutingCapabilities field value if set, zero value otherwise.
+func (o *Environment) GetRoutingCapabilities() RoutingCapabilitiesResponse {
+	if o == nil || IsNil(o.RoutingCapabilities) {
+		var ret RoutingCapabilitiesResponse
+		return ret
+	}
+	return *o.RoutingCapabilities
+}
+
+// GetRoutingCapabilitiesOk returns a tuple with the RoutingCapabilities field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Environment) GetRoutingCapabilitiesOk() (*RoutingCapabilitiesResponse, bool) {
+	if o == nil || IsNil(o.RoutingCapabilities) {
+		return nil, false
+	}
+	return o.RoutingCapabilities, true
+}
+
+// HasRoutingCapabilities returns a boolean if a field has been set.
+func (o *Environment) HasRoutingCapabilities() bool {
+	if o != nil && !IsNil(o.RoutingCapabilities) {
+		return true
+	}
+
+	return false
+}
+
+// SetRoutingCapabilities gets a reference to the given RoutingCapabilitiesResponse and assigns it to the RoutingCapabilities field.
+func (o *Environment) SetRoutingCapabilities(v RoutingCapabilitiesResponse) {
+	o.RoutingCapabilities = &v
+}
+
 func (o Environment) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -427,6 +460,9 @@ func (o Environment) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ExpiresAt.IsSet() {
 		toSerialize["expires_at"] = o.ExpiresAt.Get()
+	}
+	if !IsNil(o.RoutingCapabilities) {
+		toSerialize["routing_capabilities"] = o.RoutingCapabilities
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -490,6 +526,7 @@ func (o *Environment) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "cluster_id")
 		delete(additionalProperties, "cluster_name")
 		delete(additionalProperties, "expires_at")
+		delete(additionalProperties, "routing_capabilities")
 		o.AdditionalProperties = additionalProperties
 	}
 

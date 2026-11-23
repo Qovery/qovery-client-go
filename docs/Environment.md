@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **ClusterId** | **string** |  | 
 **ClusterName** | Pointer to **string** |  | [optional] 
 **ExpiresAt** | Pointer to **NullableTime** | Date after which the environment is automatically deleted. Null when the environment never expires, which is the case for every environment except the throwaway ones created for a single agentic workflow run. | [optional] [readonly] 
+**RoutingCapabilities** | Pointer to [**RoutingCapabilitiesResponse**](RoutingCapabilitiesResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -306,6 +307,31 @@ HasExpiresAt returns a boolean if a field has been set.
 `func (o *Environment) UnsetExpiresAt()`
 
 UnsetExpiresAt ensures that no value is present for ExpiresAt, not even an explicit nil
+### GetRoutingCapabilities
+
+`func (o *Environment) GetRoutingCapabilities() RoutingCapabilitiesResponse`
+
+GetRoutingCapabilities returns the RoutingCapabilities field if non-nil, zero value otherwise.
+
+### GetRoutingCapabilitiesOk
+
+`func (o *Environment) GetRoutingCapabilitiesOk() (*RoutingCapabilitiesResponse, bool)`
+
+GetRoutingCapabilitiesOk returns a tuple with the RoutingCapabilities field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoutingCapabilities
+
+`func (o *Environment) SetRoutingCapabilities(v RoutingCapabilitiesResponse)`
+
+SetRoutingCapabilities sets RoutingCapabilities field to given value.
+
+### HasRoutingCapabilities
+
+`func (o *Environment) HasRoutingCapabilities() bool`
+
+HasRoutingCapabilities returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

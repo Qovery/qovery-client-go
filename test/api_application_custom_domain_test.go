@@ -108,4 +108,18 @@ func Test_qovery_ApplicationCustomDomainAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ApplicationCustomDomainAPIService ListApplicationCustomDomainView", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var applicationId string
+
+		resp, httpRes, err := apiClient.ApplicationCustomDomainAPI.ListApplicationCustomDomainView(context.Background(), applicationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

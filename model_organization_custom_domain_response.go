@@ -32,7 +32,11 @@ type OrganizationCustomDomainResponse struct {
 	// Whether Qovery generates a certificate for the domain. `false` when a CDN or another party manages the certificate.
 	GenerateCertificate bool `json:"generate_certificate"`
 	// Whether the domain is behind a CDN. If `true`, Qovery only checks that the domain points to an IP; otherwise it checks that the domain resolves to the service load balancer.
-	UseCdn               bool `json:"use_cdn"`
+	UseCdn bool `json:"use_cdn"`
+	// The hostnames the domain must point to with a CNAME record. One value, except for a legacy domain spread over several service routers.
+	CnameTargets []string `json:"cname_targets,omitempty"`
+	// Every hostname served for the domain by its routes.
+	GeneratedHostnames   []GeneratedHostnameResponse `json:"generated_hostnames,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -230,6 +234,70 @@ func (o *OrganizationCustomDomainResponse) SetUseCdn(v bool) {
 	o.UseCdn = v
 }
 
+// GetCnameTargets returns the CnameTargets field value if set, zero value otherwise.
+func (o *OrganizationCustomDomainResponse) GetCnameTargets() []string {
+	if o == nil || IsNil(o.CnameTargets) {
+		var ret []string
+		return ret
+	}
+	return o.CnameTargets
+}
+
+// GetCnameTargetsOk returns a tuple with the CnameTargets field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationCustomDomainResponse) GetCnameTargetsOk() ([]string, bool) {
+	if o == nil || IsNil(o.CnameTargets) {
+		return nil, false
+	}
+	return o.CnameTargets, true
+}
+
+// HasCnameTargets returns a boolean if a field has been set.
+func (o *OrganizationCustomDomainResponse) HasCnameTargets() bool {
+	if o != nil && !IsNil(o.CnameTargets) {
+		return true
+	}
+
+	return false
+}
+
+// SetCnameTargets gets a reference to the given []string and assigns it to the CnameTargets field.
+func (o *OrganizationCustomDomainResponse) SetCnameTargets(v []string) {
+	o.CnameTargets = v
+}
+
+// GetGeneratedHostnames returns the GeneratedHostnames field value if set, zero value otherwise.
+func (o *OrganizationCustomDomainResponse) GetGeneratedHostnames() []GeneratedHostnameResponse {
+	if o == nil || IsNil(o.GeneratedHostnames) {
+		var ret []GeneratedHostnameResponse
+		return ret
+	}
+	return o.GeneratedHostnames
+}
+
+// GetGeneratedHostnamesOk returns a tuple with the GeneratedHostnames field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationCustomDomainResponse) GetGeneratedHostnamesOk() ([]GeneratedHostnameResponse, bool) {
+	if o == nil || IsNil(o.GeneratedHostnames) {
+		return nil, false
+	}
+	return o.GeneratedHostnames, true
+}
+
+// HasGeneratedHostnames returns a boolean if a field has been set.
+func (o *OrganizationCustomDomainResponse) HasGeneratedHostnames() bool {
+	if o != nil && !IsNil(o.GeneratedHostnames) {
+		return true
+	}
+
+	return false
+}
+
+// SetGeneratedHostnames gets a reference to the given []GeneratedHostnameResponse and assigns it to the GeneratedHostnames field.
+func (o *OrganizationCustomDomainResponse) SetGeneratedHostnames(v []GeneratedHostnameResponse) {
+	o.GeneratedHostnames = v
+}
+
 func (o OrganizationCustomDomainResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -247,6 +315,12 @@ func (o OrganizationCustomDomainResponse) ToMap() (map[string]interface{}, error
 	toSerialize["routes"] = o.Routes
 	toSerialize["generate_certificate"] = o.GenerateCertificate
 	toSerialize["use_cdn"] = o.UseCdn
+	if !IsNil(o.CnameTargets) {
+		toSerialize["cname_targets"] = o.CnameTargets
+	}
+	if !IsNil(o.GeneratedHostnames) {
+		toSerialize["generated_hostnames"] = o.GeneratedHostnames
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -303,6 +377,8 @@ func (o *OrganizationCustomDomainResponse) UnmarshalJSON(data []byte) (err error
 		delete(additionalProperties, "routes")
 		delete(additionalProperties, "generate_certificate")
 		delete(additionalProperties, "use_cdn")
+		delete(additionalProperties, "cname_targets")
+		delete(additionalProperties, "generated_hostnames")
 		o.AdditionalProperties = additionalProperties
 	}
 

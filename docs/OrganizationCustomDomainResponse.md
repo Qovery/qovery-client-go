@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **Routes** | [**[]CustomDomainRouteResponse**](CustomDomainRouteResponse.md) | The routes of the domain, one per service and path. | 
 **GenerateCertificate** | **bool** | Whether Qovery generates a certificate for the domain. &#x60;false&#x60; when a CDN or another party manages the certificate. | 
 **UseCdn** | **bool** | Whether the domain is behind a CDN. If &#x60;true&#x60;, Qovery only checks that the domain points to an IP; otherwise it checks that the domain resolves to the service load balancer. | 
+**CnameTargets** | Pointer to **[]string** | The hostnames the domain must point to with a CNAME record. One value, except for a legacy domain spread over several service routers. | [optional] 
+**GeneratedHostnames** | Pointer to [**[]GeneratedHostnameResponse**](GeneratedHostnameResponse.md) | Every hostname served for the domain by its routes. | [optional] 
 
 ## Methods
 
@@ -170,6 +172,56 @@ and a boolean to check if the value has been set.
 
 SetUseCdn sets UseCdn field to given value.
 
+
+### GetCnameTargets
+
+`func (o *OrganizationCustomDomainResponse) GetCnameTargets() []string`
+
+GetCnameTargets returns the CnameTargets field if non-nil, zero value otherwise.
+
+### GetCnameTargetsOk
+
+`func (o *OrganizationCustomDomainResponse) GetCnameTargetsOk() (*[]string, bool)`
+
+GetCnameTargetsOk returns a tuple with the CnameTargets field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCnameTargets
+
+`func (o *OrganizationCustomDomainResponse) SetCnameTargets(v []string)`
+
+SetCnameTargets sets CnameTargets field to given value.
+
+### HasCnameTargets
+
+`func (o *OrganizationCustomDomainResponse) HasCnameTargets() bool`
+
+HasCnameTargets returns a boolean if a field has been set.
+
+### GetGeneratedHostnames
+
+`func (o *OrganizationCustomDomainResponse) GetGeneratedHostnames() []GeneratedHostnameResponse`
+
+GetGeneratedHostnames returns the GeneratedHostnames field if non-nil, zero value otherwise.
+
+### GetGeneratedHostnamesOk
+
+`func (o *OrganizationCustomDomainResponse) GetGeneratedHostnamesOk() (*[]GeneratedHostnameResponse, bool)`
+
+GetGeneratedHostnamesOk returns a tuple with the GeneratedHostnames field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGeneratedHostnames
+
+`func (o *OrganizationCustomDomainResponse) SetGeneratedHostnames(v []GeneratedHostnameResponse)`
+
+SetGeneratedHostnames sets GeneratedHostnames field to given value.
+
+### HasGeneratedHostnames
+
+`func (o *OrganizationCustomDomainResponse) HasGeneratedHostnames() bool`
+
+HasGeneratedHostnames returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

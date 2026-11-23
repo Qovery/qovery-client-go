@@ -23,6 +23,141 @@ import (
 // OrganizationCustomDomainAPIService OrganizationCustomDomainAPI service
 type OrganizationCustomDomainAPIService service
 
+type ApiBulkDeleteOrganizationCustomDomainRequest struct {
+	ctx                               context.Context
+	ApiService                        *OrganizationCustomDomainAPIService
+	organizationId                    string
+	customDomainBulkDeleteItemRequest *[]CustomDomainBulkDeleteItemRequest
+}
+
+func (r ApiBulkDeleteOrganizationCustomDomainRequest) CustomDomainBulkDeleteItemRequest(customDomainBulkDeleteItemRequest []CustomDomainBulkDeleteItemRequest) ApiBulkDeleteOrganizationCustomDomainRequest {
+	r.customDomainBulkDeleteItemRequest = &customDomainBulkDeleteItemRequest
+	return r
+}
+
+func (r ApiBulkDeleteOrganizationCustomDomainRequest) Execute() (*CustomDomainDeletionResponse, *http.Response, error) {
+	return r.ApiService.BulkDeleteOrganizationCustomDomainExecute(r)
+}
+
+/*
+BulkDeleteOrganizationCustomDomain Delete custom domains of several environments
+
+Delete custom domains of several environments of the organization at once: all of them, or none.
+Each item deletes every row of the domain name in its environment, for every service routing it, with their routes.
+The caller needs the permission to manage each environment. An environment of another organization refuses the whole call with a 403, and nothing is deleted.
+Nothing is deployed: redeploy the services listed in `impacted_services` to apply the change.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiBulkDeleteOrganizationCustomDomainRequest
+*/
+func (a *OrganizationCustomDomainAPIService) BulkDeleteOrganizationCustomDomain(ctx context.Context, organizationId string) ApiBulkDeleteOrganizationCustomDomainRequest {
+	return ApiBulkDeleteOrganizationCustomDomainRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CustomDomainDeletionResponse
+func (a *OrganizationCustomDomainAPIService) BulkDeleteOrganizationCustomDomainExecute(r ApiBulkDeleteOrganizationCustomDomainRequest) (*CustomDomainDeletionResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomDomainDeletionResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationCustomDomainAPIService.BulkDeleteOrganizationCustomDomain")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/customDomain/bulkDelete"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.customDomainBulkDeleteItemRequest == nil {
+		return localVarReturnValue, nil, reportError("customDomainBulkDeleteItemRequest is required and must be specified")
+	}
+	if len(*r.customDomainBulkDeleteItemRequest) > 100 {
+		return localVarReturnValue, nil, reportError("customDomainBulkDeleteItemRequest must have less than 100 elements")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.customDomainBulkDeleteItemRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiListOrganizationCustomDomainRequest struct {
 	ctx            context.Context
 	ApiService     *OrganizationCustomDomainAPIService

@@ -101,6 +101,7 @@ tags:
 - name: Databases
 - name: Environment
 - name: Environment Actions
+- name: Environment Custom Domain
 - name: Environment Deployment History
 - name: Environment Deployment Rule
 - name: Environment Logs
@@ -4973,6 +4974,51 @@ paths:
         "404":
           description: Resource not found
       summary: List organization custom domains
+      tags:
+      - Organization Custom Domain
+  /organization/{organizationId}/customDomain/bulkDelete:
+    post:
+      description: |
+        Delete custom domains of several environments of the organization at once: all of them, or none.
+        Each item deletes every row of the domain name in its environment, for every service routing it, with their routes.
+        The caller needs the permission to manage each environment. An environment of another organization refuses the whole call with a 403, and nothing is deleted.
+        Nothing is deployed: redeploy the services listed in `impacted_services` to apply the change.
+      operationId: bulkDeleteOrganizationCustomDomain
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/CustomDomainBulkDeleteItemRequest'
+              maxItems: 100
+              type: array
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomDomainDeletionResponse'
+          description: The domains are deleted
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete custom domains of several environments
       tags:
       - Organization Custom Domain
   /organization/{organizationId}/blueprint/catalog/{provider}/{serviceFamily}/{serviceVersion}/readme:
@@ -9925,6 +9971,265 @@ paths:
       summary: Clone environment
       tags:
       - Environment Actions
+  /environment/{environmentId}/customDomain:
+    get:
+      description: |
+        List the custom domains of the environment. Each result is one domain name, with every route that serves it: a domain shared by several services is a single result.
+        The items are the same as in the organization list. The list is not paginated.
+      operationId: listEnvironmentCustomDomain
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationCustomDomainResponseList'
+          description: List environment custom domains
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List environment custom domains
+      tags:
+      - Environment Custom Domain
+    post:
+      description: |
+        Create a custom domain on several services of the environment at once: one custom domain and one `/` route per service, served by the service default port.
+        If any service conflicts, nothing is created and the response lists every conflict.
+        More than one service is refused with a 400 on an environment whose `routing_capabilities.can_share` is `false`.
+        Nothing is deployed: redeploy the services listed in `impacted_services` to serve the domain.
+      operationId: createEnvironmentCustomDomain
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvironmentCustomDomainRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentCustomDomainResponse'
+          description: The custom domain is created
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/CustomDomainProblemResponse'
+          description: "Bad request. When the custom domain conflicts with other domains,\
+            \ `errors` lists every conflict."
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Create a custom domain for several services
+      tags:
+      - Environment Custom Domain
+  /environment/{environmentId}/customDomain/cnameTarget:
+    get:
+      description: The hostname a new custom domain of the environment must point
+        to with a CNAME record. Returns 404 until the environment is deployed for
+        the first time and has its router.
+      operationId: getEnvironmentCustomDomainCnameTarget
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentCnameTargetResponse'
+          description: The CNAME target
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: "The environment does not exist, or has no router yet"
+      summary: Get the CNAME target of the environment
+      tags:
+      - Environment Custom Domain
+  /environment/{environmentId}/customDomain/validate:
+    post:
+      description: |
+        Run the checks of a custom domain creation or edit for several services, without saving anything.
+        Returns every conflict, not only the first one. The services of the body are checked against each other as well as against the existing domains.
+        It takes no lock: a later creation can still fail if the domains change meanwhile.
+        A service outside the environment returns a 403.
+      operationId: validateEnvironmentCustomDomain
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomDomainValidationRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomDomainErrorsResponse'
+          description: The conflicts of the request. An empty `errors` list means
+            the domain can be saved.
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/CustomDomainProblemResponse'
+          description: "Bad request. When the custom domain conflicts with other domains,\
+            \ `errors` lists every conflict."
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Validate a custom domain for several services
+      tags:
+      - Environment Custom Domain
+  /environment/{environmentId}/customDomain/{domainName}:
+    delete:
+      description: |
+        Delete every custom domain row of `domainName` in the environment, for every service routing it, with their routes.
+        To remove the domain from one service only, use the delete endpoint of that service.
+        Nothing is deployed: redeploy the services listed in `impacted_services` to apply the change.
+      operationId: deleteEnvironmentCustomDomain
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: The current name of the custom domain.
+        explode: false
+        in: path
+        name: domainName
+        required: true
+        schema:
+          example: my.domain.tld
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomDomainDeletionResponse'
+          description: The custom domain is deleted
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete a custom domain of several services
+      tags:
+      - Environment Custom Domain
+    put:
+      description: |
+        Replace every custom domain row of `domainName` in the environment with the state of the body:
+        * services not in the body lose their row and its routes;
+        * services new in the body get a row and a `/` route;
+        * kept services get the name, `generate_certificate` and `use_cdn` of the body.
+        Renaming is allowed and is checked like a creation. If any service conflicts, nothing changes and the response lists every conflict.
+        Nothing is deployed: redeploy the services listed in `impacted_services` to apply the change.
+      operationId: editEnvironmentCustomDomain
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: The current name of the custom domain.
+        explode: false
+        in: path
+        name: domainName
+        required: true
+        schema:
+          example: my.domain.tld
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvironmentCustomDomainRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentCustomDomainResponse'
+          description: The custom domain is edited
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/CustomDomainProblemResponse'
+          description: "Bad request. When the custom domain conflicts with other domains,\
+            \ `errors` lists every conflict."
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit a custom domain of several services
+      tags:
+      - Environment Custom Domain
   /environment/{environmentId}/application:
     get:
       operationId: listApplication
@@ -12549,7 +12854,8 @@ paths:
       - Application Custom Domain
     post:
       description: Add a custom domain to this application in order not to use qovery
-        autogenerated domain
+        autogenerated domain. A conflict with another service returns every reason
+        in `errors`.
       operationId: createApplicationCustomDomain
       parameters:
       - description: Application ID
@@ -12574,7 +12880,12 @@ paths:
                 $ref: '#/components/schemas/CustomDomain'
           description: Added application custom domain
         "400":
-          description: Bad request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/CustomDomainProblemResponse'
+          description: "Bad request. When the custom domain conflicts with other domains,\
+            \ `errors` lists every conflict."
         "401":
           description: Access token is missing or invalid
         "403":
@@ -12586,7 +12897,10 @@ paths:
       - Application Custom Domain
   /application/{applicationId}/customDomain/{customDomainId}:
     delete:
-      description: To delete an CustomDomain you must have the project user permission
+      description: "Remove the custom domain from this application only, with its\
+        \ routes. Other services routing the same domain name keep it. To delete the\
+        \ domain for every service, use `deleteEnvironmentCustomDomain`. The project\
+        \ user permission is required."
       operationId: deleteCustomDomain
       parameters:
       - description: Application ID
@@ -12658,7 +12972,10 @@ paths:
       tags:
       - Application Custom Domain
     put:
-      description: To edit a Custom Domain you must have the project user permission
+      description: |
+        Edit a custom domain of the application. The project user permission is required.
+        When other services route the same domain name in the environment, a change of the name, `generate_certificate` or `use_cdn` applies to all of them. A conflict returns every reason in `errors`.
+        Nothing is deployed: redeploy the services routing the domain to apply the change.
       operationId: editCustomDomain
       parameters:
       - description: Application ID
@@ -12692,7 +13009,12 @@ paths:
                 $ref: '#/components/schemas/CustomDomain'
           description: Edit a CustomDomain
         "400":
-          description: Bad request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/CustomDomainProblemResponse'
+          description: "Bad request. When the custom domain conflicts with other domains,\
+            \ `errors` lists every conflict."
         "401":
           description: Access token is missing or invalid
         "403":
@@ -12700,6 +13022,38 @@ paths:
         "404":
           description: Resource not found
       summary: Edit a Custom Domain
+      tags:
+      - Application Custom Domain
+  /application/{applicationId}/customDomainView:
+    get:
+      description: |
+        List the domains of the application, as shown on its settings page: its Qovery domain (`kind` `QOVERY`, read-only) and each custom domain it routes (`kind` `CUSTOM`).
+        A custom domain also lists the other services routing it, so a client can tell removing this application's route from deleting the domain.
+      operationId: listApplicationCustomDomainView
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceDomainResponseList'
+          description: The domains of the application
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List the domains of the application
       tags:
       - Application Custom Domain
   /application/{applicationId}/checkCustomDomain:
@@ -14047,7 +14401,8 @@ paths:
       - Container Custom Domain
     post:
       description: Add a custom domain to this container in order not to use qovery
-        autogenerated domain
+        autogenerated domain. A conflict with another service returns every reason
+        in `errors`.
       operationId: createContainerCustomDomain
       parameters:
       - description: Container ID
@@ -14072,7 +14427,12 @@ paths:
                 $ref: '#/components/schemas/CustomDomain'
           description: Added container custom domain
         "400":
-          description: Bad request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/CustomDomainProblemResponse'
+          description: "Bad request. When the custom domain conflicts with other domains,\
+            \ `errors` lists every conflict."
         "401":
           description: Access token is missing or invalid
         "403":
@@ -14084,7 +14444,10 @@ paths:
       - Container Custom Domain
   /container/{containerId}/customDomain/{customDomainId}:
     delete:
-      description: To delete an CustomDomain you must have the project user permission
+      description: "Remove the custom domain from this container only, with its routes.\
+        \ Other services routing the same domain name keep it. To delete the domain\
+        \ for every service, use `deleteEnvironmentCustomDomain`. The project user\
+        \ permission is required."
       operationId: deleteContainerCustomDomain
       parameters:
       - description: Container ID
@@ -14156,7 +14519,10 @@ paths:
       tags:
       - Container Custom Domain
     put:
-      description: To edit a Custom Domain  you must have the project user permission
+      description: |
+        Edit a custom domain of the container. The project user permission is required.
+        When other services route the same domain name in the environment, a change of the name, `generate_certificate` or `use_cdn` applies to all of them. A conflict returns every reason in `errors`.
+        Nothing is deployed: redeploy the services routing the domain to apply the change.
       operationId: editContainerCustomDomain
       parameters:
       - description: Container ID
@@ -14190,7 +14556,12 @@ paths:
                 $ref: '#/components/schemas/CustomDomain'
           description: Edit a CustomDomain
         "400":
-          description: Bad request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/CustomDomainProblemResponse'
+          description: "Bad request. When the custom domain conflicts with other domains,\
+            \ `errors` lists every conflict."
         "401":
           description: Access token is missing or invalid
         "403":
@@ -14198,6 +14569,38 @@ paths:
         "404":
           description: Resource not found
       summary: Edit a Custom Domain
+      tags:
+      - Container Custom Domain
+  /container/{containerId}/customDomainView:
+    get:
+      description: |
+        List the domains of the container, as shown on its settings page: its Qovery domain (`kind` `QOVERY`, read-only) and each custom domain it routes (`kind` `CUSTOM`).
+        A custom domain also lists the other services routing it, so a client can tell removing this container's route from deleting the domain.
+      operationId: listContainerCustomDomainView
+      parameters:
+      - description: Container ID
+        explode: false
+        in: path
+        name: containerId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceDomainResponseList'
+          description: The domains of the container
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List the domains of the container
       tags:
       - Container Custom Domain
   /container/{containerId}/checkCustomDomain:
@@ -15911,7 +16314,7 @@ paths:
       - Helm Custom Domain
     post:
       description: Add a custom domain to this helm in order not to use qovery autogenerated
-        domain
+        domain. A conflict with another service returns every reason in `errors`.
       operationId: createHelmCustomDomain
       parameters:
       - description: Helm ID
@@ -15936,7 +16339,12 @@ paths:
                 $ref: '#/components/schemas/CustomDomain'
           description: Added helm custom domain
         "400":
-          description: Bad request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/CustomDomainProblemResponse'
+          description: "Bad request. When the custom domain conflicts with other domains,\
+            \ `errors` lists every conflict."
         "401":
           description: Access token is missing or invalid
         "403":
@@ -15948,7 +16356,10 @@ paths:
       - Helm Custom Domain
   /helm/{helmId}/customDomain/{customDomainId}:
     delete:
-      description: To delete an CustomDomain you must have the project user permission
+      description: "Remove the custom domain from this helm only, with its routes.\
+        \ Other services routing the same domain name keep it. To delete the domain\
+        \ for every service, use `deleteEnvironmentCustomDomain`. The project user\
+        \ permission is required."
       operationId: deleteHelmCustomDomain
       parameters:
       - description: Helm ID
@@ -16022,7 +16433,10 @@ paths:
       tags:
       - Helm Custom Domain
     put:
-      description: To edit a Custom Domain you must have the project user permission
+      description: |
+        Edit a custom domain of the helm. The project user permission is required.
+        When other services route the same domain name in the environment, a change of the name, `generate_certificate` or `use_cdn` applies to all of them. A conflict returns every reason in `errors`.
+        Nothing is deployed: redeploy the services routing the domain to apply the change.
       operationId: editHelmCustomDomain
       parameters:
       - description: Helm ID
@@ -16056,7 +16470,12 @@ paths:
                 $ref: '#/components/schemas/CustomDomain'
           description: Edit a CustomDomain
         "400":
-          description: Bad request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/CustomDomainProblemResponse'
+          description: "Bad request. When the custom domain conflicts with other domains,\
+            \ `errors` lists every conflict."
         "401":
           description: Access token is missing or invalid
         "403":
@@ -16064,6 +16483,38 @@ paths:
         "404":
           description: Resource not found
       summary: Edit a Custom Domain
+      tags:
+      - Helm Custom Domain
+  /helm/{helmId}/customDomainView:
+    get:
+      description: |
+        List the domains of the helm, as shown on its settings page: its Qovery domain (`kind` `QOVERY`, read-only) and each custom domain it routes (`kind` `CUSTOM`).
+        A custom domain also lists the other services routing it, so a client can tell removing this helm's route from deleting the domain.
+      operationId: listHelmCustomDomainView
+      parameters:
+      - description: Helm ID
+        explode: false
+        in: path
+        name: helmId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceDomainResponseList'
+          description: The domains of the helm
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List the domains of the helm
       tags:
       - Helm Custom Domain
   /helm/{helmId}/checkCustomDomain:
@@ -22039,6 +22490,13 @@ components:
       description: Resource not found
     "204-deletion":
       description: The resource was deleted successfully
+    CustomDomainConflict:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/CustomDomainProblemResponse'
+      description: "Bad request. When the custom domain conflicts with other domains,\
+        \ `errors` lists every conflict."
     BuildAnalysisConflict:
       description: "The execution is not the latest build of the service, the service\
         \ has no build, or an analysis is already in progress. Read the build analysis\
@@ -34788,6 +35246,483 @@ components:
       - VALIDATION_PENDING
       example: VALIDATION_PENDING
       type: string
+    CustomDomainBulkDeleteItemRequest:
+      description: A domain name to delete in an environment.
+      example:
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        domain: my.domain.tld
+      properties:
+        environment_id:
+          description: Id of the environment of the domain. It must belong to the
+            organization of the call.
+          format: uuid
+          type: string
+        domain:
+          description: The domain name. Every row of this name in the environment
+            is deleted.
+          example: my.domain.tld
+          type: string
+      required:
+      - domain
+      - environment_id
+      type: object
+    CustomDomainDeletionResponse:
+      example:
+        impacted_services:
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: APPLICATION
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: APPLICATION
+      properties:
+        impacted_services:
+          description: The services that lost a custom domain. They need a redeploy
+            to stop serving it.
+          items:
+            $ref: '#/components/schemas/ImpactedServiceResponse'
+          type: array
+      required:
+      - impacted_services
+      type: object
+    CustomDomainErrorCodeEnum:
+      description: |
+        Why a service cannot hold the custom domain.
+        * `PATH_ALREADY_ROUTED`: another service already routes this path on the domain.
+        * `GRPC_HOSTNAME_SHARED`: a gRPC port would share the hostname; gRPC has no path selection.
+        * `SETTINGS_MISMATCH`: `generate_certificate` or `use_cdn` differs from the other services on the domain.
+        * `DOMAIN_IN_OTHER_ENVIRONMENT`: the name, or a hostname it serves, is already used in another environment of the organization.
+        * `DOMAIN_ALREADY_ON_SERVICE`: the service already has this domain.
+        * `ROUTING_MODE_NOT_SHAREABLE`: the domain is already used and the routing mode of the environment cannot share it.
+      enum:
+      - PATH_ALREADY_ROUTED
+      - GRPC_HOSTNAME_SHARED
+      - SETTINGS_MISMATCH
+      - DOMAIN_IN_OTHER_ENVIRONMENT
+      - DOMAIN_ALREADY_ON_SERVICE
+      - ROUTING_MODE_NOT_SHAREABLE
+      type: string
+    CustomDomainErrorResponse:
+      description: "One reason a service cannot hold the custom domain, to show under\
+        \ the request field it blames."
+      example:
+        path: /cable
+        code: PATH_ALREADY_ROUTED
+        field: path
+        service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        message: /cable already goes to anycable on this domain.
+        conflicting_service:
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: ""
+      properties:
+        code:
+          $ref: '#/components/schemas/CustomDomainErrorCodeEnum'
+        field:
+          description: "The request field to blame, named as on the wire, such as\
+            \ `domain`, `path`, `port_id`, `generate_certificate` or `use_cdn`."
+          example: path
+          type: string
+        path:
+          description: The path in conflict. Null when the error is not about a path.
+          example: /cable
+          nullable: true
+          type: string
+        service_id:
+          description: Id of the service of the request that cannot hold the domain.
+          format: uuid
+          type: string
+        conflicting_service:
+          $ref: '#/components/schemas/CustomDomainErrorResponse_conflicting_service'
+        message:
+          description: A message to show to the user.
+          example: /cable already goes to anycable on this domain.
+          type: string
+      required:
+      - code
+      - conflicting_service
+      - field
+      - message
+      - path
+      - service_id
+      type: object
+    CustomDomainErrorsResponse:
+      example:
+        errors:
+        - path: /cable
+          code: PATH_ALREADY_ROUTED
+          field: path
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          message: /cable already goes to anycable on this domain.
+          conflicting_service:
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: ""
+        - path: /cable
+          code: PATH_ALREADY_ROUTED
+          field: path
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          message: /cable already goes to anycable on this domain.
+          conflicting_service:
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: ""
+      properties:
+        errors:
+          description: Every conflict of the request. Empty when the domain can be
+            saved.
+          items:
+            $ref: '#/components/schemas/CustomDomainErrorResponse'
+          type: array
+      required:
+      - errors
+      type: object
+    CustomDomainProblemResponse:
+      description: A problem detail (RFC 9457). `errors` is set when the custom domain
+        conflicts with other domains.
+      properties:
+        type:
+          type: string
+        title:
+          example: Bad Request
+          type: string
+        status:
+          example: 400
+          type: integer
+        detail:
+          description: "All the error messages, joined."
+          type: string
+        instance:
+          description: The path of the request.
+          type: string
+        errors:
+          items:
+            $ref: '#/components/schemas/CustomDomainErrorResponse'
+          type: array
+      type: object
+    CustomDomainServiceRequest:
+      example:
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: ""
+      properties:
+        id:
+          description: Id of the service. It must belong to the environment.
+          format: uuid
+          type: string
+        type:
+          allOf:
+          - $ref: '#/components/schemas/ServiceTypeEnum'
+          description: "Type of the service. Only `APPLICATION`, `CONTAINER` and `HELM`\
+            \ services have custom domains."
+      required:
+      - id
+      - type
+      type: object
+    CustomDomainValidationRequest:
+      allOf:
+      - $ref: '#/components/schemas/EnvironmentCustomDomainRequest'
+      - properties:
+          original_domain:
+            description: "The current name of a domain being edited, so the rows the\
+              \ services hold for it are ignored. Null or absent for a new domain."
+            example: old.domain.tld
+            nullable: true
+            type: string
+        type: object
+      example:
+        generate_certificate: true
+        domain: my.domain.tld
+        use_cdn: false
+        original_domain: old.domain.tld
+        services:
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: ""
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: ""
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: ""
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: ""
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: ""
+    EnvironmentCnameTargetResponse:
+      example:
+        cname_target: zabc-zdef-gtw.cluster.qovery.io
+      properties:
+        cname_target:
+          description: The hostname a custom domain of the environment must point
+            to with a CNAME record.
+          example: zabc-zdef-gtw.cluster.qovery.io
+          type: string
+      required:
+      - cname_target
+      type: object
+    EnvironmentCustomDomainRequest:
+      description: The full state of a custom domain name of an environment.
+      example:
+        generate_certificate: true
+        domain: my.domain.tld
+        use_cdn: false
+        services:
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: ""
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: ""
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: ""
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: ""
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: ""
+      properties:
+        domain:
+          description: The domain name.
+          example: my.domain.tld
+          type: string
+        generate_certificate:
+          default: true
+          description: Whether Qovery generates a certificate for the domain. Set
+            it to `false` when a CDN or another party manages the certificate.
+          type: boolean
+        use_cdn:
+          default: false
+          description: "Whether the domain is behind a CDN. If `true`, Qovery only\
+            \ checks that the domain points to an IP; otherwise it checks that the\
+            \ domain resolves to the service load balancer."
+          type: boolean
+        services:
+          description: "Every service the domain routes to, each with one `/` route\
+            \ served by its default port. Between 1 and 50 services; more than one\
+            \ only when the environment `routing_capabilities.can_share` is `true`."
+          items:
+            $ref: '#/components/schemas/CustomDomainServiceRequest'
+          maxItems: 50
+          minItems: 1
+          type: array
+      required:
+      - domain
+      - services
+      type: object
+    EnvironmentCustomDomainResponse:
+      example:
+        generate_certificate: true
+        impacted_services:
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: APPLICATION
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: APPLICATION
+        domain: my.domain.tld
+        use_cdn: true
+      properties:
+        domain:
+          description: The domain name.
+          example: my.domain.tld
+          type: string
+        generate_certificate:
+          description: Whether Qovery generates a certificate for the domain.
+          type: boolean
+        use_cdn:
+          description: Whether the domain is behind a CDN.
+          type: boolean
+        impacted_services:
+          description: "The services whose custom domains changed, removed services\
+            \ included. They need a redeploy to serve the change."
+          items:
+            $ref: '#/components/schemas/ImpactedServiceResponse'
+          type: array
+      required:
+      - domain
+      - generate_certificate
+      - impacted_services
+      - use_cdn
+      type: object
+    GeneratedHostnameKindEnum:
+      description: |
+        * `ROOT`: the domain itself (and the parent of a wildcard). It follows the route port, path and rewrite.
+        * `PORT_SUBDOMAIN`: `<port name>.<domain>`, always served by that port at its own public path.
+      enum:
+      - ROOT
+      - PORT_SUBDOMAIN
+      type: string
+    GeneratedHostnameResponse:
+      description: "A hostname Qovery serves for a domain, and the port it reaches."
+      example:
+        port_name: p3000
+        path: /
+        hostname: p3000.my.domain.tld
+        kind: ROOT
+        port_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        hostname:
+          example: p3000.my.domain.tld
+          type: string
+        port_id:
+          description: Id of the port the hostname reaches.
+          format: uuid
+          type: string
+        port_name:
+          example: p3000
+          type: string
+        path:
+          description: The public path of the hostname.
+          example: /
+          type: string
+        kind:
+          $ref: '#/components/schemas/GeneratedHostnameKindEnum'
+      required:
+      - hostname
+      - kind
+      - path
+      - port_id
+      - port_name
+      type: object
+    ImpactedServiceResponse:
+      description: A service a custom domain write changed. Nothing is deployed; the
+        service needs a redeploy to serve the change.
+      example:
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: APPLICATION
+      properties:
+        id:
+          format: uuid
+          type: string
+        type:
+          $ref: '#/components/schemas/ServiceTypeEnum'
+      required:
+      - id
+      - type
+      type: object
+    ServiceDomainKindEnum:
+      description: |
+        * `QOVERY`: the domain Qovery generates for the service. It cannot be edited or deleted.
+        * `CUSTOM`: a custom domain the service routes.
+      enum:
+      - QOVERY
+      - CUSTOM
+      type: string
+    ServiceDomainQoveryResponse:
+      description: The read-only domain Qovery generates for the service.
+      example:
+        kind: QOVERY
+        domain: zabc-zdef-web.cluster.qovery.io
+        generated_hostnames:
+        - port_name: p3000
+          path: /
+          hostname: p3000.my.domain.tld
+          kind: ROOT
+          port_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - port_name: p3000
+          path: /
+          hostname: p3000.my.domain.tld
+          kind: ROOT
+          port_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        kind:
+          $ref: '#/components/schemas/ServiceDomainKindEnum'
+        domain:
+          example: zabc-zdef-web.cluster.qovery.io
+          type: string
+        generated_hostnames:
+          items:
+            $ref: '#/components/schemas/GeneratedHostnameResponse'
+          type: array
+      required:
+      - domain
+      - generated_hostnames
+      - kind
+      type: object
+    ServiceDomainCustomResponse:
+      description: "A custom domain the service routes, possibly shared with other\
+        \ services of the environment."
+      properties:
+        kind:
+          $ref: '#/components/schemas/ServiceDomainKindEnum'
+        domain:
+          example: my.domain.tld
+          type: string
+        generate_certificate:
+          description: Whether Qovery generates a certificate for the domain.
+          type: boolean
+        use_cdn:
+          description: Whether the domain is behind a CDN.
+          type: boolean
+        cname_targets:
+          description: "The hostnames the domain must point to with a CNAME record.\
+            \ One value, except for a legacy domain spread over several service routers."
+          items:
+            type: string
+          type: array
+        generated_hostnames:
+          description: The hostnames served by the routes of this service only.
+          items:
+            $ref: '#/components/schemas/GeneratedHostnameResponse'
+          type: array
+        routes:
+          description: "Every route of the domain, the routes of the other services\
+            \ included."
+          items:
+            $ref: '#/components/schemas/CustomDomainRouteResponse'
+          type: array
+        other_services:
+          description: "The other services routing the domain. When it is not empty,\
+            \ removing this service's route keeps the domain for them."
+          items:
+            $ref: '#/components/schemas/CustomDomainServiceResponse'
+          type: array
+      required:
+      - cname_targets
+      - domain
+      - generate_certificate
+      - generated_hostnames
+      - kind
+      - other_services
+      - routes
+      - use_cdn
+      type: object
+    ServiceDomainResponse:
+      discriminator:
+        mapping:
+          QOVERY: '#/components/schemas/ServiceDomainQoveryResponse'
+          CUSTOM: '#/components/schemas/ServiceDomainCustomResponse'
+        propertyName: kind
+      oneOf:
+      - $ref: '#/components/schemas/ServiceDomainQoveryResponse'
+      - $ref: '#/components/schemas/ServiceDomainCustomResponse'
+    ServiceDomainResponseList:
+      example:
+        results:
+        - kind: QOVERY
+          domain: zabc-zdef-web.cluster.qovery.io
+          generated_hostnames:
+          - port_name: p3000
+            path: /
+            hostname: p3000.my.domain.tld
+            kind: ROOT
+            port_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - port_name: p3000
+            path: /
+            hostname: p3000.my.domain.tld
+            kind: ROOT
+            port_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - kind: QOVERY
+          domain: zabc-zdef-web.cluster.qovery.io
+          generated_hostnames:
+          - port_name: p3000
+            path: /
+            hostname: p3000.my.domain.tld
+            kind: ROOT
+            port_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - port_name: p3000
+            path: /
+            hostname: p3000.my.domain.tld
+            kind: ROOT
+            port_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ServiceDomainResponse'
+          type: array
+      required:
+      - results
+      type: object
     Database:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -36801,6 +37736,8 @@ components:
             nullable: true
             readOnly: true
             type: string
+          routing_capabilities:
+            $ref: '#/components/schemas/RoutingCapabilitiesResponse'
         required:
         - cloud_provider
         - cluster_id
@@ -36810,8 +37747,16 @@ components:
         - project
         type: object
       example:
-        mode: PRODUCTION
         cluster_name: cluster_name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        project:
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        cloud_provider:
+          cluster: us-east-2
+          provider: aws
+        routing_capabilities:
+          can_share: true
+        mode: PRODUCTION
         last_updated_by: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         expires_at: 2000-01-23T04:56:07.000+00:00
@@ -36819,18 +37764,20 @@ components:
         organization:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
-        created_at: 2000-01-23T04:56:07.000+00:00
-        project:
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        cloud_provider:
-          cluster: us-east-2
-          provider: aws
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
     EnvironmentResponseList:
       example:
         results:
-        - mode: PRODUCTION
-          cluster_name: cluster_name
+        - cluster_name: cluster_name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          project:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          cloud_provider:
+            cluster: us-east-2
+            provider: aws
+          routing_capabilities:
+            can_share: true
+          mode: PRODUCTION
           last_updated_by: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           expires_at: 2000-01-23T04:56:07.000+00:00
@@ -36838,15 +37785,17 @@ components:
           organization:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
-          created_at: 2000-01-23T04:56:07.000+00:00
-          project:
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          cloud_provider:
-            cluster: us-east-2
-            provider: aws
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - mode: PRODUCTION
-          cluster_name: cluster_name
+        - cluster_name: cluster_name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          project:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          cloud_provider:
+            cluster: us-east-2
+            provider: aws
+          routing_capabilities:
+            can_share: true
+          mode: PRODUCTION
           last_updated_by: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           expires_at: 2000-01-23T04:56:07.000+00:00
@@ -36854,12 +37803,6 @@ components:
           organization:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
-          created_at: 2000-01-23T04:56:07.000+00:00
-          project:
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          cloud_provider:
-            cluster: us-east-2
-            provider: aws
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         results:
@@ -37201,6 +38144,19 @@ components:
       - PER_HOSTNAME_LISTENER_SET
       example: PER_HOSTNAME_LISTENER_SET
       type: string
+    RoutingCapabilitiesResponse:
+      description: What the routing mode of the environment allows on its custom domains.
+      example:
+        can_share: true
+      properties:
+        can_share:
+          description: "Whether several services can route the same custom domain.\
+            \ `false` on a `PER_ROUTER_LISTENER_SET` environment, where a domain belongs\
+            \ to one service."
+          type: boolean
+      required:
+      - can_share
+      type: object
     CreateEnvironmentModeEnum:
       enum:
       - DEVELOPMENT
@@ -44295,6 +45251,20 @@ components:
           project:
             name: name
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          generated_hostnames:
+          - port_name: p3000
+            path: /
+            hostname: p3000.my.domain.tld
+            kind: ROOT
+            port_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - port_name: p3000
+            path: /
+            hostname: p3000.my.domain.tld
+            kind: ROOT
+            port_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          cname_targets:
+          - zabc-zdef-gtw.cluster.qovery.io
+          - zabc-zdef-gtw.cluster.qovery.io
         - routes:
           - path: /
             path_rewrite: path_rewrite
@@ -44325,6 +45295,20 @@ components:
           project:
             name: name
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          generated_hostnames:
+          - port_name: p3000
+            path: /
+            hostname: p3000.my.domain.tld
+            kind: ROOT
+            port_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - port_name: p3000
+            path: /
+            hostname: p3000.my.domain.tld
+            kind: ROOT
+            port_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          cname_targets:
+          - zabc-zdef-gtw.cluster.qovery.io
+          - zabc-zdef-gtw.cluster.qovery.io
         page_size: 20
     OrganizationCustomDomainResponse:
       description: "One domain name of one environment, with every route that serves\
@@ -44360,6 +45344,20 @@ components:
         project:
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        generated_hostnames:
+        - port_name: p3000
+          path: /
+          hostname: p3000.my.domain.tld
+          kind: ROOT
+          port_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - port_name: p3000
+          path: /
+          hostname: p3000.my.domain.tld
+          kind: ROOT
+          port_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        cname_targets:
+        - zabc-zdef-gtw.cluster.qovery.io
+        - zabc-zdef-gtw.cluster.qovery.io
       properties:
         environment_id:
           description: Id of the environment of the domain.
@@ -44387,6 +45385,18 @@ components:
             \ checks that the domain points to an IP; otherwise it checks that the\
             \ domain resolves to the service load balancer."
           type: boolean
+        cname_targets:
+          description: "The hostnames the domain must point to with a CNAME record.\
+            \ One value, except for a legacy domain spread over several service routers."
+          items:
+            example: zabc-zdef-gtw.cluster.qovery.io
+            type: string
+          type: array
+        generated_hostnames:
+          description: Every hostname served for the domain by its routes.
+          items:
+            $ref: '#/components/schemas/GeneratedHostnameResponse'
+          type: array
       required:
       - domain
       - environment
@@ -44395,6 +45405,105 @@ components:
       - project
       - routes
       - use_cdn
+      type: object
+    OrganizationCustomDomainResponseList:
+      example:
+        results:
+        - routes:
+          - path: /
+            path_rewrite: path_rewrite
+            port: ""
+            custom_domain_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            service:
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              type: ""
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - path: /
+            path_rewrite: path_rewrite
+            port: ""
+            custom_domain_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            service:
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              type: ""
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          environment:
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            routing_mode: PER_HOSTNAME_LISTENER_SET
+          generate_certificate: true
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          domain: my.domain.tld
+          use_cdn: true
+          project:
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          generated_hostnames:
+          - port_name: p3000
+            path: /
+            hostname: p3000.my.domain.tld
+            kind: ROOT
+            port_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - port_name: p3000
+            path: /
+            hostname: p3000.my.domain.tld
+            kind: ROOT
+            port_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          cname_targets:
+          - zabc-zdef-gtw.cluster.qovery.io
+          - zabc-zdef-gtw.cluster.qovery.io
+        - routes:
+          - path: /
+            path_rewrite: path_rewrite
+            port: ""
+            custom_domain_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            service:
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              type: ""
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - path: /
+            path_rewrite: path_rewrite
+            port: ""
+            custom_domain_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            service:
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              type: ""
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          environment:
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            routing_mode: PER_HOSTNAME_LISTENER_SET
+          generate_certificate: true
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          domain: my.domain.tld
+          use_cdn: true
+          project:
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          generated_hostnames:
+          - port_name: p3000
+            path: /
+            hostname: p3000.my.domain.tld
+            kind: ROOT
+            port_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - port_name: p3000
+            path: /
+            hostname: p3000.my.domain.tld
+            kind: ROOT
+            port_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          cname_targets:
+          - zabc-zdef-gtw.cluster.qovery.io
+          - zabc-zdef-gtw.cluster.qovery.io
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/OrganizationCustomDomainResponse'
+          type: array
+      required:
+      - results
       type: object
     OrganizationCustomRoleCreateRequest:
       example:
@@ -56799,6 +57908,17 @@ components:
       required:
       - git_repository
       type: object
+    CustomDomainErrorResponse_conflicting_service:
+      allOf:
+      - $ref: '#/components/schemas/CustomDomainServiceResponse'
+      description: "The service of the same environment the domain conflicts with.\
+        \ Null when the conflict is with another environment, which the caller may\
+        \ not have access to."
+      example:
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: ""
+      nullable: true
     DeployAllRequest_applications_inner:
       example:
         git_commit_id: git_commit_id
@@ -58914,6 +60034,7 @@ x-tagGroups:
   - Environment Variable
   - Environment Secret
   - Environment Export
+  - Environment Custom Domain
 - name: Deployment Stage
   tags:
   - Deployment Stage Main Calls

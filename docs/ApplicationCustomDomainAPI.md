@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**EditCustomDomain**](ApplicationCustomDomainAPI.md#EditCustomDomain) | **Put** /application/{applicationId}/customDomain/{customDomainId} | Edit a Custom Domain
 [**GetApplicationCustomDomain**](ApplicationCustomDomainAPI.md#GetApplicationCustomDomain) | **Get** /application/{applicationId}/customDomain/{customDomainId} | Get an application custom domain
 [**ListApplicationCustomDomain**](ApplicationCustomDomainAPI.md#ListApplicationCustomDomain) | **Get** /application/{applicationId}/customDomain | List application custom domains
+[**ListApplicationCustomDomainView**](ApplicationCustomDomainAPI.md#ListApplicationCustomDomainView) | **Get** /application/{applicationId}/customDomainView | List the domains of the application
 
 
 
@@ -146,7 +147,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -292,7 +293,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -425,6 +426,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomDomainResponseList**](CustomDomainResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListApplicationCustomDomainView
+
+> ServiceDomainResponseList ListApplicationCustomDomainView(ctx, applicationId).Execute()
+
+List the domains of the application
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationCustomDomainAPI.ListApplicationCustomDomainView(context.Background(), applicationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationCustomDomainAPI.ListApplicationCustomDomainView``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListApplicationCustomDomainView`: ServiceDomainResponseList
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationCustomDomainAPI.ListApplicationCustomDomainView`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**applicationId** | **string** | Application ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListApplicationCustomDomainViewRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ServiceDomainResponseList**](ServiceDomainResponseList.md)
 
 ### Authorization
 
