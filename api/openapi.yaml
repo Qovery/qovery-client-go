@@ -1037,6 +1037,16 @@ paths:
           description: Bad request
         "401":
           description: Access token is missing or invalid
+        "402":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/PaymentRequiredProblemResponse'
+          description: "Payment required. The organization's plan does not include\
+            \ this action, or its limit is reached, or its subscription or payment\
+            \ does not allow new actions. Nothing was created, and running resources\
+            \ are not affected. `offers` and `paywall` are only sent to a caller who\
+            \ can manage the organization's billing."
         "403":
           description: Access forbidden
         "404":
@@ -2017,6 +2027,16 @@ paths:
           description: Bad request
         "401":
           description: Access token is missing or invalid
+        "402":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/PaymentRequiredProblemResponse'
+          description: "Payment required. The organization's plan does not include\
+            \ this action, or its limit is reached, or its subscription or payment\
+            \ does not allow new actions. Nothing was created, and running resources\
+            \ are not affected. `offers` and `paywall` are only sent to a caller who\
+            \ can manage the organization's billing."
         "403":
           description: Access forbidden
         "404":
@@ -2031,8 +2051,9 @@ paths:
         \ any other Kubernetes (`provider` `ON_PREMISE`, `HETZNER`, `OVH`, `CIVO`,\
         \ `ORACLE` or `IBM`, in region `on-premise`). The on-premise providers are\
         \ not generally available yet: they are accepted for a short list of Qovery\
-        \ test organizations and answer 400 for the others. The organization's plan\
-        \ is not checked. On AWS the credential only needs ECR permissions for the\
+        \ test organizations and answer 400 for the others. The organization's plan,\
+        \ subscription or payment can refuse the creation: it then answers 402 and\
+        \ creates nothing. On AWS the credential only needs ECR permissions for the\
         \ cluster itself, including `ecr:DescribeRepositories` in `us-east-1`, which\
         \ Qovery calls to check the credential whatever the cluster region; features\
         \ that call other AWS services with the credential, such as managed databases\
@@ -2084,6 +2105,16 @@ paths:
             \ credential, or invalid platform configuration"
         "401":
           description: Access token is missing or invalid
+        "402":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/PaymentRequiredProblemResponse'
+          description: "Payment required. The organization's plan does not include\
+            \ this action, or its limit is reached, or its subscription or payment\
+            \ does not allow new actions. Nothing was created, and running resources\
+            \ are not affected. `offers` and `paywall` are only sent to a caller who\
+            \ can manage the organization's billing."
         "403":
           description: Access forbidden
         "404":
@@ -9302,6 +9333,16 @@ paths:
           description: Bad request
         "401":
           description: Access token is missing or invalid
+        "402":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/PaymentRequiredProblemResponse'
+          description: "Payment required. The organization's plan does not include\
+            \ this action, or its limit is reached, or its subscription or payment\
+            \ does not allow new actions. Nothing was created, and running resources\
+            \ are not affected. `offers` and `paywall` are only sent to a caller who\
+            \ can manage the organization's billing."
         "403":
           description: Access forbidden
         "404":
@@ -10793,6 +10834,16 @@ paths:
           description: Environment clone has been requested
         "401":
           description: Access token is missing or invalid
+        "402":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/PaymentRequiredProblemResponse'
+          description: "Payment required. The organization's plan does not include\
+            \ this action, or its limit is reached, or its subscription or payment\
+            \ does not allow new actions. Nothing was created, and running resources\
+            \ are not affected. `offers` and `paywall` are only sent to a caller who\
+            \ can manage the organization's billing."
         "403":
           description: Access forbidden
         "404":
@@ -23360,6 +23411,16 @@ components:
             $ref: '#/components/schemas/CustomDomainProblemResponse'
       description: "Bad request. When the custom domain conflicts with other domains,\
         \ `errors` lists every conflict."
+    PaymentRequired:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/PaymentRequiredProblemResponse'
+      description: "Payment required. The organization's plan does not include this\
+        \ action, or its limit is reached, or its subscription or payment does not\
+        \ allow new actions. Nothing was created, and running resources are not affected.\
+        \ `offers` and `paywall` are only sent to a caller who can manage the organization's\
+        \ billing."
     BuildAnalysisConflict:
       description: "The execution is not the latest build of the service, the service\
         \ has no build, or an analysis is already in progress. Read the build analysis\
@@ -38087,6 +38148,89 @@ components:
           items:
             $ref: '#/components/schemas/CustomDomainErrorResponse'
           type: array
+      type: object
+    PaymentRequiredProblemResponse:
+      description: "A problem detail (RFC 9457) explaining why the action is refused:\
+        \ the organization's plan does not include this action, or its limit is reached,\
+        \ or the subscription or payment does not allow new actions. `title` and `detail`\
+        \ are required; the other RFC 9457 properties (`type`, `status`, `instance`)\
+        \ are always sent too. Clients show `detail`. The pricing properties, from\
+        \ `message` on, can be absent. `offers` and `paywall` are only sent to a caller\
+        \ who can manage the organization's billing (the owner, admin and billing\
+        \ roles); other callers get neither."
+      properties:
+        type:
+          description: "Always sent, `about:blank`."
+          type: string
+        title:
+          description: "Always sent, `Payment Required`."
+          example: Payment Required
+          type: string
+        status:
+          description: "Always sent, 402."
+          example: 402
+          type: integer
+        detail:
+          description: "Always sent. Plain text to show to the user, saying why the\
+            \ action is refused and what to do: the pricing explanation, or a generic\
+            \ text when there is none."
+          type: string
+        instance:
+          description: Always sent. The path of the request.
+          type: string
+        message:
+          description: The same text as `detail`. Absent when the refusal carries
+            no pricing explanation.
+          example: Your Growth plan includes 2 clusters and you are using 2. Running
+            resources are not affected.
+          type: string
+        sku:
+          description: "The plan item that refused the action. Absent when unknown.\
+            \ New items can appear: do not reject an unknown value."
+          example: clusters.managed
+          type: string
+        action:
+          description: "The checked action: `member.invite`, `cluster.create`, `cluster.create_self_managed`\
+            \ or `environment.create` (also used for a clone). Absent when unknown.\
+            \ New actions can appear: do not reject an unknown value."
+          example: cluster.create
+          type: string
+        limit:
+          $ref: '#/components/schemas/PaymentRequiredProblemResponse_limit'
+        used:
+          description: How many of `sku` the organization uses now. Absent when unknown.
+          example: 2
+          type: integer
+        requested:
+          description: How many of `sku` the action adds. Absent when unknown.
+          example: 1
+          type: integer
+        upgrade_url:
+          description: "The console page where a billing role changes the plan, the\
+            \ spend limit or the payment method. Always an `https` URL. Absent when\
+            \ there is no page to send the user to."
+          format: uri
+          type: string
+        offers:
+          description: "Ways past the refusal, produced by the pricing service, in\
+            \ the order to show them. Each offer has a `type` (`plan_change`, `addon`,\
+            \ `contact_sales`, `free_up` or `raise_spend_limit`; more can appear)\
+            \ and a `name`; its other properties depend on the type and can change.\
+            \ Absent unless the caller can manage the organization's billing."
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        paywall:
+          additionalProperties: true
+          description: "What the refused feature does and the ways to get it, produced\
+            \ by the pricing service for a billing role; its properties can change.\
+            \ Absent unless the caller can manage the organization's billing, and\
+            \ absent when the refusal comes from a spend limit."
+          type: object
+      required:
+      - detail
+      - title
       type: object
     CustomDomainServiceRequest:
       example:
@@ -60697,6 +60841,16 @@ components:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         type: ""
       nullable: true
+    PaymentRequiredProblemResponse_limit:
+      description: "What the plan includes for `sku`: a number of items, `false` when\
+        \ the plan does not include the item at all, `true` when it includes the item\
+        \ without a number, or the string `unlimited`. A refusal by the subscription\
+        \ or the payment carries the plan's value whatever it is. Absent when unknown."
+      example: 2
+      oneOf:
+      - type: integer
+      - type: boolean
+      - type: string
     DeployAllRequest_applications_inner:
       example:
         git_commit_id: git_commit_id

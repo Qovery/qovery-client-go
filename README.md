@@ -1470,6 +1470,8 @@ Class | Method | HTTP request | Description
  - [OrganizationWebhookResponseList](docs/OrganizationWebhookResponseList.md)
  - [PaginationData](docs/PaginationData.md)
  - [ParseTerraformVariablesFromGitRepo200Response](docs/ParseTerraformVariablesFromGitRepo200Response.md)
+ - [PaymentRequiredProblemResponse](docs/PaymentRequiredProblemResponse.md)
+ - [PaymentRequiredProblemResponseLimit](docs/PaymentRequiredProblemResponseLimit.md)
  - [PlanEnum](docs/PlanEnum.md)
  - [PlatformCloudVendor](docs/PlatformCloudVendor.md)
  - [PlatformClusterMode](docs/PlatformClusterMode.md)

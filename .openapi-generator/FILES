@@ -996,6 +996,8 @@ docs/OrganizationWebhookResponse.md
 docs/OrganizationWebhookResponseList.md
 docs/PaginationData.md
 docs/ParseTerraformVariablesFromGitRepo200Response.md
+docs/PaymentRequiredProblemResponse.md
+docs/PaymentRequiredProblemResponseLimit.md
 docs/PlanEnum.md
 docs/PlatformCloudVendor.md
 docs/PlatformClusterMode.md
@@ -2059,6 +2061,8 @@ model_organization_webhook_response.go
 model_organization_webhook_response_list.go
 model_pagination_data.go
 model_parse_terraform_variables_from_git_repo_200_response.go
+model_payment_required_problem_response.go
+model_payment_required_problem_response_limit.go
 model_plan_enum.go
 model_platform_cloud_vendor.go
 model_platform_cluster_mode.go
