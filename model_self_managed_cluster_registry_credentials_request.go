@@ -19,7 +19,7 @@ import (
 // checks if the SelfManagedClusterRegistryCredentialsRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SelfManagedClusterRegistryCredentialsRequest{}
 
-// SelfManagedClusterRegistryCredentialsRequest Credentials of the registry, checked before anything is created when Qovery can reach the registry; a refused login answers 400. Omit the object for a registry without credentials.
+// SelfManagedClusterRegistryCredentialsRequest Credentials of the registry, checked before anything is created when Qovery can reach the registry; a refused login answers 400. Omit the object for a `GENERIC_CR` registry without credentials.
 type SelfManagedClusterRegistryCredentialsRequest struct {
 	Username             string `json:"username"`
 	Password             string `json:"password"`

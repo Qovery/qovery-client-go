@@ -2023,9 +2023,9 @@ paths:
         \ from the credential (ECR on AWS, Artifact Registry on GCP, Scaleway Container\
         \ Registry on Scaleway), its initial deployment status, its platform configuration\
         \ and its Qovery Operator enrollment. No registry can be derived from an on-premise\
-        \ credential: the cluster gets the generic registry given in `registry`, or\
-        \ an empty generic registry to configure with the container registry API before\
-        \ the first application deployment. Install the Operator next with the cluster's\
+        \ credential: the cluster gets the registry given in `registry`, or an empty\
+        \ generic registry to configure with the container registry API before the\
+        \ first application deployment. Install the Operator next with the cluster's\
         \ Operator bootstrap."
       operationId: createSelfManagedCluster
       parameters:
@@ -24178,6 +24178,7 @@ components:
           credentials:
             password: password
             username: username
+          kind: GENERIC_CR
           url: https://registry.example.com
         production: false
         provider: AWS
@@ -24246,32 +24247,44 @@ components:
       - region
       type: object
     SelfManagedClusterRegistryRequest:
-      description: "Generic registry of an on-premise cluster, created as the cluster's\
-        \ own registry. Only for the on-premise providers: it answers 400 on AWS,\
-        \ GCP and SCW, whose registry is derived from the cloud credential. Without\
-        \ it the cluster gets an empty generic registry, to configure with the container\
+      description: "Registry of an on-premise cluster, created as the cluster's own\
+        \ registry. Only for the on-premise providers: it answers 400 on AWS, GCP\
+        \ and SCW, whose registry is derived from the cloud credential. Without it\
+        \ the cluster gets an empty generic registry, to configure with the container\
         \ registry API before the first application deployment. An unknown key next\
-        \ to `url` and `credentials` answers 400."
+        \ to `kind`, `url` and `credentials` answers 400."
       example:
         credentials:
           password: password
           username: username
+        kind: GENERIC_CR
         url: https://registry.example.com
       properties:
+        kind:
+          description: "Kind of the registry. `GENERIC_CR` is any OCI registry reachable\
+            \ by URL, `GITHUB_CR` is GitHub Container Registry and `DOCKER_HUB` is\
+            \ Docker Hub; both require `credentials`."
+          enum:
+          - GENERIC_CR
+          - GITHUB_CR
+          - DOCKER_HUB
+          type: string
         url:
-          description: "URL of the registry: `http` or `https` scheme, host and optional\
-            \ port only, without user info, path, query or fragment, and not localhost."
+          description: "URL of the registry. Required for `GENERIC_CR`: `http` or\
+            \ `https` scheme, host and optional port only, without user info, path,\
+            \ query or fragment, and not localhost. Optional for `GITHUB_CR` and `DOCKER_HUB`;\
+            \ when given, it must be `https://ghcr.io` or `https://docker.io`."
           example: https://registry.example.com
           type: string
         credentials:
           $ref: '#/components/schemas/SelfManagedClusterRegistryCredentialsRequest'
       required:
-      - url
+      - kind
       type: object
     SelfManagedClusterRegistryCredentialsRequest:
       description: "Credentials of the registry, checked before anything is created\
         \ when Qovery can reach the registry; a refused login answers 400. Omit the\
-        \ object for a registry without credentials."
+        \ object for a `GENERIC_CR` registry without credentials."
       example:
         password: password
         username: username
@@ -24427,8 +24440,9 @@ components:
     SelfManagedClusterRegistryResponse:
       description: "Registry of the cluster. On AWS, GCP and Scaleway it is derived\
         \ from the cloud credential and region: ECR, Artifact Registry or Scaleway\
-        \ Container Registry. On an on-premise provider it is the generic registry\
-        \ given in the request, or an empty generic registry."
+        \ Container Registry. On an on-premise provider it is the registry given in\
+        \ the request (generic, GitHub Container Registry or Docker Hub), or an empty\
+        \ generic registry."
       example:
         kind: ECR
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91

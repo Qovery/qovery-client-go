@@ -19,10 +19,12 @@ import (
 // checks if the SelfManagedClusterRegistryRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SelfManagedClusterRegistryRequest{}
 
-// SelfManagedClusterRegistryRequest Generic registry of an on-premise cluster, created as the cluster's own registry. Only for the on-premise providers: it answers 400 on AWS, GCP and SCW, whose registry is derived from the cloud credential. Without it the cluster gets an empty generic registry, to configure with the container registry API before the first application deployment. An unknown key next to `url` and `credentials` answers 400.
+// SelfManagedClusterRegistryRequest Registry of an on-premise cluster, created as the cluster's own registry. Only for the on-premise providers: it answers 400 on AWS, GCP and SCW, whose registry is derived from the cloud credential. Without it the cluster gets an empty generic registry, to configure with the container registry API before the first application deployment. An unknown key next to `kind`, `url` and `credentials` answers 400.
 type SelfManagedClusterRegistryRequest struct {
-	// URL of the registry: `http` or `https` scheme, host and optional port only, without user info, path, query or fragment, and not localhost.
-	Url                  string                                        `json:"url"`
+	// Kind of the registry. `GENERIC_CR` is any OCI registry reachable by URL, `GITHUB_CR` is GitHub Container Registry and `DOCKER_HUB` is Docker Hub; both require `credentials`.
+	Kind string `json:"kind"`
+	// URL of the registry. Required for `GENERIC_CR`: `http` or `https` scheme, host and optional port only, without user info, path, query or fragment, and not localhost. Optional for `GITHUB_CR` and `DOCKER_HUB`; when given, it must be `https://ghcr.io` or `https://docker.io`.
+	Url                  *string                                       `json:"url,omitempty"`
 	Credentials          *SelfManagedClusterRegistryCredentialsRequest `json:"credentials,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -33,9 +35,9 @@ type _SelfManagedClusterRegistryRequest SelfManagedClusterRegistryRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSelfManagedClusterRegistryRequest(url string) *SelfManagedClusterRegistryRequest {
+func NewSelfManagedClusterRegistryRequest(kind string) *SelfManagedClusterRegistryRequest {
 	this := SelfManagedClusterRegistryRequest{}
-	this.Url = url
+	this.Kind = kind
 	return &this
 }
 
@@ -47,28 +49,60 @@ func NewSelfManagedClusterRegistryRequestWithDefaults() *SelfManagedClusterRegis
 	return &this
 }
 
-// GetUrl returns the Url field value
-func (o *SelfManagedClusterRegistryRequest) GetUrl() string {
+// GetKind returns the Kind field value
+func (o *SelfManagedClusterRegistryRequest) GetKind() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Url
+	return o.Kind
 }
 
-// GetUrlOk returns a tuple with the Url field value
+// GetKindOk returns a tuple with the Kind field value
 // and a boolean to check if the value has been set.
-func (o *SelfManagedClusterRegistryRequest) GetUrlOk() (*string, bool) {
+func (o *SelfManagedClusterRegistryRequest) GetKindOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Url, true
+	return &o.Kind, true
 }
 
-// SetUrl sets field value
+// SetKind sets field value
+func (o *SelfManagedClusterRegistryRequest) SetKind(v string) {
+	o.Kind = v
+}
+
+// GetUrl returns the Url field value if set, zero value otherwise.
+func (o *SelfManagedClusterRegistryRequest) GetUrl() string {
+	if o == nil || IsNil(o.Url) {
+		var ret string
+		return ret
+	}
+	return *o.Url
+}
+
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SelfManagedClusterRegistryRequest) GetUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.Url) {
+		return nil, false
+	}
+	return o.Url, true
+}
+
+// HasUrl returns a boolean if a field has been set.
+func (o *SelfManagedClusterRegistryRequest) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *SelfManagedClusterRegistryRequest) SetUrl(v string) {
-	o.Url = v
+	o.Url = &v
 }
 
 // GetCredentials returns the Credentials field value if set, zero value otherwise.
@@ -113,7 +147,10 @@ func (o SelfManagedClusterRegistryRequest) MarshalJSON() ([]byte, error) {
 
 func (o SelfManagedClusterRegistryRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["url"] = o.Url
+	toSerialize["kind"] = o.Kind
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
 	if !IsNil(o.Credentials) {
 		toSerialize["credentials"] = o.Credentials
 	}
@@ -130,7 +167,7 @@ func (o *SelfManagedClusterRegistryRequest) UnmarshalJSON(data []byte) (err erro
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"url",
+		"kind",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -160,6 +197,7 @@ func (o *SelfManagedClusterRegistryRequest) UnmarshalJSON(data []byte) (err erro
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "kind")
 		delete(additionalProperties, "url")
 		delete(additionalProperties, "credentials")
 		o.AdditionalProperties = additionalProperties
