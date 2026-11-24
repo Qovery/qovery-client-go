@@ -44,7 +44,16 @@ CreateOrganizationPolicyApiToken Create an organization policy api token
 
 Create a policy api token, intended for autonomous agents calling the Qovery API.
 
-Unlike a regular api token, a policy api token carries **no organization role**. The Open Policy Agent (rego) policy attached to it is evaluated on every request and is the only thing constraining what the token can do: a policy that allows everything grants full organization admin access. For that reason only an organization owner or admin can create one.
+A policy api token carries two limits, and a request must pass both:
+
+1. Its Open Policy Agent (rego) policy, evaluated on every request. A request the policy does not allow is refused with 401.
+2. Its organization role, set with `role_id`. A request the policy allows then runs with that role's permissions, and a request the role does not permit is refused with 403.
+
+Effective access is therefore the intersection of the policy and the role. When `role_id` is omitted, the token gets the organization admin role, so a policy that allows everything then grants full admin access. A token can never act as the Owner role.
+
+Who can create one depends on the role requested: an organization owner or admin can create a token for any role except Owner; a DevOps member only for the DevOps, Viewer or Billing role or a custom role. Other callers are refused with 403.
+
+A token cannot be edited: its policy, role and expiry are fixed at creation. To change them, create a new token and delete the old one. Deleting a custom role also deletes the policy api tokens that use it.
 
 The generated token value is returned only in this response and cannot be retrieved afterwards.
 

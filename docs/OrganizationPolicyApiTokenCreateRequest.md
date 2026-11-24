@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **OpaPolicy** | **string** | Open Policy Agent (rego) rule definitions, without a &#x60;package&#x60; declaration: Qovery prepends a per-token package so that one token&#39;s rules cannot authorize another&#39;s. The policy must define an &#x60;allow&#x60; rule, and the request is denied unless it evaluates to true. | 
-**RoleId** | Pointer to **NullableString** | the roleId provided by the \&quot;List organization custom roles\&quot; endpoint. The role bounds what the token may do once its policy has allowed a request, so effective access is the intersection of the two. Omit it, or send null, for organization-admin. | [optional] 
+**RoleId** | Pointer to **NullableString** | The organization role the token acts as: a default role id or a custom role id from the \&quot;List organization custom roles\&quot; endpoint. The role bounds what the token may do once its policy has allowed a request, so effective access is the intersection of the two, and a request the role does not permit is refused with 403. Omit it, or send null, for the organization admin role. The Owner role is refused. The role cannot be changed after creation. | [optional] 
 **ExpiresAt** | Pointer to **NullableTime** |  | [optional] 
 
 ## Methods

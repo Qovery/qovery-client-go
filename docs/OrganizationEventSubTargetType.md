@@ -73,6 +73,8 @@
 
 * `SECRET` (value: `"SECRET"`)
 
+* `SKILL_PRESET` (value: `"SKILL_PRESET"`)
+
 * `SSO` (value: `"SSO"`)
 
 * `TERRAFORM` (value: `"TERRAFORM"`)

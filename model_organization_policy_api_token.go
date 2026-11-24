@@ -28,7 +28,7 @@ type OrganizationPolicyApiToken struct {
 	Name        *string    `json:"name,omitempty"`
 	Description *string    `json:"description,omitempty"`
 	RoleName    *string    `json:"role_name,omitempty"`
-	// the organization role this token acts as once its policy has allowed a request. Effective access is the intersection of this role and `opa_policy`.
+	// The organization role this token acts as once its policy has allowed a request. Effective access is the intersection of this role and `opa_policy`. Fixed at creation.
 	RoleId *string `json:"role_id,omitempty"`
 	// the Open Policy Agent (rego) policy evaluated on every request made with this token
 	OpaPolicy   *string        `json:"opa_policy,omitempty"`

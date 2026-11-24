@@ -123,6 +123,12 @@
 
 * `ACCESS_DENIED` (value: `"ACCESS_DENIED"`)
 
+* `SKILL_LOAD` (value: `"SKILL_LOAD"`)
+
+* `SKILL_PRESET_REJECTED` (value: `"SKILL_PRESET_REJECTED"`)
+
+* `SKILL_VIEW` (value: `"SKILL_VIEW"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

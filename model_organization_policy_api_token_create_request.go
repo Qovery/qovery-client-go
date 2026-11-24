@@ -26,7 +26,7 @@ type OrganizationPolicyApiTokenCreateRequest struct {
 	Description *string `json:"description,omitempty"`
 	// Open Policy Agent (rego) rule definitions, without a `package` declaration: Qovery prepends a per-token package so that one token's rules cannot authorize another's. The policy must define an `allow` rule, and the request is denied unless it evaluates to true.
 	OpaPolicy string `json:"opa_policy"`
-	// the roleId provided by the \"List organization custom roles\" endpoint. The role bounds what the token may do once its policy has allowed a request, so effective access is the intersection of the two. Omit it, or send null, for organization-admin.
+	// The organization role the token acts as: a default role id or a custom role id from the \"List organization custom roles\" endpoint. The role bounds what the token may do once its policy has allowed a request, so effective access is the intersection of the two, and a request the role does not permit is refused with 403. Omit it, or send null, for the organization admin role. The Owner role is refused. The role cannot be changed after creation.
 	RoleId               NullableString `json:"role_id,omitempty"`
 	ExpiresAt            NullableTime   `json:"expires_at,omitempty"`
 	AdditionalProperties map[string]interface{}

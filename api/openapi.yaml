@@ -91,6 +91,20 @@ tags:
 - name: Container Custom Domain
 - name: LLM Providers
 - name: MCP Servers
+- description: "What members' coding agents did on Qovery, linked to the skills they\
+    \ loaded: skill loads, API calls made from a Qovery skill, Qovery MCP server tool\
+    \ calls and policy denials. Built only from what Qovery already records. It returns\
+    \ no prompt text and no request content."
+  name: Agent Activity
+- description: "A skill preset is how an organization tells its members' coding agents\
+    \ to use Qovery: which Qovery skills apply, team instructions on top of them,\
+    \ and skills of the organization's own. Admins manage presets and assign each\
+    \ one to the organization, to roles or to members. Any member can read the preset\
+    \ that applies to them, which is what the agent's Qovery loader skill fetches.\
+    \ Every saved preset is inspected for content that could turn a member's agent\
+    \ against them, and every create, edit, delete and skill load is recorded in the\
+    \ audit log."
+  name: Skill Presets
 - name: Database
 - name: Database Actions
 - name: Database Application
@@ -383,7 +397,16 @@ paths:
       description: |-
         Create a policy api token, intended for autonomous agents calling the Qovery API.
 
-        Unlike a regular api token, a policy api token carries **no organization role**. The Open Policy Agent (rego) policy attached to it is evaluated on every request and is the only thing constraining what the token can do: a policy that allows everything grants full organization admin access. For that reason only an organization owner or admin can create one.
+        A policy api token carries two limits, and a request must pass both:
+
+        1. Its Open Policy Agent (rego) policy, evaluated on every request. A request the policy does not allow is refused with 401.
+        2. Its organization role, set with `role_id`. A request the policy allows then runs with that role's permissions, and a request the role does not permit is refused with 403.
+
+        Effective access is therefore the intersection of the policy and the role. When `role_id` is omitted, the token gets the organization admin role, so a policy that allows everything then grants full admin access. A token can never act as the Owner role.
+
+        Who can create one depends on the role requested: an organization owner or admin can create a token for any role except Owner; a DevOps member only for the DevOps, Viewer or Billing role or a custom role. Other callers are refused with 403.
+
+        A token cannot be edited: its policy, role and expiry are fixed at creation. To change them, create a new token and delete the old one. Deleting a custom role also deletes the policy api tokens that use it.
 
         The generated token value is returned only in this response and cannot be retrieved afterwards.
       operationId: createOrganizationPolicyApiToken
@@ -414,9 +437,10 @@ paths:
         "401":
           description: Access token is missing or invalid
         "403":
-          description: Access forbidden
+          description: "Access forbidden: the caller cannot create a token for the\
+            \ requested role, or the requested role is Owner"
         "404":
-          description: Resource not found
+          description: The organization or the requested role does not exist
         "409":
           description: Organization Policy Api Token name is already taken
       summary: Create an organization policy api token
@@ -7745,6 +7769,813 @@ paths:
       summary: Edit an LLM provider
       tags:
       - LLM Providers
+  /organization/{organizationId}/skillPreset:
+    get:
+      description: "List the skill presets of the organization, with their full content\
+        \ and who each one is assigned to. Templates are listed too unless `isTemplate`\
+        \ filters them. Requires the MANAGE_ORGANIZATION_DATA permission (organization\
+        \ owner or admin)."
+      operationId: listSkillPresets
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: "`true` lists templates only, `false` lists assignable presets\
+          \ only. Omit it to list both."
+        explode: true
+        in: query
+        name: isTemplate
+        required: false
+        schema:
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillPresetResponseList'
+          description: List skill presets
+        "400":
+          description: '`isTemplate` is not true or false'
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List organization skill presets
+      tags:
+      - Skill Presets
+    post:
+      description: |-
+        Create a skill preset and its assignments. Requires the MANAGE_ORGANIZATION_DATA permission (organization owner or admin). The preset starts at revision 1.
+
+        Set `is_template` to save a template: a starting point admins copy into new presets. A template is never resolved for a member and cannot have assignments.
+
+        A preset runs inside each assigned member's coding agent, on their machine, so every create and edit is checked before anything reaches members. The check covers every field that reaches an agent (the preset description, the team context, and each skill's description and content) and runs in two steps:
+
+        1. Deterministic rules look for content that could turn the agent against its user: overriding its instructions, hiding actions from the user, skipping confirmations, reading local credentials, dumping secrets, sending data out, running remote or obfuscated code, links outside an allowlist of documentation hosts, invisible characters, HTML comments, encoded blobs and pasted credentials. Any finding answers 422 (findings with `source` RULES) and the model is not called.
+        2. A model review on AWS Bedrock then reads the content as untrusted data, to catch paraphrased or new attacks the rules miss. A BLOCK verdict answers 422 (findings with `source` MODEL).
+
+        The check fails closed: if the model review cannot give a verdict (error, timeout or unusable answer), the request answers 503 and nothing is saved. Because every save is sent to the model, an organization with AI features turned off cannot create or edit presets (403). Reading, resolving, loading and deleting presets are not affected. A save refused for security is recorded in the audit log as a `SKILL_PRESET_REJECTED` event with sub-target `SKILL_PRESET`, holding hashes and findings, never the text.
+
+        The creation is recorded in the audit log as a `CREATE` event with sub-target `SKILL_PRESET`, holding the saved state with its full text, and as revision 1 in the revision history.
+      operationId: createSkillPreset
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SkillPresetRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillPresetResponse'
+          description: Skill preset created
+        "400":
+          description: "Invalid preset: a field is out of its limits, a skill entry\
+            \ does not fit its mode or the base, a skill or a target appears more\
+            \ than once, a template has assignments, the preset has more than 200\
+            \ assignments, the Owner role is a target (assign the Admin role, which\
+            \ the organization owner resolves as), or the preset holds more than 200,000\
+            \ characters of text in total"
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: "Access forbidden, or AI features are turned off for the organization\
+            \ (`ai_features_enabled`): every preset is reviewed by a model before\
+            \ it reaches members, so presets cannot be created or edited. Reading\
+            \ and resolving presets stay allowed."
+        "404":
+          description: "The organization does not exist, or a role id is not a role\
+            \ of the organization"
+        "409":
+          description: "The preset name is already taken in the organization, or an\
+            \ assignment target already receives another preset"
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillPresetRejectionResponse'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/SkillPresetRejectionResponse'
+          description: "The preset was rejected for security, to protect the members\
+            \ it applies to, by the rules or by the model review. Each finding names\
+            \ its source, the rule or category, the field and the line, never the\
+            \ offending text. Nothing was saved."
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillPresetProblemResponse'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/SkillPresetProblemResponse'
+          description: "The security review is unavailable: no model reviewer is configured\
+            \ on this Qovery instance, or the model review could not give a verdict\
+            \ (error, timeout or unusable answer). The check fails closed, so nothing\
+            \ was saved. Try again in a minute. The body is a problem detail with\
+            \ the title \"Skill preset security review unavailable\"."
+      summary: Create a skill preset
+      tags:
+      - Skill Presets
+  /organization/{organizationId}/skillPreset/resolved:
+    get:
+      description: |-
+        Return the manifest of the skill preset that applies to the caller in this organization: its name, base, revision and, for each skill entry, the mode, the description and the size and SHA-256 of the content, but never the content itself. This is what the Qovery loader skill reads first. It then fetches only the skills a task needs with `getResolvedSkill`. Any organization member can call it (READ_ORGANIZATION_DATA). Assignments and the preset's creator are left out.
+
+        The preset is resolved in this order: a preset assigned to the caller as a member, then a preset assigned to the caller's role in the organization, then the organization default. When none applies, `source` is `QOVERY_DEFAULT`, `skill_preset` is null and the agent uses the Qovery skills as published. API tokens have no member behind them, so they only receive a role preset or the organization default.
+
+        The response carries an `ETag`. Treat it as opaque: it changes when the preset is edited, when the caller moves to another preset, and when the caller reaches the same preset through another assignment. Send it back in `If-None-Match` to get a 304 with no body when nothing changed. Templates are never resolved.
+      operationId: getResolvedSkillPreset
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: "The ETag of the caller's cached copy. When it matches the current\
+          \ ETag, the response is a 304 with no body."
+        explode: false
+        in: header
+        name: If-None-Match
+        required: false
+        schema:
+          example: '"role-0193f1c2-6b1e-7c3a-9a4f-2d5e8b7c1a90-3"'
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillPresetManifestResponse'
+          description: The manifest of the skill preset that applies to the caller
+          headers:
+            ETag:
+              $ref: '#/components/headers/SkillPresetETag'
+        "304":
+          description: "The `If-None-Match` header holds the current ETag, so the\
+            \ cached copy is still current. No body."
+          headers:
+            ETag:
+              $ref: '#/components/headers/SkillPresetETag'
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get the skill preset that applies to the caller
+      tags:
+      - Skill Presets
+  /organization/{organizationId}/skillPreset/resolved/skill/{skillName}:
+    get:
+      description: |-
+        Return what the caller's agent must load for one skill, under the preset that applies to the caller (resolved as in `getResolvedSkillPreset`): the organization's content for that skill if any, the team context, and the SHA-256 of each, so the member can check that what their agent follows is what an admin saved. Any organization member can call it (READ_ORGANIZATION_DATA).
+
+        A Qovery skill (`qovery` or `qovery-*`) that the preset leaves alone, or any Qovery skill when no preset applies, answers 200 with a null `mode`: load the Qovery skill as published, with the team context if there is one. A `DISABLE` mode means the agent must not load the skill. Any other name that is not in the preset answers 404.
+
+        The ETag is the same as the manifest's, so a single revision covers every skill of the preset. Send it in `If-None-Match` to get a 304 with no body when the cached copy is current.
+
+        Set `purpose` to say who reads the skill. LOAD (the default) is a member's coding agent loading it to follow it. VIEW is a person reading it, for example in the Console: same body and same ETag and 304 behaviour, recorded as a `SKILL_VIEW` audit event with the same content as a `SKILL_LOAD` entry, and not counted in `getSkillUsage`.
+
+        Every LOAD call is recorded in the audit log as a `SKILL_LOAD` event with sub-target `SKILL_PRESET`, 304s included (with `from_cache` set to true): the entry gives the skill, the preset and revision that applied (or `QOVERY_DEFAULT`), the mode, and the SHA-256 of the content and team context that were injected. A 404 is not recorded.
+      operationId: getResolvedSkill
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: "Name of the skill to load, for example `qovery-deploy` or a\
+          \ skill the preset adds"
+        explode: false
+        in: path
+        name: skillName
+        required: true
+        schema:
+          example: qovery-deploy
+          type: string
+        style: simple
+      - description: Who reads the skill. Defaults to LOAD. Any other value than LOAD
+          or VIEW is refused with 400.
+        explode: true
+        in: query
+        name: purpose
+        required: false
+        schema:
+          allOf:
+          - $ref: '#/components/schemas/SkillLoadPurpose'
+          default: LOAD
+        style: form
+      - description: "The ETag of the caller's cached copy. When it matches the current\
+          \ ETag, the response is a 304 with no body."
+        explode: false
+        in: header
+        name: If-None-Match
+        required: false
+        schema:
+          example: '"role-0193f1c2-6b1e-7c3a-9a4f-2d5e8b7c1a90-3"'
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillPresetResolvedSkillResponse'
+          description: What to load for the skill
+          headers:
+            ETag:
+              $ref: '#/components/headers/SkillPresetETag'
+        "304":
+          description: "The `If-None-Match` header holds the current ETag, so the\
+            \ cached copy is still current. No body."
+          headers:
+            ETag:
+              $ref: '#/components/headers/SkillPresetETag'
+        "400":
+          description: '`purpose` is not LOAD or VIEW'
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: "The organization does not exist, `skillName` is not a valid\
+            \ skill name (lowercase letters, digits and hyphens, at most 64 characters),\
+            \ or the skill is neither a Qovery skill nor a skill of the preset that\
+            \ applies to the caller"
+      summary: Get what to load for one skill
+      tags:
+      - Skill Presets
+  /organization/{organizationId}/skillPreset/usage:
+    get:
+      description: |-
+        Return how the members' coding agents loaded skills in the organization over a time range: totals, a timeline, and breakdowns by skill, by member and by preset. Requires the MANAGE_ORGANIZATION_DATA permission (organization owner or admin).
+
+        Usage counts agent loads only: a load is one call to `getResolvedSkill` with `purpose` LOAD (the default) that returned a skill, cached ones included. A 304 counts as a cached load, a 404 is not counted, and VIEW calls (a person reading a skill) are never counted. Loads are counted whether or not a preset applies. Recording a load is best effort and never blocks the agent, so a load can be missing here while the audit log, which records every load as a `SKILL_LOAD` event, still has it.
+
+        The range defaults to the 30 days ending now and spans at most 90 days. Timeline buckets are cut in UTC, and buckets with no load are left out rather than returned as zero. Rows in `by_skill` and `by_member` are sorted by loads, most first, and capped at 100 and 500 rows.
+      operationId: getSkillUsage
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: "Start of the range, inclusive. Defaults to 30 days before `to`."
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: "End of the range, exclusive. Defaults to now. Must be after\
+          \ `from`, and the range must not exceed 90 days, otherwise the request is\
+          \ refused with 400."
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Width of each point of the timeline. Defaults to DAY.
+        explode: true
+        in: query
+        name: bucket
+        required: false
+        schema:
+          allOf:
+          - $ref: '#/components/schemas/SkillUsageBucket'
+          default: DAY
+        style: form
+      - description: Only count the loads of this skill.
+        explode: true
+        in: query
+        name: skillName
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Only count the loads of this member, by the id returned by \"\
+          List organization members\"."
+        explode: true
+        in: query
+        name: userSub
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Only count the loads made under this preset.
+        explode: true
+        in: query
+        name: skillPresetId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillUsageResponse'
+          description: Skill usage over the range
+        "400":
+          description: "`to` is not after `from`, the range exceeds 90 days, or a\
+            \ query parameter is malformed"
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get skill usage
+      tags:
+      - Skill Presets
+  /organization/{organizationId}/skillPreset/revision:
+    get:
+      description: "List the saved states of the organization's skill presets, most\
+        \ recent first, each with its full content, who saved it and when. Every create,\
+        \ edit and delete adds one immutable revision. Revisions are kept after a\
+        \ preset is deleted: the deletion adds a final `DELETE` revision holding the\
+        \ state the preset had. A save that fails, for example with a 422, adds nothing.\
+        \ Requires the MANAGE_ORGANIZATION_DATA permission (organization owner or\
+        \ admin)."
+      operationId: listSkillPresetRevisions
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: "Only list the revisions of this preset, deleted or not. Omit\
+          \ it to list the revisions of every preset of the organization."
+        explode: true
+        in: query
+        name: skillPresetId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: Maximum number of revisions to return. A value outside 1 to 100
+          is brought back into that range.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 50
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillPresetRevisionResponseList'
+          description: List skill preset revisions
+        "400":
+          description: "`skillPresetId` is not a UUID, or `limit` is not an integer"
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List skill preset revisions
+      tags:
+      - Skill Presets
+  /skillPreset/{skillPresetId}:
+    delete:
+      description: "Delete a skill preset and its assignments. Members it applied\
+        \ to fall back to the next preset in the resolution order, or to the Qovery\
+        \ skills as published. Requires the MANAGE_ORGANIZATION_DATA permission on\
+        \ the preset's organization. The deletion is recorded in the audit log as\
+        \ a `DELETE` event with sub-target `SKILL_PRESET`, holding the deleted state,\
+        \ and as a final `DELETE` revision in the revision history."
+      operationId: deleteSkillPreset
+      parameters:
+      - description: Skill Preset ID
+        explode: false
+        in: path
+        name: skillPresetId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: no content
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: The skill preset does not exist or was already deleted
+      summary: Delete a skill preset
+      tags:
+      - Skill Presets
+    get:
+      description: Get a skill preset with its full content and assignments. Requires
+        the MANAGE_ORGANIZATION_DATA permission on the preset's organization.
+      operationId: getSkillPreset
+      parameters:
+      - description: Skill Preset ID
+        explode: false
+        in: path
+        name: skillPresetId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillPresetResponse'
+          description: The skill preset
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get a skill preset
+      tags:
+      - Skill Presets
+    put:
+      description: |-
+        Replace a skill preset, its skill entries and its assignments with the request body, and increase its revision by one. Requires the MANAGE_ORGANIZATION_DATA permission on the preset's organization. The content is checked as on creation, by the rules and then by the model review on AWS Bedrock, and the check fails closed: a finding answers 422, an unavailable review answers 503, and in both cases nothing is saved. An organization with AI features turned off cannot edit presets (403). A refusal for security is recorded as a `SKILL_PRESET_REJECTED` audit event.
+
+        The edit is recorded in the audit log as an `UPDATE` event with sub-target `SKILL_PRESET`: the change holds the new state with its full text and a summary of what changed (skills added, removed and modified, and whether the base, the template flag, the team context or the assignments changed), and the original change holds the previous state. When the text of a preset is larger than 64 KB, the audit entry keeps only the SHA-256 of each text and sets `content_omitted`; the revision history always holds the full text.
+      operationId: editSkillPreset
+      parameters:
+      - description: Skill Preset ID
+        explode: false
+        in: path
+        name: skillPresetId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SkillPresetRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillPresetResponse'
+          description: Skill preset edited
+        "400":
+          description: "Invalid preset: a field is out of its limits, a skill entry\
+            \ does not fit its mode or the base, a skill or a target appears more\
+            \ than once, a template has assignments, the preset has more than 200\
+            \ assignments, the Owner role is a target (assign the Admin role, which\
+            \ the organization owner resolves as), or the preset holds more than 200,000\
+            \ characters of text in total"
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: "Access forbidden, or AI features are turned off for the organization\
+            \ (`ai_features_enabled`): every preset is reviewed by a model before\
+            \ it reaches members, so presets cannot be created or edited. Reading\
+            \ and resolving presets stay allowed."
+        "404":
+          description: "The skill preset does not exist, or a role id is not a role\
+            \ of the organization"
+        "409":
+          description: "The preset name is already taken in the organization, an assignment\
+            \ target already receives another preset, or someone else changed the\
+            \ preset during the request or during the security review (reload it and\
+            \ try again)"
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillPresetRejectionResponse'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/SkillPresetRejectionResponse'
+          description: "The preset was rejected for security, to protect the members\
+            \ it applies to, by the rules or by the model review. Each finding names\
+            \ its source, the rule or category, the field and the line, never the\
+            \ offending text. Nothing was saved."
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillPresetProblemResponse'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/SkillPresetProblemResponse'
+          description: "The security review is unavailable: no model reviewer is configured\
+            \ on this Qovery instance, or the model review could not give a verdict\
+            \ (error, timeout or unusable answer). The check fails closed, so nothing\
+            \ was saved. Try again in a minute. The body is a problem detail with\
+            \ the title \"Skill preset security review unavailable\"."
+      summary: Edit a skill preset
+      tags:
+      - Skill Presets
+  /organization/{organizationId}/agentActivity:
+    get:
+      description: |-
+        Return what members' coding agents did on Qovery over a time range, linked to the skills they loaded: skill loads (agent loads only, a person's VIEW is not counted), API calls made from a Qovery skill, Qovery MCP server tool calls, every audited call made by a policy token, and requests refused by a policy or by role permissions. A refusal by a policy token's policy (401) and a refusal by role permissions (403) both count as DENIED. Activity is shown by member, by skill and by policy token. Requires the MANAGE_ORGANIZATION_DATA permission (organization owner or admin); members read their own activity with `getMyAgentActivity`.
+
+        Every filter is optional and they combine. `policyTokenId` implies `actorKind` POLICY_TOKEN, and neither combines with `userSub`: those combinations, an unknown enum value or a malformed id are refused with 400.
+
+        Coverage: only actions taken through Qovery (its API, CLI, skills and MCP server) are visible. What an agent does elsewhere, such as in a shell, in git or in a cloud console, is not. The response repeats this in `coverage`.
+
+        Attribution is indicative, not proof. A member is matched on the username the audit log records, and an action is attributed to a skill from the `QoverySkill/<skill>` user agent the client sends: a client can claim a skill it does not run, or leave the user agent out. What an agent may actually do is enforced by its token's policy, and every refusal is recorded.
+
+        No request content is returned: only what the audit log shows (event, target, project and environment names, time, source), never prompt text or request bodies.
+
+        The range defaults to the 30 days ending now and spans at most 90 days. `by_member` holds at most 500 rows, `by_skill` 100, `by_policy_token` 100, `actions_by_type` 200 and `recent` the 100 most recent agent actions. Buckets are cut in UTC; empty buckets are omitted.
+      operationId: getAgentActivity
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: "Start of the range, inclusive. Defaults to 30 days before `to`."
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: "End of the range, exclusive. Defaults to now. Must be after\
+          \ `from`, and the range must not exceed 90 days, otherwise the request is\
+          \ refused with 400."
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Width of each point of the timeline. Defaults to DAY.
+        explode: true
+        in: query
+        name: bucket
+        required: false
+        schema:
+          allOf:
+          - $ref: '#/components/schemas/SkillUsageBucket'
+          default: DAY
+        style: form
+      - description: "Only show this member, by the id returned by \"List organization\
+          \ members\". The member is matched on the username of their most recent\
+          \ skill load, so a member with no skill load in the last 90 days shows no\
+          \ action."
+        explode: true
+        in: query
+        name: userSub
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Only count the activity attributed to this skill. Lowercase\
+          \ letters, digits, `.`, `_` or `-`, at most 64 characters, otherwise the\
+          \ request is refused with 400."
+        explode: true
+        in: query
+        name: skillName
+        required: false
+        schema:
+          pattern: "^[a-z0-9._-]{1,64}$"
+          type: string
+        style: form
+      - description: "Only count members (MEMBER) or policy tokens (POLICY_TOKEN).\
+          \ Cannot be combined with `userSub` when POLICY_TOKEN, otherwise the request\
+          \ is refused with 400."
+        explode: true
+        in: query
+        name: actorKind
+        required: false
+        schema:
+          $ref: '#/components/schemas/AgentActorKind'
+        style: form
+      - description: "Only count this policy token, by its id. Implies `actorKind`\
+          \ POLICY_TOKEN. Cannot be combined with `actorKind` MEMBER or with `userSub`,\
+          \ otherwise the request is refused with 400. With `bucket` HOUR, it is required\
+          \ to fill the token's `timeline` in `by_policy_token`."
+        explode: true
+        in: query
+        name: policyTokenId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: "DENIED lists refusals only, and leaves skill loads out. ALLOWED\
+          \ lists everything else, skill loads included."
+        explode: true
+        in: query
+        name: outcome
+        required: false
+        schema:
+          $ref: '#/components/schemas/AgentActionOutcome'
+        style: form
+      - description: Only count the activity from this source.
+        explode: true
+        in: query
+        name: source
+        required: false
+        schema:
+          $ref: '#/components/schemas/AgentActivitySource'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentActivityResponse'
+          description: Agent activity over the range
+        "400":
+          description: "`to` is not after `from`, the range exceeds 90 days, `skillName`\
+            \ does not match its pattern, an enum value or `policyTokenId` is malformed,\
+            \ or the filters do not combine (`policyTokenId` with `actorKind` MEMBER,\
+            \ or `userSub` with `policyTokenId` or `actorKind` POLICY_TOKEN)"
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "503":
+          description: "The activity of the range could not be read in time. Narrow\
+            \ the range, or filter by member or skill, and try again."
+      summary: Get agent activity
+      tags:
+      - Agent Activity
+  /organization/{organizationId}/agentActivity/me:
+    get:
+      description: |-
+        Return the caller's own agent activity: exactly what admins see about them through `getAgentActivity`, and nothing about other members. Any organization member can call it (READ_ORGANIZATION_DATA). Policy tokens belong to the organization, so this view takes no `actorKind` or `policyTokenId` and its `by_policy_token` is always empty. A refusal by policy (401) or by role permissions (403) counts as DENIED. API and policy tokens cannot call it (400): they are not members.
+
+        Coverage: only actions taken through Qovery (its API, CLI, skills and MCP server) are visible. What an agent does elsewhere, such as in a shell, in git or in a cloud console, is not. The response repeats this in `coverage`.
+
+        Attribution is indicative, not proof. A member is matched on the username the audit log records, and an action is attributed to a skill from the `QoverySkill/<skill>` user agent the client sends: a client can claim a skill it does not run, or leave the user agent out. What an agent may actually do is enforced by its token's policy, and every refusal is recorded.
+
+        No request content is returned: only what the audit log shows (event, target, project and environment names, time, source), never prompt text or request bodies.
+
+        The range defaults to the 30 days ending now and spans at most 90 days. `by_member` holds at most 500 rows, `by_skill` 100, `by_policy_token` 100, `actions_by_type` 200 and `recent` the 100 most recent agent actions. Buckets are cut in UTC; empty buckets are omitted.
+      operationId: getMyAgentActivity
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: "Start of the range, inclusive. Defaults to 30 days before `to`."
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: "End of the range, exclusive. Defaults to now. Must be after\
+          \ `from`, and the range must not exceed 90 days, otherwise the request is\
+          \ refused with 400."
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Width of each point of the timeline. Defaults to DAY.
+        explode: true
+        in: query
+        name: bucket
+        required: false
+        schema:
+          allOf:
+          - $ref: '#/components/schemas/SkillUsageBucket'
+          default: DAY
+        style: form
+      - description: "Only count the activity attributed to this skill. Lowercase\
+          \ letters, digits, `.`, `_` or `-`, at most 64 characters, otherwise the\
+          \ request is refused with 400."
+        explode: true
+        in: query
+        name: skillName
+        required: false
+        schema:
+          pattern: "^[a-z0-9._-]{1,64}$"
+          type: string
+        style: form
+      - description: "DENIED lists refusals only, and leaves skill loads out. ALLOWED\
+          \ lists everything else, skill loads included."
+        explode: true
+        in: query
+        name: outcome
+        required: false
+        schema:
+          $ref: '#/components/schemas/AgentActionOutcome'
+        style: form
+      - description: Only count the activity from this source.
+        explode: true
+        in: query
+        name: source
+        required: false
+        schema:
+          $ref: '#/components/schemas/AgentActivitySource'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentActivityResponse'
+          description: Agent activity over the range
+        "400":
+          description: "`to` is not after `from`, the range exceeds 90 days, `skillName`\
+            \ does not match its pattern, an enum value is malformed, or the caller\
+            \ is an API token or a policy token, which is not a member and has no\
+            \ own activity"
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "503":
+          description: "The activity of the range could not be read in time. Narrow\
+            \ the range, or filter by member or skill, and try again."
+      summary: Get my agent activity
+      tags:
+      - Agent Activity
   /organization/{organizationId}/containerRegistry/{containerRegistryId}/images:
     get:
       operationId: getContainerVersions
@@ -21941,6 +22772,17 @@ paths:
       tags:
       - Blueprint Main Calls
 components:
+  headers:
+    SkillPresetETag:
+      description: "Strong ETag of the skill preset that applies to the caller, shared\
+        \ by the manifest and every skill of the preset. Opaque: compare it, don't\
+        \ parse it. Today it is `\"<source>-<preset id>-<revision>\"`, or `\"qovery-default\"\
+        ` when no preset applies."
+      explode: false
+      schema:
+        example: '"role-0193f1c2-6b1e-7c3a-9a4f-2d5e8b7c1a90-3"'
+        type: string
+      style: simple
   parameters:
     dbType:
       description: Managed database type
@@ -22059,6 +22901,27 @@ components:
       required: true
       schema:
         format: uuid
+        type: string
+      style: simple
+    skillPresetId:
+      description: Skill Preset ID
+      explode: false
+      in: path
+      name: skillPresetId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    skillPresetIfNoneMatch:
+      description: "The ETag of the caller's cached copy. When it matches the current\
+        \ ETag, the response is a 304 with no body."
+      explode: false
+      in: header
+      name: If-None-Match
+      required: false
+      schema:
+        example: '"role-0193f1c2-6b1e-7c3a-9a4f-2d5e8b7c1a90-3"'
         type: string
       style: simple
     deploymentRequestId:
@@ -22511,6 +23374,42 @@ components:
       description: Build analysis is not available on this Qovery instance because
         no AI model is configured. Checked before the organization's AI features.
         Retrying does not help until the instance is configured.
+    SkillPresetNotModified:
+      description: "The `If-None-Match` header holds the current ETag, so the cached\
+        \ copy is still current. No body."
+      headers:
+        ETag:
+          $ref: '#/components/headers/SkillPresetETag'
+    SkillPresetForbidden:
+      description: "Access forbidden, or AI features are turned off for the organization\
+        \ (`ai_features_enabled`): every preset is reviewed by a model before it reaches\
+        \ members, so presets cannot be created or edited. Reading and resolving presets\
+        \ stay allowed."
+    SkillPresetReviewUnavailable:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SkillPresetProblemResponse'
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/SkillPresetProblemResponse'
+      description: "The security review is unavailable: no model reviewer is configured\
+        \ on this Qovery instance, or the model review could not give a verdict (error,\
+        \ timeout or unusable answer). The check fails closed, so nothing was saved.\
+        \ Try again in a minute. The body is a problem detail with the title \"Skill\
+        \ preset security review unavailable\"."
+    SkillPresetRejected:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SkillPresetRejectionResponse'
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/SkillPresetRejectionResponse'
+      description: "The preset was rejected for security, to protect the members it\
+        \ applies to, by the rules or by the model review. Each finding names its\
+        \ source, the rule or category, the field and the line, never the offending\
+        \ text. Nothing was saved."
   schemas:
     UserSignUpResponse:
       example:
@@ -33310,6 +34209,1783 @@ components:
           type: array
       required:
       - results
+      type: object
+    SkillPresetBase:
+      description: "The Qovery skill set a preset starts from. FULL: every Qovery\
+        \ skill, as published. LEAN: one short CLI-first skill that relies on the\
+        \ `qovery` CLI and its `--help`. NONE: no Qovery skill, only the preset's\
+        \ own skills and team context."
+      enum:
+      - FULL
+      - LEAN
+      - NONE
+      type: string
+    SkillPresetSkillMode:
+      description: "What a skill entry does on top of the base. DISABLE: the Qovery\
+        \ skill is never loaded. OVERLAY: the Qovery skill is loaded, then the entry's\
+        \ content as team instructions. REPLACE: the entry's content is loaded in\
+        \ place of the Qovery skill. ADD: a skill of the organization's own. DISABLE,\
+        \ OVERLAY and REPLACE apply to a Qovery skill (named `qovery` or `qovery-*`)\
+        \ and only on the FULL base. ADD applies to any name that does not start with\
+        \ `qovery`, on any base."
+      enum:
+      - DISABLE
+      - OVERLAY
+      - REPLACE
+      - ADD
+      type: string
+    SkillPresetResolutionSource:
+      description: "Which assignment made the preset apply to the caller. USER: assigned\
+        \ to the caller as a member. ROLE: assigned to the caller's role in the organization.\
+        \ ORGANIZATION: the organization default. QOVERY_DEFAULT: no preset applies,\
+        \ and the agent uses the Qovery skills as published."
+      enum:
+      - USER
+      - ROLE
+      - ORGANIZATION
+      - QOVERY_DEFAULT
+      type: string
+    SkillPresetChangeType:
+      description: The change that produced a revision. A DELETE revision holds the
+        state the preset had when it was deleted.
+      enum:
+      - CREATE
+      - UPDATE
+      - DELETE
+      type: string
+    SkillPresetAssignedTo:
+      description: "Who receives the preset. A target (the organization default, a\
+        \ role or a member) receives at most one preset. When several presets could\
+        \ apply to a member, a member assignment wins over a role assignment, which\
+        \ wins over the organization default."
+      example:
+        user_ids:
+        - user_ids
+        - user_ids
+        organization_default: false
+        role_ids:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        organization_default:
+          default: false
+          description: Whether the preset applies to every member with no member or
+            role assignment of their own.
+          type: boolean
+        role_ids:
+          default: []
+          description: "Default or custom roles of the organization, as returned by\
+            \ \"List organization roles\"."
+          items:
+            format: uuid
+            type: string
+          type: array
+        user_ids:
+          default: []
+          description: "Members of the organization, by the id returned by \"List\
+            \ organization members\"."
+          items:
+            type: string
+          type: array
+      type: object
+    SkillPresetSkillRequest:
+      description: "One skill entry. Each mode takes only some fields: DISABLE takes\
+        \ neither `description` nor `content`, OVERLAY takes `content` only, REPLACE\
+        \ and ADD take both. Sending a field the mode does not take is refused with\
+        \ 400 rather than dropped."
+      example:
+        mode: DISABLE
+        skill_name: qovery-deploy
+        description: description
+        content: content
+      properties:
+        skill_name:
+          description: "Lowercase letters, digits and hyphens, at most 64 characters.\
+            \ A Qovery skill name (`qovery` or `qovery-*`) for DISABLE, OVERLAY and\
+            \ REPLACE; any other name for ADD."
+          example: qovery-deploy
+          maxLength: 64
+          pattern: "^[a-z0-9]([a-z0-9-]{0,62}[a-z0-9])?$"
+          type: string
+        mode:
+          $ref: '#/components/schemas/SkillPresetSkillMode'
+        description:
+          description: "When the agent should use the skill, at most 1024 characters.\
+            \ Required for ADD and REPLACE, since agents pick a skill from its description.\
+            \ DISABLE and OVERLAY take none: a non-blank value is refused with 400."
+          maxLength: 1024
+          nullable: true
+          type: string
+        content:
+          description: "Markdown delivered to the agent, at most 64 KB. Required for\
+            \ every mode except DISABLE, which takes none: a non-blank value is refused\
+            \ with 400."
+          maxLength: 65536
+          nullable: true
+          type: string
+      required:
+      - mode
+      - skill_name
+      type: object
+    SkillPresetSkillResponse:
+      example:
+        mode: DISABLE
+        skill_name: skill_name
+        description: description
+        content: content
+      properties:
+        skill_name:
+          type: string
+        mode:
+          $ref: '#/components/schemas/SkillPresetSkillMode'
+        description:
+          description: When the agent should use the skill. Null when the entry has
+            none.
+          nullable: true
+          type: string
+        content:
+          description: Markdown delivered to the agent. Null for DISABLE.
+          nullable: true
+          type: string
+      required:
+      - mode
+      - skill_name
+      type: object
+    SkillPresetRequest:
+      description: "Create and edit share this body. An edit replaces the whole preset,\
+        \ skill entries and assignments included."
+      example:
+        skills:
+        - mode: DISABLE
+          skill_name: qovery-deploy
+          description: description
+          content: content
+        - mode: DISABLE
+          skill_name: qovery-deploy
+          description: description
+          content: content
+        - mode: DISABLE
+          skill_name: qovery-deploy
+          description: description
+          content: content
+        - mode: DISABLE
+          skill_name: qovery-deploy
+          description: description
+          content: content
+        - mode: DISABLE
+          skill_name: qovery-deploy
+          description: description
+          content: content
+        is_template: false
+        name: backend
+        description: ""
+        team_context: team_context
+        base: ""
+        assigned_to:
+          user_ids:
+          - user_ids
+          - user_ids
+          organization_default: false
+          role_ids:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        name:
+          description: "Preset name, unique in the organization, 1 to 100 characters"
+          example: backend
+          maxLength: 100
+          minLength: 1
+          type: string
+        description:
+          default: ""
+          description: "What the preset is for, at most 1024 characters. Shown to\
+            \ the members it applies to."
+          maxLength: 1024
+          type: string
+        base:
+          allOf:
+          - $ref: '#/components/schemas/SkillPresetBase'
+          default: FULL
+          description: The Qovery skill set the preset starts from. Defaults to FULL.
+        is_template:
+          default: false
+          description: "Whether this is a template: a starting point admins copy into\
+            \ new presets. A template is never resolved for a member and cannot have\
+            \ assignments (400 otherwise). Defaults to false."
+          type: boolean
+        team_context:
+          description: "Markdown on how the team uses Qovery, delivered with every\
+            \ skill the agent loads, at most 32 KB. Null or blank means none."
+          maxLength: 32768
+          nullable: true
+          type: string
+        skills:
+          default: []
+          description: "Changes on top of the base, at most 50, each skill name at\
+            \ most once."
+          items:
+            $ref: '#/components/schemas/SkillPresetSkillRequest'
+          maxItems: 50
+          type: array
+        assigned_to:
+          $ref: '#/components/schemas/SkillPresetAssignedTo'
+      required:
+      - name
+      type: object
+    SkillPresetResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          name:
+            type: string
+          description:
+            type: string
+          base:
+            $ref: '#/components/schemas/SkillPresetBase'
+          is_template:
+            description: "Whether this is a template, never resolved for a member\
+              \ and never assigned."
+            type: boolean
+          team_context:
+            description: Markdown delivered with every skill the agent loads. Null
+              when the preset has none.
+            nullable: true
+            type: string
+          skills:
+            items:
+              $ref: '#/components/schemas/SkillPresetSkillResponse'
+            type: array
+          revision:
+            description: Starts at 1 and increases by one on every edit.
+            minimum: 1
+            type: integer
+          creator_name:
+            description: Name of the member who created the preset. Null when unknown.
+            nullable: true
+            type: string
+          assigned_to:
+            $ref: '#/components/schemas/SkillPresetAssignedTo'
+        required:
+        - assigned_to
+        - base
+        - description
+        - is_template
+        - name
+        - revision
+        - skills
+        - updated_at
+        type: object
+      example:
+        skills:
+        - mode: DISABLE
+          skill_name: skill_name
+          description: description
+          content: content
+        - mode: DISABLE
+          skill_name: skill_name
+          description: description
+          content: content
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        is_template: true
+        name: name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        description: description
+        team_context: team_context
+        creator_name: creator_name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        base: FULL
+        revision: 1
+        assigned_to:
+          user_ids:
+          - user_ids
+          - user_ids
+          organization_default: false
+          role_ids:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+    SkillPresetResponseList:
+      example:
+        results:
+        - skills:
+          - mode: DISABLE
+            skill_name: skill_name
+            description: description
+            content: content
+          - mode: DISABLE
+            skill_name: skill_name
+            description: description
+            content: content
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          is_template: true
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          team_context: team_context
+          creator_name: creator_name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          base: FULL
+          revision: 1
+          assigned_to:
+            user_ids:
+            - user_ids
+            - user_ids
+            organization_default: false
+            role_ids:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - skills:
+          - mode: DISABLE
+            skill_name: skill_name
+            description: description
+            content: content
+          - mode: DISABLE
+            skill_name: skill_name
+            description: description
+            content: content
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          is_template: true
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          team_context: team_context
+          creator_name: creator_name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          base: FULL
+          revision: 1
+          assigned_to:
+            user_ids:
+            - user_ids
+            - user_ids
+            organization_default: false
+            role_ids:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/SkillPresetResponse'
+          type: array
+      required:
+      - results
+      type: object
+    SkillPresetContentSummary:
+      description: "Enough for the agent to tell the member what will be injected,\
+        \ and for the member to verify it."
+      properties:
+        approx_tokens:
+          description: "Estimated size in tokens, the number of characters divided\
+            \ by 4. An estimate for the member, not a bill."
+          type: integer
+        sha256:
+          description: Hex-encoded SHA-256 of the UTF-8 text.
+          type: string
+      required:
+      - approx_tokens
+      - sha256
+      type: object
+    SkillPresetManifestSkill:
+      example:
+        mode: DISABLE
+        skill_name: skill_name
+        description: description
+        content:
+          sha256: sha256
+          approx_tokens: 1
+      properties:
+        skill_name:
+          type: string
+        mode:
+          $ref: '#/components/schemas/SkillPresetSkillMode'
+        description:
+          description: When the agent should use the skill. Null when the entry has
+            none.
+          nullable: true
+          type: string
+        content:
+          $ref: '#/components/schemas/SkillPresetManifestSkill_content'
+      required:
+      - mode
+      - skill_name
+      type: object
+    SkillPresetManifest:
+      description: "The preset as the member sees it. No content, no assignments,\
+        \ no creator."
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        base:
+          $ref: '#/components/schemas/SkillPresetBase'
+        revision:
+          minimum: 1
+          type: integer
+        updated_at:
+          format: date-time
+          type: string
+        team_context:
+          $ref: '#/components/schemas/SkillPresetManifest_team_context'
+        skills:
+          items:
+            $ref: '#/components/schemas/SkillPresetManifestSkill'
+          type: array
+      required:
+      - base
+      - id
+      - name
+      - revision
+      - skills
+      - updated_at
+      type: object
+    SkillPresetManifestResponse:
+      example:
+        source: USER
+        skill_preset:
+          skills:
+          - mode: DISABLE
+            skill_name: skill_name
+            description: description
+            content:
+              sha256: sha256
+              approx_tokens: 1
+          - mode: DISABLE
+            skill_name: skill_name
+            description: description
+            content:
+              sha256: sha256
+              approx_tokens: 1
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          team_context:
+            sha256: sha256
+            approx_tokens: 6
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          base: FULL
+          revision: 1
+      properties:
+        source:
+          $ref: '#/components/schemas/SkillPresetResolutionSource'
+        skill_preset:
+          $ref: '#/components/schemas/SkillPresetManifestResponse_skill_preset'
+      required:
+      - source
+      type: object
+    SkillPresetReference:
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        revision:
+          minimum: 1
+          type: integer
+      required:
+      - id
+      - name
+      - revision
+      type: object
+    SkillPresetResolvedSkillResponse:
+      description: "What the agent loads for one skill, and what it shows the member."
+      example:
+        mode: mode
+        content_sha256: content_sha256
+        team_context_sha256: team_context_sha256
+        skill_name: skill_name
+        description: description
+        team_context: team_context
+        source: USER
+        skill_preset:
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          revision: 1
+        content: content
+      properties:
+        source:
+          $ref: '#/components/schemas/SkillPresetResolutionSource'
+        skill_name:
+          type: string
+        skill_preset:
+          $ref: '#/components/schemas/SkillPresetResolvedSkillResponse_skill_preset'
+        mode:
+          allOf:
+          - $ref: '#/components/schemas/SkillPresetSkillMode'
+          description: "Null when the preset leaves this Qovery skill alone, or when\
+            \ no preset applies: load the Qovery skill as published. DISABLE means\
+            \ the agent must not load the skill."
+          nullable: true
+          type: string
+        description:
+          description: The entry's description. Null when the preset leaves the skill
+            alone or the entry has none.
+          nullable: true
+          type: string
+        content:
+          description: "Markdown to load: team instructions after the Qovery skill\
+            \ for OVERLAY, the whole skill for REPLACE and ADD. Null for DISABLE and\
+            \ when the preset leaves the skill alone."
+          nullable: true
+          type: string
+        content_sha256:
+          description: Hex-encoded SHA-256 of `content`. Null when `content` is null.
+          nullable: true
+          type: string
+        team_context:
+          description: "The preset's team context, delivered with every skill. Null\
+            \ when there is none or no preset applies."
+          nullable: true
+          type: string
+        team_context_sha256:
+          description: Hex-encoded SHA-256 of `team_context`. Null when `team_context`
+            is null.
+          nullable: true
+          type: string
+      required:
+      - skill_name
+      - source
+      type: object
+    SkillPresetRevisionResponse:
+      description: "One saved state of a preset, immutable."
+      example:
+        is_template: true
+        security_review:
+          verdict: ALLOW
+          findings:
+          - rule_id: dump-secrets
+            reason: Asks the agent to print or collect secrets
+            line: 3
+            location: team context
+            source: RULES
+          - rule_id: dump-secrets
+            reason: Asks the agent to print or collect secrets
+            line: 3
+            location: team context
+            source: RULES
+          model: model
+          prompt_version: skill-preset-review/v1
+        description: description
+        change_type: CREATE
+        revision: 1
+        skills:
+        - mode: DISABLE
+          skill_name: skill_name
+          description: description
+          content: content
+        - mode: DISABLE
+          skill_name: skill_name
+          description: description
+          content: content
+        skill_preset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        edited_at: 2000-01-23T04:56:07.000+00:00
+        team_context: team_context
+        edited_by: edited_by
+        base: FULL
+        assigned_to:
+          user_ids:
+          - user_ids
+          - user_ids
+          organization_default: false
+          role_ids:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        skill_preset_id:
+          description: The preset's id. Still listed after the preset is deleted.
+          format: uuid
+          type: string
+        revision:
+          minimum: 1
+          type: integer
+        change_type:
+          $ref: '#/components/schemas/SkillPresetChangeType'
+        edited_by:
+          description: Who saved this state.
+          type: string
+        edited_at:
+          format: date-time
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        base:
+          $ref: '#/components/schemas/SkillPresetBase'
+        is_template:
+          description: Whether the preset was a template at this revision.
+          type: boolean
+        team_context:
+          description: Null when the preset had none at this revision.
+          nullable: true
+          type: string
+        skills:
+          items:
+            $ref: '#/components/schemas/SkillPresetSkillResponse'
+          type: array
+        assigned_to:
+          $ref: '#/components/schemas/SkillPresetAssignedTo'
+        security_review:
+          $ref: '#/components/schemas/SkillPresetRevisionResponse_security_review'
+      required:
+      - assigned_to
+      - base
+      - change_type
+      - description
+      - edited_at
+      - edited_by
+      - is_template
+      - name
+      - revision
+      - skill_preset_id
+      - skills
+      type: object
+    SkillPresetRevisionResponseList:
+      example:
+        results:
+        - is_template: true
+          security_review:
+            verdict: ALLOW
+            findings:
+            - rule_id: dump-secrets
+              reason: Asks the agent to print or collect secrets
+              line: 3
+              location: team context
+              source: RULES
+            - rule_id: dump-secrets
+              reason: Asks the agent to print or collect secrets
+              line: 3
+              location: team context
+              source: RULES
+            model: model
+            prompt_version: skill-preset-review/v1
+          description: description
+          change_type: CREATE
+          revision: 1
+          skills:
+          - mode: DISABLE
+            skill_name: skill_name
+            description: description
+            content: content
+          - mode: DISABLE
+            skill_name: skill_name
+            description: description
+            content: content
+          skill_preset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          edited_at: 2000-01-23T04:56:07.000+00:00
+          team_context: team_context
+          edited_by: edited_by
+          base: FULL
+          assigned_to:
+            user_ids:
+            - user_ids
+            - user_ids
+            organization_default: false
+            role_ids:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - is_template: true
+          security_review:
+            verdict: ALLOW
+            findings:
+            - rule_id: dump-secrets
+              reason: Asks the agent to print or collect secrets
+              line: 3
+              location: team context
+              source: RULES
+            - rule_id: dump-secrets
+              reason: Asks the agent to print or collect secrets
+              line: 3
+              location: team context
+              source: RULES
+            model: model
+            prompt_version: skill-preset-review/v1
+          description: description
+          change_type: CREATE
+          revision: 1
+          skills:
+          - mode: DISABLE
+            skill_name: skill_name
+            description: description
+            content: content
+          - mode: DISABLE
+            skill_name: skill_name
+            description: description
+            content: content
+          skill_preset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          edited_at: 2000-01-23T04:56:07.000+00:00
+          team_context: team_context
+          edited_by: edited_by
+          base: FULL
+          assigned_to:
+            user_ids:
+            - user_ids
+            - user_ids
+            organization_default: false
+            role_ids:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/SkillPresetRevisionResponse'
+          type: array
+      required:
+      - results
+      type: object
+    SkillLoadPurpose:
+      description: "Who reads a skill. LOAD: a member's coding agent loads it to follow\
+        \ it, audited as `SKILL_LOAD` and counted in usage. VIEW: a person reads it,\
+        \ for example in the Console, audited as `SKILL_VIEW` and not counted in usage."
+      enum:
+      - LOAD
+      - VIEW
+      type: string
+    SkillUsageBucket:
+      description: "Width of each timeline point, an hour or a day, cut in UTC."
+      enum:
+      - HOUR
+      - DAY
+      type: string
+    SkillUsageTotals:
+      example:
+        approx_injected_tokens: 5
+        cached_loads: 6
+        members: 1
+        loads: 0
+      properties:
+        loads:
+          description: "Skill loads in the range, cached ones included."
+          format: int64
+          type: integer
+        cached_loads:
+          description: "Loads answered with a 304, where the agent reused its cached\
+            \ copy."
+          format: int64
+          type: integer
+        members:
+          description: Distinct members whose agents loaded at least one skill.
+          format: int64
+          type: integer
+        approx_injected_tokens:
+          description: "Estimated tokens of organization content and team context\
+            \ sent to agents, the number of characters divided by 4. Cached loads\
+            \ send nothing and add zero. The text of the Qovery skills themselves\
+            \ is not counted."
+          format: int64
+          type: integer
+      required:
+      - approx_injected_tokens
+      - cached_loads
+      - loads
+      - members
+      type: object
+    SkillUsagePoint:
+      example:
+        cached_loads: 2
+        start: 2000-01-23T04:56:07.000+00:00
+        loads: 5
+      properties:
+        start:
+          description: "Start of the hour or day, in UTC."
+          format: date-time
+          type: string
+        loads:
+          format: int64
+          type: integer
+        cached_loads:
+          format: int64
+          type: integer
+      required:
+      - cached_loads
+      - loads
+      - start
+      type: object
+    SkillUsageBySkill:
+      example:
+        last_loaded_at: 2000-01-23T04:56:07.000+00:00
+        cached_loads: 9
+        skill_name: skill_name
+        members: 3
+        loads: 7
+      properties:
+        skill_name:
+          type: string
+        loads:
+          format: int64
+          type: integer
+        cached_loads:
+          format: int64
+          type: integer
+        members:
+          description: Distinct members who loaded this skill.
+          format: int64
+          type: integer
+        last_loaded_at:
+          format: date-time
+          type: string
+      required:
+      - cached_loads
+      - last_loaded_at
+      - loads
+      - members
+      - skill_name
+      type: object
+    SkillUsageByMember:
+      example:
+        skills: 4
+        last_loaded_at: 2000-01-23T04:56:07.000+00:00
+        user_name: user_name
+        loads: 2
+        user_sub: user_sub
+      properties:
+        user_sub:
+          description: "The member's id, as returned by \"List organization members\"\
+            ."
+          type: string
+        user_name:
+          description: The member's name at their most recent load in the range.
+          type: string
+        loads:
+          format: int64
+          type: integer
+        skills:
+          description: Distinct skills this member's agent loaded.
+          format: int64
+          type: integer
+        last_loaded_at:
+          format: date-time
+          type: string
+      required:
+      - last_loaded_at
+      - loads
+      - skills
+      - user_name
+      - user_sub
+      type: object
+    SkillUsageByPreset:
+      example:
+        skill_preset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        skill_preset_name: skill_preset_name
+        loads: 7
+      properties:
+        skill_preset_id:
+          description: Null groups the loads made when no preset applied.
+          format: uuid
+          nullable: true
+          type: string
+        skill_preset_name:
+          description: The preset's name at its most recent load in the range. Null
+            when no preset applied.
+          nullable: true
+          type: string
+        loads:
+          format: int64
+          type: integer
+      required:
+      - loads
+      type: object
+    SkillUsageResponse:
+      example:
+        bucket: HOUR
+        by_skill:
+        - last_loaded_at: 2000-01-23T04:56:07.000+00:00
+          cached_loads: 9
+          skill_name: skill_name
+          members: 3
+          loads: 7
+        - last_loaded_at: 2000-01-23T04:56:07.000+00:00
+          cached_loads: 9
+          skill_name: skill_name
+          members: 3
+          loads: 7
+        by_member:
+        - skills: 4
+          last_loaded_at: 2000-01-23T04:56:07.000+00:00
+          user_name: user_name
+          loads: 2
+          user_sub: user_sub
+        - skills: 4
+          last_loaded_at: 2000-01-23T04:56:07.000+00:00
+          user_name: user_name
+          loads: 2
+          user_sub: user_sub
+        by_preset:
+        - skill_preset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          skill_preset_name: skill_preset_name
+          loads: 7
+        - skill_preset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          skill_preset_name: skill_preset_name
+          loads: 7
+        timeline:
+        - cached_loads: 2
+          start: 2000-01-23T04:56:07.000+00:00
+          loads: 5
+        - cached_loads: 2
+          start: 2000-01-23T04:56:07.000+00:00
+          loads: 5
+        from: 2000-01-23T04:56:07.000+00:00
+        to: 2000-01-23T04:56:07.000+00:00
+        totals:
+          approx_injected_tokens: 5
+          cached_loads: 6
+          members: 1
+          loads: 0
+      properties:
+        from:
+          description: "Start of the range actually used, after defaults."
+          format: date-time
+          type: string
+        to:
+          description: "End of the range actually used, after defaults."
+          format: date-time
+          type: string
+        bucket:
+          $ref: '#/components/schemas/SkillUsageBucket'
+        totals:
+          $ref: '#/components/schemas/SkillUsageTotals'
+        timeline:
+          description: "Loads per hour or per day, oldest first. Buckets are cut in\
+            \ UTC, and buckets with no load are left out rather than returned as zero."
+          items:
+            $ref: '#/components/schemas/SkillUsagePoint'
+          type: array
+        by_skill:
+          description: "Loads per skill, most loaded first, at most 100 rows."
+          items:
+            $ref: '#/components/schemas/SkillUsageBySkill'
+          type: array
+        by_member:
+          description: "Loads per member, most active first, at most 500 rows."
+          items:
+            $ref: '#/components/schemas/SkillUsageByMember'
+          type: array
+        by_preset:
+          description: "Loads per preset, most loaded first. A row with a null preset\
+            \ groups the loads made with no preset."
+          items:
+            $ref: '#/components/schemas/SkillUsageByPreset'
+          type: array
+      required:
+      - bucket
+      - by_member
+      - by_preset
+      - by_skill
+      - from
+      - timeline
+      - to
+      - totals
+      type: object
+    AgentActivitySource:
+      description: "Where agent activity comes from. SKILL_LOAD: a skill an agent\
+        \ loaded (agent loads only). SKILL_API_ACTION: an audited API call made with\
+        \ the `QoverySkill/<skill>` user agent. MCP_TOOL_CALL: a tool call through\
+        \ the Qovery MCP server. POLICY_DENIAL: a request refused by a policy token's\
+        \ policy (401), or by role permissions (403) for a call made from a skill\
+        \ or by a policy token. POLICY_TOKEN_API_ACTION: an audited call made by a\
+        \ policy token without a skill user agent, such as a script, a CI job or an\
+        \ agent's own HTTP client."
+      enum:
+      - SKILL_LOAD
+      - SKILL_API_ACTION
+      - MCP_TOOL_CALL
+      - POLICY_DENIAL
+      - POLICY_TOKEN_API_ACTION
+      type: string
+    AgentActionOutcome:
+      description: Whether Qovery carried out the action (ALLOWED) or refused it (DENIED).
+        A refusal by policy (401) and a refusal by role permissions (403) are both
+        DENIED.
+      enum:
+      - ALLOWED
+      - DENIED
+      type: string
+    AgentActorKind:
+      description: "Who acted. MEMBER: a person, or their agent on their credentials.\
+        \ POLICY_TOKEN: an organization policy token."
+      enum:
+      - MEMBER
+      - POLICY_TOKEN
+      type: string
+    AgentActivityCoverage:
+      description: What this view can and cannot see.
+      example:
+        note: "Only actions taken through Qovery (its API, CLI, skills and MCP server)\
+          \ are visible. What an agent does elsewhere, such as in a shell, in git\
+          \ or in a cloud console, is not."
+        sources:
+        - SKILL_LOAD
+        - SKILL_LOAD
+      properties:
+        sources:
+          description: The sources the view is built from.
+          items:
+            $ref: '#/components/schemas/AgentActivitySource'
+          type: array
+        note:
+          description: "The coverage limit, in plain words, to show next to the data."
+          example: "Only actions taken through Qovery (its API, CLI, skills and MCP\
+            \ server) are visible. What an agent does elsewhere, such as in a shell,\
+            \ in git or in a cloud console, is not."
+          type: string
+      required:
+      - note
+      - sources
+      type: object
+    AgentActivityTotals:
+      example:
+        members: 5
+        denials: 1
+        skill_loads: 0
+        actions: 6
+        policy_tokens: 5
+      properties:
+        skill_loads:
+          description: Skills loaded by agents.
+          format: int64
+          type: integer
+        actions:
+          description: "Agent actions, allowed and denied."
+          format: int64
+          type: integer
+        denials:
+          description: Agent actions that were refused.
+          format: int64
+          type: integer
+        members:
+          description: "Distinct actors with any activity, policy tokens included."
+          format: int64
+          type: integer
+        policy_tokens:
+          description: Distinct policy tokens with any activity.
+          format: int64
+          type: integer
+      required:
+      - actions
+      - denials
+      - members
+      - policy_tokens
+      - skill_loads
+      type: object
+    AgentActivityPoint:
+      example:
+        start: 2000-01-23T04:56:07.000+00:00
+        denials: 9
+        skill_loads: 2
+        actions: 7
+      properties:
+        start:
+          description: Start of the hour or day. Buckets are cut in UTC; empty buckets
+            are omitted.
+          format: date-time
+          type: string
+        skill_loads:
+          format: int64
+          type: integer
+        actions:
+          format: int64
+          type: integer
+        denials:
+          format: int64
+          type: integer
+      required:
+      - actions
+      - denials
+      - skill_loads
+      - start
+      type: object
+    AgentActionsByType:
+      example:
+        target_type: APPLICATION
+        count: 3
+        event: DEPLOY_QUEUED
+        denied: 2
+      properties:
+        event:
+          description: "The audit event type, as in `OrganizationEventType`."
+          example: DEPLOY_QUEUED
+          type: string
+        target_type:
+          description: "The audit target type, as in `OrganizationEventTargetType`."
+          example: APPLICATION
+          type: string
+        count:
+          format: int64
+          type: integer
+        denied:
+          description: How many of them were refused.
+          format: int64
+          type: integer
+      required:
+      - count
+      - denied
+      - event
+      - target_type
+      type: object
+    AgentActivityByMember:
+      example:
+        policy_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        actor_kind: MEMBER
+        top_skills:
+        - top_skills
+        - top_skills
+        user_name: user_name
+        last_activity_at: 2000-01-23T04:56:07.000+00:00
+        denials: 1
+        skill_loads: 4
+        actions: 7
+        user_sub: user_sub
+      properties:
+        actor_kind:
+          $ref: '#/components/schemas/AgentActorKind'
+        policy_token_id:
+          description: The policy token's id when `actor_kind` is POLICY_TOKEN and
+            the token is known. Null otherwise.
+          format: uuid
+          nullable: true
+          type: string
+        user_sub:
+          description: "The member's id, as returned by \"List organization members\"\
+            . Null for an actor that loaded no skill in the range, such as a policy\
+            \ token."
+          nullable: true
+          type: string
+        user_name:
+          description: The username the audit log records for the actor.
+          type: string
+        skill_loads:
+          format: int64
+          type: integer
+        actions:
+          format: int64
+          type: integer
+        denials:
+          format: int64
+          type: integer
+        top_skills:
+          description: "The member's most used skills, at most 3, most used first."
+          items:
+            type: string
+          type: array
+        last_activity_at:
+          format: date-time
+          type: string
+      required:
+      - actions
+      - actor_kind
+      - denials
+      - last_activity_at
+      - skill_loads
+      - top_skills
+      - user_name
+      type: object
+    AgentActivityBySkill:
+      example:
+        skill_name: skill_name
+        members: 7
+        loads: 1
+        denials: 6
+        actions: 1
+      properties:
+        skill_name:
+          description: "Null groups the agent actions that name no skill: MCP tool\
+            \ calls and API calls made without a skill user agent, such as by a policy\
+            \ token."
+          nullable: true
+          type: string
+        loads:
+          format: int64
+          type: integer
+        actions:
+          format: int64
+          type: integer
+        denials:
+          format: int64
+          type: integer
+        members:
+          description: Distinct members with activity on this skill.
+          format: int64
+          type: integer
+      required:
+      - actions
+      - denials
+      - loads
+      - members
+      type: object
+    AgentActivityEntry:
+      description: "One agent action, as the audit log records it. No request content."
+      example:
+        policy_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        actor_kind: null
+        target_name: target_name
+        user_name: user_name
+        target_type: target_type
+        source: ""
+        project_name: project_name
+        user_sub: user_sub
+        at: 2000-01-23T04:56:07.000+00:00
+        skill_name: skill_name
+        event: event
+        outcome: ALLOWED
+        environment_name: environment_name
+      properties:
+        actor_kind:
+          $ref: '#/components/schemas/AgentActorKind'
+        policy_token_id:
+          description: The policy token's id when `actor_kind` is POLICY_TOKEN and
+            the token is known. Null otherwise.
+          format: uuid
+          nullable: true
+          type: string
+        at:
+          format: date-time
+          type: string
+        user_sub:
+          description: "The member's id. Null when the actor loaded no skill in the\
+            \ range, such as a policy token."
+          nullable: true
+          type: string
+        user_name:
+          description: The username the audit log records for the actor.
+          type: string
+        source:
+          allOf:
+          - $ref: '#/components/schemas/AgentActivitySource'
+          description: "Where the action comes from: SKILL_API_ACTION, MCP_TOOL_CALL,\
+            \ POLICY_DENIAL or POLICY_TOKEN_API_ACTION. Skill loads are counted, never\
+            \ listed here, so SKILL_LOAD does not appear."
+        skill_name:
+          description: The skill named in the user agent. Null when the action names
+            none.
+          nullable: true
+          type: string
+        event:
+          description: "The audit event type, as in `OrganizationEventType`."
+          type: string
+        target_type:
+          description: "The audit target type, as in `OrganizationEventTargetType`."
+          type: string
+        target_name:
+          type: string
+        project_name:
+          nullable: true
+          type: string
+        environment_name:
+          nullable: true
+          type: string
+        outcome:
+          $ref: '#/components/schemas/AgentActionOutcome'
+      required:
+      - actor_kind
+      - at
+      - event
+      - outcome
+      - source
+      - target_name
+      - target_type
+      - user_name
+      type: object
+    AgentActivityTokenPoint:
+      example:
+        start: 2000-01-23T04:56:07.000+00:00
+        denials: 9
+        actions: 9
+      properties:
+        start:
+          description: Start of the hour or day. Buckets are cut in UTC; empty buckets
+            are omitted.
+          format: date-time
+          type: string
+        actions:
+          format: int64
+          type: integer
+        denials:
+          format: int64
+          type: integer
+      required:
+      - actions
+      - denials
+      - start
+      type: object
+    AgentActivityByPolicyToken:
+      description: "One policy token's activity, grouped by token id so a renamed\
+        \ token keeps one entry."
+      example:
+        policy_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        top_actions:
+        - target_type: APPLICATION
+          count: 3
+          event: DEPLOY_QUEUED
+          denied: 2
+        - target_type: APPLICATION
+          count: 3
+          event: DEPLOY_QUEUED
+          denied: 2
+        denials: 5
+        role_name: role_name
+        deleted: true
+        expires_at: 2000-01-23T04:56:07.000+00:00
+        role_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        top_skills:
+        - top_skills
+        - top_skills
+        last_activity_at: 2000-01-23T04:56:07.000+00:00
+        token_name: token_name
+        timeline:
+        - start: 2000-01-23T04:56:07.000+00:00
+          denials: 9
+          actions: 9
+        - start: 2000-01-23T04:56:07.000+00:00
+          denials: 9
+          actions: 9
+        skill_loads: 1
+        actions: 4
+      properties:
+        policy_token_id:
+          description: "The token's id. Null groups older role refusals recorded before\
+            \ refusals named the token: a policy token, but not which one."
+          format: uuid
+          nullable: true
+          type: string
+        token_name:
+          description: "The token's current name, or its last audited name when `deleted`\
+            \ is true. Null when unknown."
+          nullable: true
+          type: string
+        deleted:
+          description: Whether the token no longer exists.
+          type: boolean
+        role_id:
+          description: The token's current role. Null when the token is deleted or
+            unknown.
+          format: uuid
+          nullable: true
+          type: string
+        role_name:
+          description: The name of the token's current role. Null when the token is
+            deleted or unknown.
+          nullable: true
+          type: string
+        expires_at:
+          description: "When the token expires. Null when it never expires, or when\
+            \ it is deleted or unknown."
+          format: date-time
+          nullable: true
+          type: string
+        skill_loads:
+          format: int64
+          type: integer
+        actions:
+          format: int64
+          type: integer
+        denials:
+          format: int64
+          type: integer
+        last_activity_at:
+          format: date-time
+          type: string
+        top_actions:
+          description: "The token's most frequent actions, at most 3, most frequent\
+            \ first."
+          items:
+            $ref: '#/components/schemas/AgentActionsByType'
+          type: array
+        top_skills:
+          description: "The token's most used skills, at most 3, most used first."
+          items:
+            type: string
+          type: array
+        timeline:
+          description: "The token's actions per bucket of the requested size, oldest\
+            \ first, only for buckets where it acted. Filled when `bucket` is DAY,\
+            \ or when `policyTokenId` is set (so HOUR buckets need `policyTokenId`).\
+            \ Empty otherwise."
+          items:
+            $ref: '#/components/schemas/AgentActivityTokenPoint'
+          type: array
+      required:
+      - actions
+      - deleted
+      - denials
+      - last_activity_at
+      - skill_loads
+      - timeline
+      - top_actions
+      - top_skills
+      type: object
+    AgentActivityResponse:
+      example:
+        bucket: HOUR
+        coverage:
+          note: "Only actions taken through Qovery (its API, CLI, skills and MCP server)\
+            \ are visible. What an agent does elsewhere, such as in a shell, in git\
+            \ or in a cloud console, is not."
+          sources:
+          - SKILL_LOAD
+          - SKILL_LOAD
+        by_member:
+        - policy_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          actor_kind: MEMBER
+          top_skills:
+          - top_skills
+          - top_skills
+          user_name: user_name
+          last_activity_at: 2000-01-23T04:56:07.000+00:00
+          denials: 1
+          skill_loads: 4
+          actions: 7
+          user_sub: user_sub
+        - policy_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          actor_kind: MEMBER
+          top_skills:
+          - top_skills
+          - top_skills
+          user_name: user_name
+          last_activity_at: 2000-01-23T04:56:07.000+00:00
+          denials: 1
+          skill_loads: 4
+          actions: 7
+          user_sub: user_sub
+        by_skill:
+        - skill_name: skill_name
+          members: 7
+          loads: 1
+          denials: 6
+          actions: 1
+        - skill_name: skill_name
+          members: 7
+          loads: 1
+          denials: 6
+          actions: 1
+        actions_by_type:
+        - target_type: APPLICATION
+          count: 3
+          event: DEPLOY_QUEUED
+          denied: 2
+        - target_type: APPLICATION
+          count: 3
+          event: DEPLOY_QUEUED
+          denied: 2
+        timeline:
+        - start: 2000-01-23T04:56:07.000+00:00
+          denials: 9
+          skill_loads: 2
+          actions: 7
+        - start: 2000-01-23T04:56:07.000+00:00
+          denials: 9
+          skill_loads: 2
+          actions: 7
+        from: 2000-01-23T04:56:07.000+00:00
+        to: 2000-01-23T04:56:07.000+00:00
+        totals:
+          members: 5
+          denials: 1
+          skill_loads: 0
+          actions: 6
+          policy_tokens: 5
+        recent:
+        - policy_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          actor_kind: null
+          target_name: target_name
+          user_name: user_name
+          target_type: target_type
+          source: ""
+          project_name: project_name
+          user_sub: user_sub
+          at: 2000-01-23T04:56:07.000+00:00
+          skill_name: skill_name
+          event: event
+          outcome: ALLOWED
+          environment_name: environment_name
+        - policy_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          actor_kind: null
+          target_name: target_name
+          user_name: user_name
+          target_type: target_type
+          source: ""
+          project_name: project_name
+          user_sub: user_sub
+          at: 2000-01-23T04:56:07.000+00:00
+          skill_name: skill_name
+          event: event
+          outcome: ALLOWED
+          environment_name: environment_name
+        by_policy_token:
+        - policy_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          top_actions:
+          - target_type: APPLICATION
+            count: 3
+            event: DEPLOY_QUEUED
+            denied: 2
+          - target_type: APPLICATION
+            count: 3
+            event: DEPLOY_QUEUED
+            denied: 2
+          denials: 5
+          role_name: role_name
+          deleted: true
+          expires_at: 2000-01-23T04:56:07.000+00:00
+          role_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          top_skills:
+          - top_skills
+          - top_skills
+          last_activity_at: 2000-01-23T04:56:07.000+00:00
+          token_name: token_name
+          timeline:
+          - start: 2000-01-23T04:56:07.000+00:00
+            denials: 9
+            actions: 9
+          - start: 2000-01-23T04:56:07.000+00:00
+            denials: 9
+            actions: 9
+          skill_loads: 1
+          actions: 4
+        - policy_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          top_actions:
+          - target_type: APPLICATION
+            count: 3
+            event: DEPLOY_QUEUED
+            denied: 2
+          - target_type: APPLICATION
+            count: 3
+            event: DEPLOY_QUEUED
+            denied: 2
+          denials: 5
+          role_name: role_name
+          deleted: true
+          expires_at: 2000-01-23T04:56:07.000+00:00
+          role_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          top_skills:
+          - top_skills
+          - top_skills
+          last_activity_at: 2000-01-23T04:56:07.000+00:00
+          token_name: token_name
+          timeline:
+          - start: 2000-01-23T04:56:07.000+00:00
+            denials: 9
+            actions: 9
+          - start: 2000-01-23T04:56:07.000+00:00
+            denials: 9
+            actions: 9
+          skill_loads: 1
+          actions: 4
+      properties:
+        from:
+          description: "Start of the range actually used, after defaults."
+          format: date-time
+          type: string
+        to:
+          description: "End of the range actually used, after defaults."
+          format: date-time
+          type: string
+        bucket:
+          $ref: '#/components/schemas/SkillUsageBucket'
+        coverage:
+          $ref: '#/components/schemas/AgentActivityCoverage'
+        totals:
+          $ref: '#/components/schemas/AgentActivityTotals'
+        timeline:
+          description: "Activity per hour or per day, oldest first. Buckets are cut\
+            \ in UTC; empty buckets are omitted."
+          items:
+            $ref: '#/components/schemas/AgentActivityPoint'
+          type: array
+        actions_by_type:
+          description: "Agent actions per audit event and target type, most frequent\
+            \ first, at most 200 rows."
+          items:
+            $ref: '#/components/schemas/AgentActionsByType'
+          type: array
+        by_member:
+          description: "Activity per member, most active first, at most 500 rows."
+          items:
+            $ref: '#/components/schemas/AgentActivityByMember'
+          type: array
+        by_skill:
+          description: "Activity per skill, most active first, at most 100 rows."
+          items:
+            $ref: '#/components/schemas/AgentActivityBySkill'
+          type: array
+        by_policy_token:
+          description: "Activity per policy token, most active first, at most 100\
+            \ rows. Always empty on `getMyAgentActivity`."
+          items:
+            $ref: '#/components/schemas/AgentActivityByPolicyToken'
+          type: array
+        recent:
+          description: "The 100 most recent agent actions, newest first."
+          items:
+            $ref: '#/components/schemas/AgentActivityEntry'
+          type: array
+      required:
+      - actions_by_type
+      - bucket
+      - by_member
+      - by_policy_token
+      - by_skill
+      - coverage
+      - from
+      - recent
+      - timeline
+      - to
+      - totals
+      type: object
+    SkillPresetFindingSource:
+      description: "Who raised a finding. RULES: the deterministic rules, and `rule_id`\
+        \ is a rule. MODEL: the model review, and `rule_id` is a category."
+      enum:
+      - RULES
+      - MODEL
+      type: string
+    SkillPresetRejectionFinding:
+      example:
+        rule_id: dump-secrets
+        reason: Asks the agent to print or collect secrets
+        line: 3
+        location: team context
+        source: RULES
+      properties:
+        source:
+          $ref: '#/components/schemas/SkillPresetFindingSource'
+        rule_id:
+          description: "For `source` RULES, the rule that matched, for example `override-instructions`,\
+            \ `conceal-from-user`, `skip-confirmation`, `read-credentials`, `dump-secrets`,\
+            \ `exfiltration-endpoint`, `upload-command`, `remote-exec`, `obfuscated-exec`,\
+            \ `external-url`, `invisible-characters`, `html-comment`, `encoded-blob`\
+            \ or `credential`. For `source` MODEL, the category: `prompt-injection`,\
+            \ `concealment`, `credential-access`, `data-exfiltration`, `unsafe-execution`,\
+            \ `approval-bypass`, `social-engineering` or `other`. New rules and categories\
+            \ can be added."
+          example: dump-secrets
+          type: string
+        location:
+          description: "The field that holds the finding: `description`, `team context`,\
+            \ `description of skill '<name>'` or `content of skill '<name>'`."
+          example: team context
+          type: string
+        line:
+          description: 1-based line within that field.
+          example: 3
+          minimum: 1
+          type: integer
+        reason:
+          description: Why the content was refused. Never contains the offending text.
+          example: Asks the agent to print or collect secrets
+          type: string
+      required:
+      - line
+      - location
+      - reason
+      - rule_id
+      - source
+      type: object
+    SkillPresetProblemResponse:
+      description: A problem detail (RFC 9457).
+      example:
+        instance: instance
+        detail: The security review is unavailable. Nothing was saved. Try again in
+          a minute.
+        type: about:blank
+        title: Skill preset security review unavailable
+        status: 503
+      properties:
+        type:
+          example: about:blank
+          type: string
+        title:
+          example: Skill preset security review unavailable
+          type: string
+        status:
+          example: 503
+          type: integer
+        detail:
+          example: The security review is unavailable. Nothing was saved. Try again
+            in a minute.
+          type: string
+        instance:
+          description: The request path.
+          type: string
+      required:
+      - detail
+      - status
+      - title
+      type: object
+    SkillPresetSecurityReviewVerdict:
+      description: The model review's verdict. A saved state always passed with ALLOW.
+      enum:
+      - ALLOW
+      - BLOCK
+      type: string
+    SkillPresetSecurityReview:
+      description: The model review a saved state passed.
+      properties:
+        verdict:
+          $ref: '#/components/schemas/SkillPresetSecurityReviewVerdict'
+        model:
+          description: The model that reviewed the content.
+          type: string
+        prompt_version:
+          description: Version of the review instructions the model used.
+          example: skill-preset-review/v1
+          type: string
+        findings:
+          description: Notes the model raised without blocking. Usually empty.
+          items:
+            $ref: '#/components/schemas/SkillPresetRejectionFinding'
+          type: array
+      required:
+      - findings
+      - model
+      - prompt_version
+      - verdict
+      type: object
+    SkillPresetRejectionResponse:
+      description: A problem detail (RFC 9457) listing every finding of the security
+        inspection.
+      example:
+        instance: instance
+        findings:
+        - rule_id: dump-secrets
+          reason: Asks the agent to print or collect secrets
+          line: 3
+          location: team context
+          source: RULES
+        - rule_id: dump-secrets
+          reason: Asks the agent to print or collect secrets
+          line: 3
+          location: team context
+          source: RULES
+        detail: detail
+        type: about:blank
+        title: Skill preset rejected for security
+        status: 422
+      properties:
+        type:
+          example: about:blank
+          type: string
+        title:
+          example: Skill preset rejected for security
+          type: string
+        status:
+          example: 422
+          type: integer
+        detail:
+          description: "Every finding in one sentence, safe to log."
+          type: string
+        instance:
+          description: The request path.
+          type: string
+        findings:
+          items:
+            $ref: '#/components/schemas/SkillPresetRejectionFinding'
+          type: array
+      required:
+      - detail
+      - findings
+      - status
+      - title
       type: object
     ContainerRegistryResponse:
       allOf:
@@ -44885,9 +47561,9 @@ components:
           role_name:
             type: string
           role_id:
-            description: the organization role this token acts as once its policy
+            description: The organization role this token acts as once its policy
               has allowed a request. Effective access is the intersection of this
-              role and `opa_policy`.
+              role and `opa_policy`. Fixed at creation.
             format: uuid
             type: string
           opa_policy:
@@ -44932,9 +47608,9 @@ components:
           role_name:
             type: string
           role_id:
-            description: the organization role this token acts as once its policy
+            description: The organization role this token acts as once its policy
               has allowed a request. Effective access is the intersection of this
-              role and its policy.
+              role and its policy. Fixed at creation.
             format: uuid
             type: string
           token:
@@ -44982,10 +47658,13 @@ components:
             \ rule, and the request is denied unless it evaluates to true."
           type: string
         role_id:
-          description: "the roleId provided by the \"List organization custom roles\"\
-            \ endpoint. The role bounds what the token may do once its policy has\
-            \ allowed a request, so effective access is the intersection of the two.\
-            \ Omit it, or send null, for organization-admin."
+          description: "The organization role the token acts as: a default role id\
+            \ or a custom role id from the \"List organization custom roles\" endpoint.\
+            \ The role bounds what the token may do once its policy has allowed a\
+            \ request, so effective access is the intersection of the two, and a request\
+            \ the role does not permit is refused with 403. Omit it, or send null,\
+            \ for the organization admin role. The Owner role is refused. The role\
+            \ cannot be changed after creation."
           format: uuid
           nullable: true
           type: string
@@ -46100,6 +48779,7 @@ components:
       - POLICY_API_TOKEN
       - REMOTE_ACCESS
       - SECRET
+      - SKILL_PRESET
       - SSO
       - TERRAFORM
       - TOOL_CALL
@@ -46193,6 +48873,9 @@ components:
       - UNLOCK
       - POLICY_FAILED
       - ACCESS_DENIED
+      - SKILL_LOAD
+      - SKILL_PRESET_REJECTED
+      - SKILL_VIEW
       example: CREATE
       type: string
     SecretOverride:
@@ -57663,6 +60346,87 @@ components:
           x-stoplight:
             id: eaqm4swmqt9ty
       type: object
+    SkillPresetManifestSkill_content:
+      allOf:
+      - $ref: '#/components/schemas/SkillPresetContentSummary'
+      description: "Size and hash of the content, never the content itself. Null for\
+        \ DISABLE, which injects nothing."
+      example:
+        sha256: sha256
+        approx_tokens: 1
+      nullable: true
+      type: object
+    SkillPresetManifest_team_context:
+      allOf:
+      - $ref: '#/components/schemas/SkillPresetContentSummary'
+      description: "Size and hash of the team context, which comes with every skill\
+        \ fetched. Null when the preset has none."
+      example:
+        sha256: sha256
+        approx_tokens: 6
+      nullable: true
+      type: object
+    SkillPresetManifestResponse_skill_preset:
+      allOf:
+      - $ref: '#/components/schemas/SkillPresetManifest'
+      description: The preset that applies to the caller. Null when `source` is QOVERY_DEFAULT.
+      example:
+        skills:
+        - mode: DISABLE
+          skill_name: skill_name
+          description: description
+          content:
+            sha256: sha256
+            approx_tokens: 1
+        - mode: DISABLE
+          skill_name: skill_name
+          description: description
+          content:
+            sha256: sha256
+            approx_tokens: 1
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        team_context:
+          sha256: sha256
+          approx_tokens: 6
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        base: FULL
+        revision: 1
+      nullable: true
+      type: object
+    SkillPresetResolvedSkillResponse_skill_preset:
+      allOf:
+      - $ref: '#/components/schemas/SkillPresetReference'
+      description: The preset that applies to the caller. Null when `source` is QOVERY_DEFAULT.
+      example:
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        revision: 1
+      nullable: true
+      type: object
+    SkillPresetRevisionResponse_security_review:
+      allOf:
+      - $ref: '#/components/schemas/SkillPresetSecurityReview'
+      description: "The model review this state passed. Null for a DELETE revision,\
+        \ and for a save made while the review was turned off, when presets are saved\
+        \ after the rules only."
+      example:
+        verdict: ALLOW
+        findings:
+        - rule_id: dump-secrets
+          reason: Asks the agent to print or collect secrets
+          line: 3
+          location: team context
+          source: RULES
+        - rule_id: dump-secrets
+          reason: Asks the agent to print or collect secrets
+          line: 3
+          location: team context
+          source: RULES
+        model: model
+        prompt_version: skill-preset-review/v1
+      nullable: true
+      type: object
     ContainerRegistryResponse_allOf_cluster:
       example:
         name: name
@@ -60014,6 +62778,8 @@ x-tagGroups:
   - Organization Annotations Group
   - Organization Labels Group
   - Organization Enterprise Connection
+  - Skill Presets
+  - Agent Activity
   - Projects
   - Members
   - Billing

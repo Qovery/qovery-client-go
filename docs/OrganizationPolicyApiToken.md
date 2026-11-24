@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **RoleName** | Pointer to **string** |  | [optional] 
-**RoleId** | Pointer to **string** | the organization role this token acts as once its policy has allowed a request. Effective access is the intersection of this role and &#x60;opa_policy&#x60;. | [optional] 
+**RoleId** | Pointer to **string** | The organization role this token acts as once its policy has allowed a request. Effective access is the intersection of this role and &#x60;opa_policy&#x60;. Fixed at creation. | [optional] 
 **OpaPolicy** | Pointer to **string** | the Open Policy Agent (rego) policy evaluated on every request made with this token | [optional] 
 **CreatorName** | Pointer to **NullableString** |  | [optional] 
 **ExpiresAt** | Pointer to **NullableTime** |  | [optional] 

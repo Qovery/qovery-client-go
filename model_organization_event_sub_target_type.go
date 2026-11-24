@@ -56,6 +56,7 @@ const (
 	ORGANIZATIONEVENTSUBTARGETTYPE_POLICY_API_TOKEN           OrganizationEventSubTargetType = "POLICY_API_TOKEN"
 	ORGANIZATIONEVENTSUBTARGETTYPE_REMOTE_ACCESS              OrganizationEventSubTargetType = "REMOTE_ACCESS"
 	ORGANIZATIONEVENTSUBTARGETTYPE_SECRET                     OrganizationEventSubTargetType = "SECRET"
+	ORGANIZATIONEVENTSUBTARGETTYPE_SKILL_PRESET               OrganizationEventSubTargetType = "SKILL_PRESET"
 	ORGANIZATIONEVENTSUBTARGETTYPE_SSO                        OrganizationEventSubTargetType = "SSO"
 	ORGANIZATIONEVENTSUBTARGETTYPE_TERRAFORM                  OrganizationEventSubTargetType = "TERRAFORM"
 	ORGANIZATIONEVENTSUBTARGETTYPE_TOOL_CALL                  OrganizationEventSubTargetType = "TOOL_CALL"
@@ -100,6 +101,7 @@ var AllowedOrganizationEventSubTargetTypeEnumValues = []OrganizationEventSubTarg
 	"POLICY_API_TOKEN",
 	"REMOTE_ACCESS",
 	"SECRET",
+	"SKILL_PRESET",
 	"SSO",
 	"TERRAFORM",
 	"TOOL_CALL",

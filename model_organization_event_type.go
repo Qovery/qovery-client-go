@@ -81,6 +81,9 @@ const (
 	ORGANIZATIONEVENTTYPE_UNLOCK                            OrganizationEventType = "UNLOCK"
 	ORGANIZATIONEVENTTYPE_POLICY_FAILED                     OrganizationEventType = "POLICY_FAILED"
 	ORGANIZATIONEVENTTYPE_ACCESS_DENIED                     OrganizationEventType = "ACCESS_DENIED"
+	ORGANIZATIONEVENTTYPE_SKILL_LOAD                        OrganizationEventType = "SKILL_LOAD"
+	ORGANIZATIONEVENTTYPE_SKILL_PRESET_REJECTED             OrganizationEventType = "SKILL_PRESET_REJECTED"
+	ORGANIZATIONEVENTTYPE_SKILL_VIEW                        OrganizationEventType = "SKILL_VIEW"
 )
 
 // All allowed values of OrganizationEventType enum
@@ -145,6 +148,9 @@ var AllowedOrganizationEventTypeEnumValues = []OrganizationEventType{
 	"UNLOCK",
 	"POLICY_FAILED",
 	"ACCESS_DENIED",
+	"SKILL_LOAD",
+	"SKILL_PRESET_REJECTED",
+	"SKILL_VIEW",
 }
 
 func (v *OrganizationEventType) UnmarshalJSON(src []byte) error {

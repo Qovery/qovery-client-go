@@ -53,6 +53,8 @@ type APIClient struct {
 
 	AdminAPI *AdminAPIService
 
+	AgentActivityAPI *AgentActivityAPIService
+
 	AgenticWorkflowsAPI *AgenticWorkflowsAPIService
 
 	AlertReceiversAPI *AlertReceiversAPIService
@@ -245,6 +247,8 @@ type APIClient struct {
 
 	ServiceStatusAPI *ServiceStatusAPIService
 
+	SkillPresetsAPI *SkillPresetsAPIService
+
 	TerraformActionsAPI *TerraformActionsAPIService
 
 	TerraformConfigurationAPI *TerraformConfigurationAPIService
@@ -282,6 +286,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.AccountInfoAPI = (*AccountInfoAPIService)(&c.common)
 	c.AdminAPI = (*AdminAPIService)(&c.common)
+	c.AgentActivityAPI = (*AgentActivityAPIService)(&c.common)
 	c.AgenticWorkflowsAPI = (*AgenticWorkflowsAPIService)(&c.common)
 	c.AlertReceiversAPI = (*AlertReceiversAPIService)(&c.common)
 	c.AlertRulesAPI = (*AlertRulesAPIService)(&c.common)
@@ -378,6 +383,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.SecretManagerAccessAPI = (*SecretManagerAccessAPIService)(&c.common)
 	c.ServiceMainCallsAPI = (*ServiceMainCallsAPIService)(&c.common)
 	c.ServiceStatusAPI = (*ServiceStatusAPIService)(&c.common)
+	c.SkillPresetsAPI = (*SkillPresetsAPIService)(&c.common)
 	c.TerraformActionsAPI = (*TerraformActionsAPIService)(&c.common)
 	c.TerraformConfigurationAPI = (*TerraformConfigurationAPIService)(&c.common)
 	c.TerraformDeploymentHistoryAPI = (*TerraformDeploymentHistoryAPIService)(&c.common)

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **RoleName** | Pointer to **string** |  | [optional] 
-**RoleId** | Pointer to **string** | the organization role this token acts as once its policy has allowed a request. Effective access is the intersection of this role and its policy. | [optional] 
+**RoleId** | Pointer to **string** | The organization role this token acts as once its policy has allowed a request. Effective access is the intersection of this role and its policy. Fixed at creation. | [optional] 
 **Token** | Pointer to **string** | the generated token to send in &#39;Authorization&#39; header prefixed by &#39;Token &#39;. It is returned only here and cannot be retrieved afterwards. | [optional] 
 **CreatorName** | Pointer to **NullableString** |  | [optional] 
 **UserSub** | Pointer to **string** |  | [optional] 
