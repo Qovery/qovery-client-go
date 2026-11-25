@@ -22,6 +22,49 @@ func Test_qovery_ServiceMainCallsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test ServiceMainCallsAPIService CreateServiceDeploymentRestriction", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var serviceId string
+
+		resp, httpRes, err := apiClient.ServiceMainCallsAPI.CreateServiceDeploymentRestriction(context.Background(), serviceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ServiceMainCallsAPIService DeleteServiceDeploymentRestriction", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var serviceId string
+		var deploymentRestrictionId string
+
+		httpRes, err := apiClient.ServiceMainCallsAPI.DeleteServiceDeploymentRestriction(context.Background(), serviceId, deploymentRestrictionId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ServiceMainCallsAPIService EditServiceDeploymentRestriction", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var serviceId string
+		var deploymentRestrictionId string
+
+		resp, httpRes, err := apiClient.ServiceMainCallsAPI.EditServiceDeploymentRestriction(context.Background(), serviceId, deploymentRestrictionId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ServiceMainCallsAPIService GetServiceGitWebhookStatus", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -29,6 +72,20 @@ func Test_qovery_ServiceMainCallsAPIService(t *testing.T) {
 		var serviceId string
 
 		resp, httpRes, err := apiClient.ServiceMainCallsAPI.GetServiceGitWebhookStatus(context.Background(), serviceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ServiceMainCallsAPIService ListServiceDeploymentRestrictions", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var serviceId string
+
+		resp, httpRes, err := apiClient.ServiceMainCallsAPI.ListServiceDeploymentRestrictions(context.Background(), serviceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

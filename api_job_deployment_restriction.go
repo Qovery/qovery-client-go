@@ -42,11 +42,15 @@ func (r ApiCreateJobDeploymentRestrictionRequest) Execute() (*JobDeploymentRestr
 /*
 CreateJobDeploymentRestriction Create a job deployment restriction
 
-Create a job deployment restriction
+# Create a job deployment restriction
+
+Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param jobId Job ID
 	@return ApiCreateJobDeploymentRestrictionRequest
+
+Deprecated
 */
 func (a *JobDeploymentRestrictionAPIService) CreateJobDeploymentRestriction(ctx context.Context, jobId string) ApiCreateJobDeploymentRestrictionRequest {
 	return ApiCreateJobDeploymentRestrictionRequest{
@@ -59,6 +63,8 @@ func (a *JobDeploymentRestrictionAPIService) CreateJobDeploymentRestriction(ctx 
 // Execute executes the request
 //
 //	@return JobDeploymentRestrictionResponse
+//
+// Deprecated
 func (a *JobDeploymentRestrictionAPIService) CreateJobDeploymentRestrictionExecute(r ApiCreateJobDeploymentRestrictionRequest) (*JobDeploymentRestrictionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -163,12 +169,16 @@ func (r ApiDeleteJobDeploymentRestrictionRequest) Execute() (*http.Response, err
 /*
 DeleteJobDeploymentRestriction Delete a job deployment restriction
 
-Delete a job deployment restriction
+# Delete a job deployment restriction
+
+Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param jobId Job ID
 	@param deploymentRestrictionId Deployment Restriction ID
 	@return ApiDeleteJobDeploymentRestrictionRequest
+
+Deprecated
 */
 func (a *JobDeploymentRestrictionAPIService) DeleteJobDeploymentRestriction(ctx context.Context, jobId string, deploymentRestrictionId string) ApiDeleteJobDeploymentRestrictionRequest {
 	return ApiDeleteJobDeploymentRestrictionRequest{
@@ -180,6 +190,7 @@ func (a *JobDeploymentRestrictionAPIService) DeleteJobDeploymentRestriction(ctx 
 }
 
 // Execute executes the request
+// Deprecated
 func (a *JobDeploymentRestrictionAPIService) DeleteJobDeploymentRestrictionExecute(r ApiDeleteJobDeploymentRestrictionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -279,12 +290,16 @@ func (r ApiEditJobDeploymentRestrictionRequest) Execute() (*JobDeploymentRestric
 /*
 EditJobDeploymentRestriction Edit a job deployment restriction
 
-Edit a job deployment restriction
+# Edit a job deployment restriction
+
+Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param jobId Job ID
 	@param deploymentRestrictionId Deployment Restriction ID
 	@return ApiEditJobDeploymentRestrictionRequest
+
+Deprecated
 */
 func (a *JobDeploymentRestrictionAPIService) EditJobDeploymentRestriction(ctx context.Context, jobId string, deploymentRestrictionId string) ApiEditJobDeploymentRestrictionRequest {
 	return ApiEditJobDeploymentRestrictionRequest{
@@ -298,6 +313,8 @@ func (a *JobDeploymentRestrictionAPIService) EditJobDeploymentRestriction(ctx co
 // Execute executes the request
 //
 //	@return JobDeploymentRestrictionResponse
+//
+// Deprecated
 func (a *JobDeploymentRestrictionAPIService) EditJobDeploymentRestrictionExecute(r ApiEditJobDeploymentRestrictionRequest) (*JobDeploymentRestrictionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -402,11 +419,15 @@ func (r ApiGetJobDeploymentRestrictionsRequest) Execute() (*JobDeploymentRestric
 /*
 GetJobDeploymentRestrictions Get job deployment restrictions
 
-Get job deployment restrictions
+# Get job deployment restrictions
+
+Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param jobId Job ID
 	@return ApiGetJobDeploymentRestrictionsRequest
+
+Deprecated
 */
 func (a *JobDeploymentRestrictionAPIService) GetJobDeploymentRestrictions(ctx context.Context, jobId string) ApiGetJobDeploymentRestrictionsRequest {
 	return ApiGetJobDeploymentRestrictionsRequest{
@@ -419,6 +440,8 @@ func (a *JobDeploymentRestrictionAPIService) GetJobDeploymentRestrictions(ctx co
 // Execute executes the request
 //
 //	@return JobDeploymentRestrictionResponseList
+//
+// Deprecated
 func (a *JobDeploymentRestrictionAPIService) GetJobDeploymentRestrictionsExecute(r ApiGetJobDeploymentRestrictionsRequest) (*JobDeploymentRestrictionResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

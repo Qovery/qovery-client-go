@@ -160,6 +160,7 @@ tags:
 - name: Helm Custom Domain
 - name: Lifecycle Template Main Calls
 - name: Blueprint Main Calls
+- name: Service Main Calls
 paths:
   /ips:
     get:
@@ -11243,11 +11244,14 @@ paths:
         - image: send `registry_id`, `image_name` and `tag`, or `source.image`;
         - Git repository: send `source.git_repository`, and optionally `build_settings`. The repository, its token, the Dockerfile and the build settings go through the same checks, with the same errors, as a switch to `git_repository` with `PUT /container/{containerId}`. Nothing is created when a check fails.
 
+        On a container created from a Git repository, `auto_deploy` and `auto_preview` are false when not sent. When true:
+        - with `auto_deploy`, a push to the source branch deploys the container, so anyone who can push to that branch can deploy it;
+        - with `auto_preview`, a pull request starts a preview environment that builds the pull request's code, pull requests from forks included, and runs it with the environment's variables and secrets. Later pushes to the pull request redeploy the preview's copy of the container only when that copy has `auto_deploy` true, as for applications.
+
         Returns 400 when:
         - `source` is sent together with `registry_id`, `image_name` or `tag`;
         - `source` has both `image` and `git_repository`, or neither;
         - `source` is not sent and `registry_id`, `image_name` and `tag` are not all sent;
-        - `auto_deploy` or `auto_preview` is `true` while `source.git_repository` is sent;
         - `build_settings` is sent with an image source;
         - `source.git_repository` is sent and the environment's cluster has no build registry.
 
@@ -12604,7 +12608,11 @@ paths:
       - Application Main Calls
   /application/{applicationId}/deploymentRestriction:
     get:
-      description: Get application deployment restrictions
+      deprecated: true
+      description: |
+        Get application deployment restrictions
+
+        Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
       operationId: getApplicationDeploymentRestrictions
       parameters:
       - description: Application ID
@@ -12633,7 +12641,11 @@ paths:
       tags:
       - Application Deployment Restriction
     post:
-      description: Create an application deployment restriction
+      deprecated: true
+      description: |
+        Create an application deployment restriction
+
+        Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
       operationId: createApplicationDeploymentRestriction
       parameters:
       - description: Application ID
@@ -12671,7 +12683,11 @@ paths:
       - Application Deployment Restriction
   /application/{applicationId}/deploymentRestriction/{deploymentRestrictionId}:
     delete:
-      description: Delete an application deployment restriction
+      deprecated: true
+      description: |
+        Delete an application deployment restriction
+
+        Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
       operationId: deleteApplicationDeploymentRestriction
       parameters:
       - description: Application ID
@@ -12705,7 +12721,11 @@ paths:
       tags:
       - Application Deployment Restriction
     put:
-      description: Edit an application deployment restriction
+      deprecated: true
+      description: |
+        Edit an application deployment restriction
+
+        Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
       operationId: editApplicationDeploymentRestriction
       parameters:
       - description: Application ID
@@ -14241,13 +14261,14 @@ paths:
         - For storage edition, if you provide a storage id, we will update the corresponding storage. If you don't we will create a new one. If you remove a storage from the payload, we will delete it.
         - To switch the container between an image and a Git repository, send `source`. The container keeps its id, Kubernetes names, volumes and built-in variables. When `source` is not sent, the stored source is kept.
         - A body built from the `GET /container/{containerId}` response is accepted as is: `source` is ignored when it repeats the stored source, and `registry_id`, `image_name` and `tag` when they repeat the image the container runs. Only what changed is applied. To change the image with the flat fields, send all three of `registry_id`, `image_name` and `tag`: GET returns `registry.id`, not `registry_id`.
+        - `auto_deploy` and `auto_preview` when not sent: on a container that keeps its Git repository source, they keep their stored values; on a switch from an image to `git_repository`, they are set to false; on a switch from `git_repository` to an image, `auto_preview` is set to false.
+        - On a container with a Git repository source, `auto_deploy` true lets anyone who can push to the source branch deploy the container. `auto_preview` true makes a pull request start a preview environment that builds the pull request's code, pull requests from forks included, and runs it with the environment's variables and secrets. Later pushes to the pull request redeploy the preview's copy of the container only when that copy has `auto_deploy` true, as for applications.
 
         Returns 400 when:
         - `source` and `registry_id`, `image_name` or `tag` both ask for a change, unless both name the same image;
         - `source` has both `image` and `git_repository`, or neither;
         - the container has an image source, only some of `registry_id`, `image_name` and `tag` are sent, and either `source` is not sent or one of them differs from the image the container runs: send all three, or none to keep the image;
         - the container has a Git repository source, `source.image` is not sent, and `registry_id`, `image_name` or `tag` differ from the `registry.id`, `image_name` and `tag` that `GET /container/{containerId}` returns. A deployment that finishes between the GET and the PUT changes these values, so the PUT gets a 400: get the container again and retry;
-        - `auto_deploy` or `auto_preview` is `true` while `source.git_repository` is sent, or while the container has a Git repository source and `source` is not sent;
         - `build_settings` is sent while the container keeps, or switches to, an image source.
       operationId: editContainer
       parameters:
@@ -16950,7 +16971,11 @@ paths:
         id: fn9qd5qn7dhdv
   /helm/{helmId}/deploymentRestriction:
     get:
-      description: Get helm deployment restrictions
+      deprecated: true
+      description: |
+        Get helm deployment restrictions
+
+        Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
       operationId: getHelmDeploymentRestrictions
       parameters:
       - description: Helm ID
@@ -16979,7 +17004,11 @@ paths:
       tags:
       - Helm Deployment Restriction
     post:
-      description: Create a helm deployment restriction
+      deprecated: true
+      description: |
+        Create a helm deployment restriction
+
+        Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
       operationId: createHelmDeploymentRestriction
       parameters:
       - description: Helm ID
@@ -17017,7 +17046,11 @@ paths:
       - Helm Deployment Restriction
   /helm/{helmId}/deploymentRestriction/{deploymentRestrictionId}:
     delete:
-      description: Delete a helm deployment restriction
+      deprecated: true
+      description: |
+        Delete a helm deployment restriction
+
+        Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
       operationId: deleteHelmDeploymentRestriction
       parameters:
       - description: Helm ID
@@ -17051,7 +17084,11 @@ paths:
       tags:
       - Helm Deployment Restriction
     put:
-      description: Edit a helm deployment restriction
+      deprecated: true
+      description: |
+        Edit a helm deployment restriction
+
+        Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
       operationId: editHelmDeploymentRestriction
       parameters:
       - description: Helm ID
@@ -18232,7 +18269,11 @@ paths:
         id: mcu1nwkl3q2bb
   /job/{jobId}/deploymentRestriction:
     get:
-      description: Get job deployment restrictions
+      deprecated: true
+      description: |
+        Get job deployment restrictions
+
+        Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
       operationId: getJobDeploymentRestrictions
       parameters:
       - description: Job ID
@@ -18261,7 +18302,11 @@ paths:
       tags:
       - Job Deployment Restriction
     post:
-      description: Create a job deployment restriction
+      deprecated: true
+      description: |
+        Create a job deployment restriction
+
+        Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
       operationId: createJobDeploymentRestriction
       parameters:
       - description: Job ID
@@ -18299,7 +18344,11 @@ paths:
       - Job Deployment Restriction
   /job/{jobId}/deploymentRestriction/{deploymentRestrictionId}:
     delete:
-      description: Delete a job deployment restriction
+      deprecated: true
+      description: |
+        Delete a job deployment restriction
+
+        Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
       operationId: deleteJobDeploymentRestriction
       parameters:
       - description: Job ID
@@ -18333,7 +18382,11 @@ paths:
       tags:
       - Job Deployment Restriction
     put:
-      description: Edit a job deployment restriction
+      deprecated: true
+      description: |
+        Edit a job deployment restriction
+
+        Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
       operationId: editJobDeploymentRestriction
       parameters:
       - description: Job ID
@@ -19130,6 +19183,178 @@ paths:
         "429":
           description: Git provider rate limit exceeded
       summary: Synchronize git webhook for a service
+      tags:
+      - Service Main Calls
+  /service/{serviceId}/deploymentRestriction:
+    get:
+      description: |
+        Lists the deployment restrictions of a service. Works for applications, jobs, Helm, Terraform and containers. Restrictions filter which pushes to the source branch deploy the service, by changed file path.
+
+        Works on any container, whatever its source: a container's restrictions survive a switch to an image source, without effect until it switches back to a Git repository source.
+
+        Returns 400 when the service is a kind that cannot have deployment restrictions: a database or an agentic workflow.
+      operationId: listServiceDeploymentRestrictions
+      parameters:
+      - description: Service ID of an application/job/container/database
+        explode: false
+        in: path
+        name: serviceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceDeploymentRestrictionResponseList'
+          description: List service deployment restrictions
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List service deployment restrictions
+      tags:
+      - Service Main Calls
+    post:
+      description: |
+        Creates a deployment restriction on a service. Works for applications, jobs, Helm, Terraform and containers. Restrictions filter which pushes to the source branch deploy the service, by changed file path.
+
+        Returns 400 when the service cannot have restrictions: a job or container with an image source, a Helm or Terraform service not using a Git repository, or a kind without restrictions: a database or an agentic workflow.
+      operationId: createServiceDeploymentRestriction
+      parameters:
+      - description: Service ID of an application/job/container/database
+        explode: false
+        in: path
+        name: serviceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceDeploymentRestrictionRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceDeploymentRestrictionResponse'
+          description: Created a service deployment restriction
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: A deployment restriction with the same properties already exists
+            for this service
+      summary: Create a service deployment restriction
+      tags:
+      - Service Main Calls
+  /service/{serviceId}/deploymentRestriction/{deploymentRestrictionId}:
+    delete:
+      description: |
+        Deletes a deployment restriction of a service. Works for applications, jobs, Helm, Terraform and containers.
+
+        Works on any container, whatever its source: a container's restrictions survive a switch to an image source, without effect until it switches back to a Git repository source.
+
+        Returns 400 when the service is a kind that cannot have deployment restrictions: a database or an agentic workflow.
+      operationId: deleteServiceDeploymentRestriction
+      parameters:
+      - description: Service ID of an application/job/container/database
+        explode: false
+        in: path
+        name: serviceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Deployment Restriction ID
+        explode: false
+        in: path
+        name: deploymentRestrictionId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: The resource was deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete a service deployment restriction
+      tags:
+      - Service Main Calls
+    put:
+      description: |
+        Edits a deployment restriction of a service. Works for applications, jobs, Helm, Terraform and containers.
+
+        Returns 400 when the service is a container with an image source, or a kind that cannot have deployment restrictions: a database or an agentic workflow.
+      operationId: editServiceDeploymentRestriction
+      parameters:
+      - description: Service ID of an application/job/container/database
+        explode: false
+        in: path
+        name: serviceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Deployment Restriction ID
+        explode: false
+        in: path
+        name: deploymentRestrictionId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceDeploymentRestrictionRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceDeploymentRestrictionResponse'
+          description: Edit a service deployment restriction
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: A deployment restriction with the same properties already exists
+            for this service
+      summary: Edit a service deployment restriction
       tags:
       - Service Main Calls
   /variable:
@@ -21375,7 +21600,11 @@ paths:
       - Terraform Main Calls
   /terraform/{terraformId}/deploymentRestriction:
     get:
-      description: Get terraform deployment restrictions
+      deprecated: true
+      description: |
+        Get terraform deployment restrictions
+
+        Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
       operationId: getTerraformDeploymentRestrictions
       parameters:
       - explode: false
@@ -21404,7 +21633,11 @@ paths:
       x-stoplight:
         id: q3y44x1wdigcd
     post:
-      description: Create a terraform deployment restriction
+      deprecated: true
+      description: |
+        Create a terraform deployment restriction
+
+        Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
       operationId: createTerraformDeploymentRestriction
       parameters:
       - explode: false
@@ -21442,7 +21675,11 @@ paths:
         id: l6192gxde3sbv
   /terraform/{terraformId}/deploymentRestriction/{deploymentRestrictionId}:
     delete:
-      description: Delete a terraform deployment restriction
+      deprecated: true
+      description: |
+        Delete a terraform deployment restriction
+
+        Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
       operationId: deleteTerraformDeploymentRestriction
       parameters:
       - explode: false
@@ -21476,7 +21713,11 @@ paths:
       x-stoplight:
         id: d896flm9ibi54
     put:
-      description: Edit a terraform deployment restriction
+      deprecated: true
+      description: |
+        Edit a terraform deployment restriction
+
+        Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
       operationId: editTerraformDeploymentRestriction
       parameters:
       - explode: false
@@ -36467,17 +36708,24 @@ components:
               \ for this container.  \nIf enabled, a preview environment will be automatically\
               \ cloned when `/preview` endpoint is called.  \nIf not specified, it\
               \ takes the value of the `auto_preview` property from the associated\
-              \ environment.\n\nOn a container with a Git repository source, it must\
-              \ be false or not specified: `true` returns 400. When not specified\
-              \ on a create from, or a switch to, `git_repository`, it is set to false.\n"
+              \ environment.\n\nOn a container with a Git repository source, `true`\
+              \ makes a pull request start a preview environment that builds the pull\
+              \ request's code, pull requests from forks included, and runs it with\
+              \ the environment's variables and secrets. When not specified: false\
+              \ on a create from, or a switch to, `git_repository`; the stored value\
+              \ on an update that keeps `git_repository`; false on a switch from `git_repository`\
+              \ to an image.\n"
             type: boolean
           auto_deploy:
             description: "Specify if the container will be automatically updated after\
               \ receiving a new image tag. \nThe new image tag shall be communicated\
               \ via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments\n\
-              \nOn a container with a Git repository source, it must be false or not\
-              \ specified: `true` returns 400. When not specified on a create from,\
-              \ or a switch to, `git_repository`, it is set to false.\n"
+              \nOn a container with a Git repository source, `true` makes a push to\
+              \ the source branch deploy the container: anyone who can push to that\
+              \ branch can deploy it. On a preview's copy of the container, `true`\
+              \ makes later pushes to the pull request redeploy it, as for applications.\
+              \ When not specified: false on a create from, or a switch to, `git_repository`;\
+              \ the stored value on an update that keeps `git_repository`.\n"
             nullable: true
             type: boolean
           annotations_groups:
@@ -37538,7 +37786,9 @@ components:
         - On update of a container with an image source, `source.image.registry_id` may be omitted: the stored registry is kept. Switching a container with a Git repository source back to an image, and create, require it.
         - When `source` is not sent, the stored source is kept. Flat fields never switch the source.
         - On a container with a Git repository source, flat fields equal to the `registry.id`, `image_name` and `tag` that GET returns are accepted and change nothing; different values return 400 unless `source.image` asks for the same image. A deployment that finishes between the GET and the PUT changes these values: get the container again and retry. Send `source.image` to switch back to an image.
-        - A `git_repository` source requires `auto_deploy` and `auto_preview` to be false or not specified: 400 otherwise. When not specified on a create from, or a switch to, `git_repository`, both are set to false.
+        - `auto_deploy` and `auto_preview` are accepted with a `git_repository` source. When not sent, they are set to false on a create from, or a switch to, `git_repository`, and keep their stored values on an update that keeps `git_repository`. A switch from `git_repository` to an image without `auto_preview` sets it to false.
+        - With `auto_deploy` true, a push to the source branch deploys the container: anyone who can push to that branch can deploy it. Deployment restrictions (`/service/{serviceId}/deploymentRestriction`) limit which changed paths trigger it.
+        - With `auto_preview` true, a pull request starts a preview environment that builds the pull request's code, pull requests from forks included, and runs it with the environment's variables and secrets. Later pushes to the pull request redeploy the preview's copy of the container only when that copy has `auto_deploy` true, as for applications.
       oneOf:
       - $ref: '#/components/schemas/ContainerSourceRequest_oneOf'
       - $ref: '#/components/schemas/ContainerSourceRequest_oneOf_1'
@@ -50474,6 +50724,57 @@ components:
       - OUT_OF_DATE
       - UP_TO_DATE
       type: string
+    ServiceDeploymentRestrictionRequest:
+      example:
+        mode: MATCH
+        type: PATH
+        value: service1/src/
+      properties:
+        mode:
+          $ref: '#/components/schemas/DeploymentRestrictionModeEnum'
+        type:
+          $ref: '#/components/schemas/DeploymentRestrictionTypeEnum'
+        value:
+          description: "For `PATH` restrictions, the value must not start with `/`"
+          example: service1/src/
+          type: string
+      required:
+      - mode
+      - type
+      - value
+      type: object
+    ServiceDeploymentRestrictionResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/ServiceDeploymentRestrictionRequest'
+      example:
+        mode: MATCH
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        created_at: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: PATH
+        value: service1/src/
+    ServiceDeploymentRestrictionResponseList:
+      example:
+        results:
+        - mode: MATCH
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: PATH
+          value: service1/src/
+        - mode: MATCH
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: PATH
+          value: service1/src/
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ServiceDeploymentRestrictionResponse'
+          type: array
+      type: object
     ServiceTotalNumber:
       properties:
         service_total_number:
@@ -63036,6 +63337,9 @@ x-tagGroups:
   - Terraform Configuration
   - Terraform Deployment Restriction
   - Terraform Deployment History
+- name: Service
+  tags:
+  - Service Main Calls
 - name: Account
   tags:
   - Account Info

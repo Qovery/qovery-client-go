@@ -42,11 +42,15 @@ func (r ApiCreateTerraformDeploymentRestrictionRequest) Execute() (*TerraformDep
 /*
 CreateTerraformDeploymentRestriction Create a terraform deployment restriction
 
-Create a terraform deployment restriction
+# Create a terraform deployment restriction
+
+Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param terraformId
 	@return ApiCreateTerraformDeploymentRestrictionRequest
+
+Deprecated
 */
 func (a *TerraformDeploymentRestrictionAPIService) CreateTerraformDeploymentRestriction(ctx context.Context, terraformId string) ApiCreateTerraformDeploymentRestrictionRequest {
 	return ApiCreateTerraformDeploymentRestrictionRequest{
@@ -59,6 +63,8 @@ func (a *TerraformDeploymentRestrictionAPIService) CreateTerraformDeploymentRest
 // Execute executes the request
 //
 //	@return TerraformDeploymentRestrictionResponse
+//
+// Deprecated
 func (a *TerraformDeploymentRestrictionAPIService) CreateTerraformDeploymentRestrictionExecute(r ApiCreateTerraformDeploymentRestrictionRequest) (*TerraformDeploymentRestrictionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -163,12 +169,16 @@ func (r ApiDeleteTerraformDeploymentRestrictionRequest) Execute() (*http.Respons
 /*
 DeleteTerraformDeploymentRestriction Delete a terraform deployment restriction
 
-Delete a terraform deployment restriction
+# Delete a terraform deployment restriction
+
+Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param terraformId
 	@param deploymentRestrictionId
 	@return ApiDeleteTerraformDeploymentRestrictionRequest
+
+Deprecated
 */
 func (a *TerraformDeploymentRestrictionAPIService) DeleteTerraformDeploymentRestriction(ctx context.Context, terraformId string, deploymentRestrictionId string) ApiDeleteTerraformDeploymentRestrictionRequest {
 	return ApiDeleteTerraformDeploymentRestrictionRequest{
@@ -180,6 +190,7 @@ func (a *TerraformDeploymentRestrictionAPIService) DeleteTerraformDeploymentRest
 }
 
 // Execute executes the request
+// Deprecated
 func (a *TerraformDeploymentRestrictionAPIService) DeleteTerraformDeploymentRestrictionExecute(r ApiDeleteTerraformDeploymentRestrictionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -279,12 +290,16 @@ func (r ApiEditTerraformDeploymentRestrictionRequest) Execute() (*TerraformDeplo
 /*
 EditTerraformDeploymentRestriction Edit a terraform deployment restriction
 
-Edit a terraform deployment restriction
+# Edit a terraform deployment restriction
+
+Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param terraformId
 	@param deploymentRestrictionId
 	@return ApiEditTerraformDeploymentRestrictionRequest
+
+Deprecated
 */
 func (a *TerraformDeploymentRestrictionAPIService) EditTerraformDeploymentRestriction(ctx context.Context, terraformId string, deploymentRestrictionId string) ApiEditTerraformDeploymentRestrictionRequest {
 	return ApiEditTerraformDeploymentRestrictionRequest{
@@ -298,6 +313,8 @@ func (a *TerraformDeploymentRestrictionAPIService) EditTerraformDeploymentRestri
 // Execute executes the request
 //
 //	@return TerraformDeploymentRestrictionResponse
+//
+// Deprecated
 func (a *TerraformDeploymentRestrictionAPIService) EditTerraformDeploymentRestrictionExecute(r ApiEditTerraformDeploymentRestrictionRequest) (*TerraformDeploymentRestrictionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -402,11 +419,15 @@ func (r ApiGetTerraformDeploymentRestrictionsRequest) Execute() (*TerraformDeplo
 /*
 GetTerraformDeploymentRestrictions Get terraform deployment restrictions
 
-Get terraform deployment restrictions
+# Get terraform deployment restrictions
+
+Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param terraformId
 	@return ApiGetTerraformDeploymentRestrictionsRequest
+
+Deprecated
 */
 func (a *TerraformDeploymentRestrictionAPIService) GetTerraformDeploymentRestrictions(ctx context.Context, terraformId string) ApiGetTerraformDeploymentRestrictionsRequest {
 	return ApiGetTerraformDeploymentRestrictionsRequest{
@@ -419,6 +440,8 @@ func (a *TerraformDeploymentRestrictionAPIService) GetTerraformDeploymentRestric
 // Execute executes the request
 //
 //	@return TerraformDeploymentRestrictionResponseList
+//
+// Deprecated
 func (a *TerraformDeploymentRestrictionAPIService) GetTerraformDeploymentRestrictionsExecute(r ApiGetTerraformDeploymentRestrictionsRequest) (*TerraformDeploymentRestrictionResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

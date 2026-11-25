@@ -42,11 +42,15 @@ func (r ApiCreateHelmDeploymentRestrictionRequest) Execute() (*HelmDeploymentRes
 /*
 CreateHelmDeploymentRestriction Create a helm deployment restriction
 
-Create a helm deployment restriction
+# Create a helm deployment restriction
+
+Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param helmId Helm ID
 	@return ApiCreateHelmDeploymentRestrictionRequest
+
+Deprecated
 */
 func (a *HelmDeploymentRestrictionAPIService) CreateHelmDeploymentRestriction(ctx context.Context, helmId string) ApiCreateHelmDeploymentRestrictionRequest {
 	return ApiCreateHelmDeploymentRestrictionRequest{
@@ -59,6 +63,8 @@ func (a *HelmDeploymentRestrictionAPIService) CreateHelmDeploymentRestriction(ct
 // Execute executes the request
 //
 //	@return HelmDeploymentRestrictionResponse
+//
+// Deprecated
 func (a *HelmDeploymentRestrictionAPIService) CreateHelmDeploymentRestrictionExecute(r ApiCreateHelmDeploymentRestrictionRequest) (*HelmDeploymentRestrictionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -163,12 +169,16 @@ func (r ApiDeleteHelmDeploymentRestrictionRequest) Execute() (*http.Response, er
 /*
 DeleteHelmDeploymentRestriction Delete a helm deployment restriction
 
-Delete a helm deployment restriction
+# Delete a helm deployment restriction
+
+Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param helmId Helm ID
 	@param deploymentRestrictionId Deployment Restriction ID
 	@return ApiDeleteHelmDeploymentRestrictionRequest
+
+Deprecated
 */
 func (a *HelmDeploymentRestrictionAPIService) DeleteHelmDeploymentRestriction(ctx context.Context, helmId string, deploymentRestrictionId string) ApiDeleteHelmDeploymentRestrictionRequest {
 	return ApiDeleteHelmDeploymentRestrictionRequest{
@@ -180,6 +190,7 @@ func (a *HelmDeploymentRestrictionAPIService) DeleteHelmDeploymentRestriction(ct
 }
 
 // Execute executes the request
+// Deprecated
 func (a *HelmDeploymentRestrictionAPIService) DeleteHelmDeploymentRestrictionExecute(r ApiDeleteHelmDeploymentRestrictionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -279,12 +290,16 @@ func (r ApiEditHelmDeploymentRestrictionRequest) Execute() (*HelmDeploymentRestr
 /*
 EditHelmDeploymentRestriction Edit a helm deployment restriction
 
-Edit a helm deployment restriction
+# Edit a helm deployment restriction
+
+Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param helmId Helm ID
 	@param deploymentRestrictionId Deployment Restriction ID
 	@return ApiEditHelmDeploymentRestrictionRequest
+
+Deprecated
 */
 func (a *HelmDeploymentRestrictionAPIService) EditHelmDeploymentRestriction(ctx context.Context, helmId string, deploymentRestrictionId string) ApiEditHelmDeploymentRestrictionRequest {
 	return ApiEditHelmDeploymentRestrictionRequest{
@@ -298,6 +313,8 @@ func (a *HelmDeploymentRestrictionAPIService) EditHelmDeploymentRestriction(ctx 
 // Execute executes the request
 //
 //	@return HelmDeploymentRestrictionResponse
+//
+// Deprecated
 func (a *HelmDeploymentRestrictionAPIService) EditHelmDeploymentRestrictionExecute(r ApiEditHelmDeploymentRestrictionRequest) (*HelmDeploymentRestrictionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -402,11 +419,15 @@ func (r ApiGetHelmDeploymentRestrictionsRequest) Execute() (*HelmDeploymentRestr
 /*
 GetHelmDeploymentRestrictions Get helm deployment restrictions
 
-Get helm deployment restrictions
+# Get helm deployment restrictions
+
+Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param helmId Helm ID
 	@return ApiGetHelmDeploymentRestrictionsRequest
+
+Deprecated
 */
 func (a *HelmDeploymentRestrictionAPIService) GetHelmDeploymentRestrictions(ctx context.Context, helmId string) ApiGetHelmDeploymentRestrictionsRequest {
 	return ApiGetHelmDeploymentRestrictionsRequest{
@@ -419,6 +440,8 @@ func (a *HelmDeploymentRestrictionAPIService) GetHelmDeploymentRestrictions(ctx 
 // Execute executes the request
 //
 //	@return HelmDeploymentRestrictionResponseList
+//
+// Deprecated
 func (a *HelmDeploymentRestrictionAPIService) GetHelmDeploymentRestrictionsExecute(r ApiGetHelmDeploymentRestrictionsRequest) (*HelmDeploymentRestrictionResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

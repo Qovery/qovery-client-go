@@ -301,11 +301,14 @@ A container is created from an image or from a Git repository:
 - image: send `registry_id`, `image_name` and `tag`, or `source.image`;
 - Git repository: send `source.git_repository`, and optionally `build_settings`. The repository, its token, the Dockerfile and the build settings go through the same checks, with the same errors, as a switch to `git_repository` with `PUT /container/{containerId}`. Nothing is created when a check fails.
 
+On a container created from a Git repository, `auto_deploy` and `auto_preview` are false when not sent. When true:
+- with `auto_deploy`, a push to the source branch deploys the container, so anyone who can push to that branch can deploy it;
+- with `auto_preview`, a pull request starts a preview environment that builds the pull request's code, pull requests from forks included, and runs it with the environment's variables and secrets. Later pushes to the pull request redeploy the preview's copy of the container only when that copy has `auto_deploy` true, as for applications.
+
 Returns 400 when:
 - `source` is sent together with `registry_id`, `image_name` or `tag`;
 - `source` has both `image` and `git_repository`, or neither;
 - `source` is not sent and `registry_id`, `image_name` and `tag` are not all sent;
-- `auto_deploy` or `auto_preview` is `true` while `source.git_repository` is sent;
 - `build_settings` is sent with an image source;
 - `source.git_repository` is sent and the environment's cluster has no build registry.
 

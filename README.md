@@ -632,7 +632,11 @@ Class | Method | HTTP request | Description
 *ReferralRewardsAPI* | [**PostAccountRewardClaim**](docs/ReferralRewardsAPI.md#postaccountrewardclaim) | **Post** /account/rewardClaim | Claim a reward
 *SecretManagerAccessAPI* | [**ListSecretManagerAccessExternalSecrets**](docs/SecretManagerAccessAPI.md#listsecretmanageraccessexternalsecrets) | **Get** /secretManagerAccess/{secretManagerAccessId}/associatedServices | List external secrets used by a secret manager access
 *SecretManagerAccessAPI* | [**ListUpstreamSecretsFromSecretProvider**](docs/SecretManagerAccessAPI.md#listupstreamsecretsfromsecretprovider) | **Get** /secretManagerAccess/{secretManagerAccessId}/secrets | List upstream secrets from secret provider
+*ServiceMainCallsAPI* | [**CreateServiceDeploymentRestriction**](docs/ServiceMainCallsAPI.md#createservicedeploymentrestriction) | **Post** /service/{serviceId}/deploymentRestriction | Create a service deployment restriction
+*ServiceMainCallsAPI* | [**DeleteServiceDeploymentRestriction**](docs/ServiceMainCallsAPI.md#deleteservicedeploymentrestriction) | **Delete** /service/{serviceId}/deploymentRestriction/{deploymentRestrictionId} | Delete a service deployment restriction
+*ServiceMainCallsAPI* | [**EditServiceDeploymentRestriction**](docs/ServiceMainCallsAPI.md#editservicedeploymentrestriction) | **Put** /service/{serviceId}/deploymentRestriction/{deploymentRestrictionId} | Edit a service deployment restriction
 *ServiceMainCallsAPI* | [**GetServiceGitWebhookStatus**](docs/ServiceMainCallsAPI.md#getservicegitwebhookstatus) | **Get** /service/{serviceId}/gitWebhookStatus | Get git webhook status for a service
+*ServiceMainCallsAPI* | [**ListServiceDeploymentRestrictions**](docs/ServiceMainCallsAPI.md#listservicedeploymentrestrictions) | **Get** /service/{serviceId}/deploymentRestriction | List service deployment restrictions
 *ServiceMainCallsAPI* | [**SyncServiceGitWebhook**](docs/ServiceMainCallsAPI.md#syncservicegitwebhook) | **Post** /service/{serviceId}/gitWebhook/sync | Synchronize git webhook for a service
 *ServiceStatusAPI* | [**GetIngressDeploymentStatus**](docs/ServiceStatusAPI.md#getingressdeploymentstatus) | **Get** /{serviceType}/{serviceId}/ingressDeploymentStatus | Get Ingress Deployment Status By Service
 *SkillPresetsAPI* | [**CreateSkillPreset**](docs/SkillPresetsAPI.md#createskillpreset) | **Post** /organization/{organizationId}/skillPreset | Create a skill preset
@@ -1570,6 +1574,9 @@ Class | Method | HTTP request | Description
  - [ServiceActionEnum](docs/ServiceActionEnum.md)
  - [ServiceActionStatusEnum](docs/ServiceActionStatusEnum.md)
  - [ServiceAnnotationRequest](docs/ServiceAnnotationRequest.md)
+ - [ServiceDeploymentRestrictionRequest](docs/ServiceDeploymentRestrictionRequest.md)
+ - [ServiceDeploymentRestrictionResponse](docs/ServiceDeploymentRestrictionResponse.md)
+ - [ServiceDeploymentRestrictionResponseList](docs/ServiceDeploymentRestrictionResponseList.md)
  - [ServiceDeploymentStatusEnum](docs/ServiceDeploymentStatusEnum.md)
  - [ServiceDomainCustomResponse](docs/ServiceDomainCustomResponse.md)
  - [ServiceDomainKindEnum](docs/ServiceDomainKindEnum.md)

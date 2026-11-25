@@ -42,11 +42,15 @@ func (r ApiCreateApplicationDeploymentRestrictionRequest) Execute() (*Applicatio
 /*
 CreateApplicationDeploymentRestriction Create an application deployment restriction
 
-Create an application deployment restriction
+# Create an application deployment restriction
+
+Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param applicationId Application ID
 	@return ApiCreateApplicationDeploymentRestrictionRequest
+
+Deprecated
 */
 func (a *ApplicationDeploymentRestrictionAPIService) CreateApplicationDeploymentRestriction(ctx context.Context, applicationId string) ApiCreateApplicationDeploymentRestrictionRequest {
 	return ApiCreateApplicationDeploymentRestrictionRequest{
@@ -59,6 +63,8 @@ func (a *ApplicationDeploymentRestrictionAPIService) CreateApplicationDeployment
 // Execute executes the request
 //
 //	@return ApplicationDeploymentRestriction
+//
+// Deprecated
 func (a *ApplicationDeploymentRestrictionAPIService) CreateApplicationDeploymentRestrictionExecute(r ApiCreateApplicationDeploymentRestrictionRequest) (*ApplicationDeploymentRestriction, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -163,12 +169,16 @@ func (r ApiDeleteApplicationDeploymentRestrictionRequest) Execute() (*http.Respo
 /*
 DeleteApplicationDeploymentRestriction Delete an application deployment restriction
 
-Delete an application deployment restriction
+# Delete an application deployment restriction
+
+Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param applicationId Application ID
 	@param deploymentRestrictionId Deployment Restriction ID
 	@return ApiDeleteApplicationDeploymentRestrictionRequest
+
+Deprecated
 */
 func (a *ApplicationDeploymentRestrictionAPIService) DeleteApplicationDeploymentRestriction(ctx context.Context, applicationId string, deploymentRestrictionId string) ApiDeleteApplicationDeploymentRestrictionRequest {
 	return ApiDeleteApplicationDeploymentRestrictionRequest{
@@ -180,6 +190,7 @@ func (a *ApplicationDeploymentRestrictionAPIService) DeleteApplicationDeployment
 }
 
 // Execute executes the request
+// Deprecated
 func (a *ApplicationDeploymentRestrictionAPIService) DeleteApplicationDeploymentRestrictionExecute(r ApiDeleteApplicationDeploymentRestrictionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -279,12 +290,16 @@ func (r ApiEditApplicationDeploymentRestrictionRequest) Execute() (*ApplicationD
 /*
 EditApplicationDeploymentRestriction Edit an application deployment restriction
 
-Edit an application deployment restriction
+# Edit an application deployment restriction
+
+Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param applicationId Application ID
 	@param deploymentRestrictionId Deployment Restriction ID
 	@return ApiEditApplicationDeploymentRestrictionRequest
+
+Deprecated
 */
 func (a *ApplicationDeploymentRestrictionAPIService) EditApplicationDeploymentRestriction(ctx context.Context, applicationId string, deploymentRestrictionId string) ApiEditApplicationDeploymentRestrictionRequest {
 	return ApiEditApplicationDeploymentRestrictionRequest{
@@ -298,6 +313,8 @@ func (a *ApplicationDeploymentRestrictionAPIService) EditApplicationDeploymentRe
 // Execute executes the request
 //
 //	@return ApplicationDeploymentRestriction
+//
+// Deprecated
 func (a *ApplicationDeploymentRestrictionAPIService) EditApplicationDeploymentRestrictionExecute(r ApiEditApplicationDeploymentRestrictionRequest) (*ApplicationDeploymentRestriction, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -402,11 +419,15 @@ func (r ApiGetApplicationDeploymentRestrictionsRequest) Execute() (*ApplicationD
 /*
 GetApplicationDeploymentRestrictions Get application deployment restrictions
 
-Get application deployment restrictions
+# Get application deployment restrictions
+
+Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param applicationId Application ID
 	@return ApiGetApplicationDeploymentRestrictionsRequest
+
+Deprecated
 */
 func (a *ApplicationDeploymentRestrictionAPIService) GetApplicationDeploymentRestrictions(ctx context.Context, applicationId string) ApiGetApplicationDeploymentRestrictionsRequest {
 	return ApiGetApplicationDeploymentRestrictionsRequest{
@@ -419,6 +440,8 @@ func (a *ApplicationDeploymentRestrictionAPIService) GetApplicationDeploymentRes
 // Execute executes the request
 //
 //	@return ApplicationDeploymentRestrictionResponseList
+//
+// Deprecated
 func (a *ApplicationDeploymentRestrictionAPIService) GetApplicationDeploymentRestrictionsExecute(r ApiGetApplicationDeploymentRestrictionsRequest) (*ApplicationDeploymentRestrictionResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

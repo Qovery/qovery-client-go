@@ -23,6 +23,380 @@ import (
 // ServiceMainCallsAPIService ServiceMainCallsAPI service
 type ServiceMainCallsAPIService service
 
+type ApiCreateServiceDeploymentRestrictionRequest struct {
+	ctx                                 context.Context
+	ApiService                          *ServiceMainCallsAPIService
+	serviceId                           string
+	serviceDeploymentRestrictionRequest *ServiceDeploymentRestrictionRequest
+}
+
+func (r ApiCreateServiceDeploymentRestrictionRequest) ServiceDeploymentRestrictionRequest(serviceDeploymentRestrictionRequest ServiceDeploymentRestrictionRequest) ApiCreateServiceDeploymentRestrictionRequest {
+	r.serviceDeploymentRestrictionRequest = &serviceDeploymentRestrictionRequest
+	return r
+}
+
+func (r ApiCreateServiceDeploymentRestrictionRequest) Execute() (*ServiceDeploymentRestrictionResponse, *http.Response, error) {
+	return r.ApiService.CreateServiceDeploymentRestrictionExecute(r)
+}
+
+/*
+CreateServiceDeploymentRestriction Create a service deployment restriction
+
+Creates a deployment restriction on a service. Works for applications, jobs, Helm, Terraform and containers. Restrictions filter which pushes to the source branch deploy the service, by changed file path.
+
+Returns 400 when the service cannot have restrictions: a job or container with an image source, a Helm or Terraform service not using a Git repository, or a kind without restrictions: a database or an agentic workflow.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serviceId Service ID of an application/job/container/database
+	@return ApiCreateServiceDeploymentRestrictionRequest
+*/
+func (a *ServiceMainCallsAPIService) CreateServiceDeploymentRestriction(ctx context.Context, serviceId string) ApiCreateServiceDeploymentRestrictionRequest {
+	return ApiCreateServiceDeploymentRestrictionRequest{
+		ApiService: a,
+		ctx:        ctx,
+		serviceId:  serviceId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ServiceDeploymentRestrictionResponse
+func (a *ServiceMainCallsAPIService) CreateServiceDeploymentRestrictionExecute(r ApiCreateServiceDeploymentRestrictionRequest) (*ServiceDeploymentRestrictionResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceDeploymentRestrictionResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceMainCallsAPIService.CreateServiceDeploymentRestriction")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/service/{serviceId}/deploymentRestriction"
+	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", url.PathEscape(parameterValueToString(r.serviceId, "serviceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.serviceDeploymentRestrictionRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiDeleteServiceDeploymentRestrictionRequest struct {
+	ctx                     context.Context
+	ApiService              *ServiceMainCallsAPIService
+	serviceId               string
+	deploymentRestrictionId string
+}
+
+func (r ApiDeleteServiceDeploymentRestrictionRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteServiceDeploymentRestrictionExecute(r)
+}
+
+/*
+DeleteServiceDeploymentRestriction Delete a service deployment restriction
+
+Deletes a deployment restriction of a service. Works for applications, jobs, Helm, Terraform and containers.
+
+Works on any container, whatever its source: a container's restrictions survive a switch to an image source, without effect until it switches back to a Git repository source.
+
+Returns 400 when the service is a kind that cannot have deployment restrictions: a database or an agentic workflow.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serviceId Service ID of an application/job/container/database
+	@param deploymentRestrictionId Deployment Restriction ID
+	@return ApiDeleteServiceDeploymentRestrictionRequest
+*/
+func (a *ServiceMainCallsAPIService) DeleteServiceDeploymentRestriction(ctx context.Context, serviceId string, deploymentRestrictionId string) ApiDeleteServiceDeploymentRestrictionRequest {
+	return ApiDeleteServiceDeploymentRestrictionRequest{
+		ApiService:              a,
+		ctx:                     ctx,
+		serviceId:               serviceId,
+		deploymentRestrictionId: deploymentRestrictionId,
+	}
+}
+
+// Execute executes the request
+func (a *ServiceMainCallsAPIService) DeleteServiceDeploymentRestrictionExecute(r ApiDeleteServiceDeploymentRestrictionRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceMainCallsAPIService.DeleteServiceDeploymentRestriction")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/service/{serviceId}/deploymentRestriction/{deploymentRestrictionId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", url.PathEscape(parameterValueToString(r.serviceId, "serviceId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentRestrictionId"+"}", url.PathEscape(parameterValueToString(r.deploymentRestrictionId, "deploymentRestrictionId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiEditServiceDeploymentRestrictionRequest struct {
+	ctx                                 context.Context
+	ApiService                          *ServiceMainCallsAPIService
+	serviceId                           string
+	deploymentRestrictionId             string
+	serviceDeploymentRestrictionRequest *ServiceDeploymentRestrictionRequest
+}
+
+func (r ApiEditServiceDeploymentRestrictionRequest) ServiceDeploymentRestrictionRequest(serviceDeploymentRestrictionRequest ServiceDeploymentRestrictionRequest) ApiEditServiceDeploymentRestrictionRequest {
+	r.serviceDeploymentRestrictionRequest = &serviceDeploymentRestrictionRequest
+	return r
+}
+
+func (r ApiEditServiceDeploymentRestrictionRequest) Execute() (*ServiceDeploymentRestrictionResponse, *http.Response, error) {
+	return r.ApiService.EditServiceDeploymentRestrictionExecute(r)
+}
+
+/*
+EditServiceDeploymentRestriction Edit a service deployment restriction
+
+Edits a deployment restriction of a service. Works for applications, jobs, Helm, Terraform and containers.
+
+Returns 400 when the service is a container with an image source, or a kind that cannot have deployment restrictions: a database or an agentic workflow.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serviceId Service ID of an application/job/container/database
+	@param deploymentRestrictionId Deployment Restriction ID
+	@return ApiEditServiceDeploymentRestrictionRequest
+*/
+func (a *ServiceMainCallsAPIService) EditServiceDeploymentRestriction(ctx context.Context, serviceId string, deploymentRestrictionId string) ApiEditServiceDeploymentRestrictionRequest {
+	return ApiEditServiceDeploymentRestrictionRequest{
+		ApiService:              a,
+		ctx:                     ctx,
+		serviceId:               serviceId,
+		deploymentRestrictionId: deploymentRestrictionId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ServiceDeploymentRestrictionResponse
+func (a *ServiceMainCallsAPIService) EditServiceDeploymentRestrictionExecute(r ApiEditServiceDeploymentRestrictionRequest) (*ServiceDeploymentRestrictionResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceDeploymentRestrictionResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceMainCallsAPIService.EditServiceDeploymentRestriction")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/service/{serviceId}/deploymentRestriction/{deploymentRestrictionId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", url.PathEscape(parameterValueToString(r.serviceId, "serviceId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentRestrictionId"+"}", url.PathEscape(parameterValueToString(r.deploymentRestrictionId, "deploymentRestrictionId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.serviceDeploymentRestrictionRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetServiceGitWebhookStatusRequest struct {
 	ctx        context.Context
 	ApiService *ServiceMainCallsAPIService
@@ -67,6 +441,128 @@ func (a *ServiceMainCallsAPIService) GetServiceGitWebhookStatusExecute(r ApiGetS
 	}
 
 	localVarPath := localBasePath + "/service/{serviceId}/gitWebhookStatus"
+	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", url.PathEscape(parameterValueToString(r.serviceId, "serviceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListServiceDeploymentRestrictionsRequest struct {
+	ctx        context.Context
+	ApiService *ServiceMainCallsAPIService
+	serviceId  string
+}
+
+func (r ApiListServiceDeploymentRestrictionsRequest) Execute() (*ServiceDeploymentRestrictionResponseList, *http.Response, error) {
+	return r.ApiService.ListServiceDeploymentRestrictionsExecute(r)
+}
+
+/*
+ListServiceDeploymentRestrictions List service deployment restrictions
+
+Lists the deployment restrictions of a service. Works for applications, jobs, Helm, Terraform and containers. Restrictions filter which pushes to the source branch deploy the service, by changed file path.
+
+Works on any container, whatever its source: a container's restrictions survive a switch to an image source, without effect until it switches back to a Git repository source.
+
+Returns 400 when the service is a kind that cannot have deployment restrictions: a database or an agentic workflow.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serviceId Service ID of an application/job/container/database
+	@return ApiListServiceDeploymentRestrictionsRequest
+*/
+func (a *ServiceMainCallsAPIService) ListServiceDeploymentRestrictions(ctx context.Context, serviceId string) ApiListServiceDeploymentRestrictionsRequest {
+	return ApiListServiceDeploymentRestrictionsRequest{
+		ApiService: a,
+		ctx:        ctx,
+		serviceId:  serviceId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ServiceDeploymentRestrictionResponseList
+func (a *ServiceMainCallsAPIService) ListServiceDeploymentRestrictionsExecute(r ApiListServiceDeploymentRestrictionsRequest) (*ServiceDeploymentRestrictionResponseList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceDeploymentRestrictionResponseList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceMainCallsAPIService.ListServiceDeploymentRestrictions")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/service/{serviceId}/deploymentRestriction"
 	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", url.PathEscape(parameterValueToString(r.serviceId, "serviceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

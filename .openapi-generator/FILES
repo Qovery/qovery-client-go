@@ -1104,6 +1104,9 @@ docs/Service.md
 docs/ServiceActionEnum.md
 docs/ServiceActionStatusEnum.md
 docs/ServiceAnnotationRequest.md
+docs/ServiceDeploymentRestrictionRequest.md
+docs/ServiceDeploymentRestrictionResponse.md
+docs/ServiceDeploymentRestrictionResponseList.md
 docs/ServiceDeploymentStatusEnum.md
 docs/ServiceDomainCustomResponse.md
 docs/ServiceDomainKindEnum.md
@@ -2161,6 +2164,9 @@ model_service.go
 model_service_action_enum.go
 model_service_action_status_enum.go
 model_service_annotation_request.go
+model_service_deployment_restriction_request.go
+model_service_deployment_restriction_response.go
+model_service_deployment_restriction_response_list.go
 model_service_deployment_status_enum.go
 model_service_domain_custom_response.go
 model_service_domain_kind_enum.go
