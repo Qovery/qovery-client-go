@@ -158,6 +158,183 @@ func (a *OrganizationCustomDomainAPIService) BulkDeleteOrganizationCustomDomainE
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCheckOrganizationCustomDomainsRequest struct {
+	ctx            context.Context
+	ApiService     *OrganizationCustomDomainAPIService
+	organizationId string
+	projectId      *string
+	environmentId  *string
+	search         *string
+	page           *int32
+	pageSize       *int32
+}
+
+// Only check the domains of this project. A project of another organization gives an empty list.
+func (r ApiCheckOrganizationCustomDomainsRequest) ProjectId(projectId string) ApiCheckOrganizationCustomDomainsRequest {
+	r.projectId = &projectId
+	return r
+}
+
+// Only check the domains of this environment. An environment of another organization gives an empty list.
+func (r ApiCheckOrganizationCustomDomainsRequest) EnvironmentId(environmentId string) ApiCheckOrganizationCustomDomainsRequest {
+	r.environmentId = &environmentId
+	return r
+}
+
+// Only check the domains whose name contains this text, ignoring case. The text is trimmed and matched literally, with no wildcard. A blank value does not filter.
+func (r ApiCheckOrganizationCustomDomainsRequest) Search(search string) ApiCheckOrganizationCustomDomainsRequest {
+	r.search = &search
+	return r
+}
+
+// The page to check, starting at 1. A page after the last one has no results.
+func (r ApiCheckOrganizationCustomDomainsRequest) Page(page int32) ApiCheckOrganizationCustomDomainsRequest {
+	r.page = &page
+	return r
+}
+
+// The number of domains per page.
+func (r ApiCheckOrganizationCustomDomainsRequest) PageSize(pageSize int32) ApiCheckOrganizationCustomDomainsRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiCheckOrganizationCustomDomainsRequest) Execute() (*OrganizationCustomDomainCheckListResponse, *http.Response, error) {
+	return r.ApiService.CheckOrganizationCustomDomainsExecute(r)
+}
+
+/*
+CheckOrganizationCustomDomains Check the DNS of the organization's custom domains
+
+Check the DNS of the custom domains of a page of the organization domains list, in one call. Only organization admins can call it.
+The query parameters are the ones of `listOrganizationCustomDomain`: the same values select the same domains, in the same order.
+There is one result per domain name of one environment, and one check per service the domain routes to.
+A check that could not run (cluster unreachable, timeout, service never deployed) has a `null` `status`; the other checks are still returned.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiCheckOrganizationCustomDomainsRequest
+*/
+func (a *OrganizationCustomDomainAPIService) CheckOrganizationCustomDomains(ctx context.Context, organizationId string) ApiCheckOrganizationCustomDomainsRequest {
+	return ApiCheckOrganizationCustomDomainsRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return OrganizationCustomDomainCheckListResponse
+func (a *OrganizationCustomDomainAPIService) CheckOrganizationCustomDomainsExecute(r ApiCheckOrganizationCustomDomainsRequest) (*OrganizationCustomDomainCheckListResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *OrganizationCustomDomainCheckListResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationCustomDomainAPIService.CheckOrganizationCustomDomains")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/customDomain/check"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "projectId", r.projectId, "")
+	}
+	if r.environmentId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "environmentId", r.environmentId, "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 1
+		r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageSize", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 20
+		r.pageSize = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiListOrganizationCustomDomainRequest struct {
 	ctx            context.Context
 	ApiService     *OrganizationCustomDomainAPIService

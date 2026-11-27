@@ -5032,6 +5032,94 @@ paths:
       summary: List organization custom domains
       tags:
       - Organization Custom Domain
+  /organization/{organizationId}/customDomain/check:
+    get:
+      description: |
+        Check the DNS of the custom domains of a page of the organization domains list, in one call. Only organization admins can call it.
+        The query parameters are the ones of `listOrganizationCustomDomain`: the same values select the same domains, in the same order.
+        There is one result per domain name of one environment, and one check per service the domain routes to.
+        A check that could not run (cluster unreachable, timeout, service never deployed) has a `null` `status`; the other checks are still returned.
+      operationId: checkOrganizationCustomDomains
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Only check the domains of this project. A project of another
+          organization gives an empty list.
+        explode: true
+        in: query
+        name: projectId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: Only check the domains of this environment. An environment of
+          another organization gives an empty list.
+        explode: true
+        in: query
+        name: environmentId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: "Only check the domains whose name contains this text, ignoring\
+          \ case. The text is trimmed and matched literally, with no wildcard. A blank\
+          \ value does not filter."
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "The page to check, starting at 1. A page after the last one\
+          \ has no results."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          minimum: 1
+          type: integer
+        style: form
+      - description: The number of domains per page.
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 20
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationCustomDomainCheckListResponse'
+          description: DNS checks of the organization custom domains
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Check the DNS of the organization's custom domains
+      tags:
+      - Organization Custom Domain
   /organization/{organizationId}/customDomain/bulkDelete:
     post:
       description: |
@@ -48289,6 +48377,112 @@ components:
         plan: FREE
         remaining_trial_day: 0
         renewal_at: 2000-01-23T04:56:07.000+00:00
+    OrganizationCustomDomainCheckListResponse:
+      example:
+        results:
+        - checks:
+          - service_type: ""
+            error_details: error_details
+            service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            status: ""
+          - service_type: ""
+            error_details: error_details
+            service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            status: ""
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          domain: my.domain.tld
+        - checks:
+          - service_type: ""
+            error_details: error_details
+            service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            status: ""
+          - service_type: ""
+            error_details: error_details
+            service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            status: ""
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          domain: my.domain.tld
+      properties:
+        results:
+          description: "One result per domain name of one environment of the page,\
+            \ in the order of `listOrganizationCustomDomain`."
+          items:
+            $ref: '#/components/schemas/OrganizationCustomDomainCheckResponse'
+          type: array
+      required:
+      - results
+      type: object
+    OrganizationCustomDomainCheckResponse:
+      description: "The DNS checks of one domain name of one environment. `environment_id`\
+        \ and `domain` identify it, as in `OrganizationCustomDomainResponse`."
+      example:
+        checks:
+        - service_type: ""
+          error_details: error_details
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          status: ""
+        - service_type: ""
+          error_details: error_details
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          status: ""
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        domain: my.domain.tld
+      properties:
+        environment_id:
+          description: Id of the environment of the domain.
+          format: uuid
+          type: string
+        domain:
+          description: The domain name as `listOrganizationCustomDomain` returns it.
+            A wildcard domain keeps its `*.` prefix.
+          example: my.domain.tld
+          type: string
+        checks:
+          description: One check per service the domain routes to. Empty when no service
+            of the domain can be checked.
+          items:
+            $ref: '#/components/schemas/OrganizationCustomDomainServiceCheck'
+          type: array
+      required:
+      - checks
+      - domain
+      - environment_id
+      type: object
+    OrganizationCustomDomainServiceCheck:
+      description: The DNS check of a domain for one service it routes to.
+      example:
+        service_type: ""
+        error_details: error_details
+        service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        status: ""
+      properties:
+        service_id:
+          description: Id of the service.
+          format: uuid
+          type: string
+        service_type:
+          allOf:
+          - $ref: '#/components/schemas/ServiceTypeEnum'
+          description: "Type of the service. Only `APPLICATION`, `CONTAINER` and `HELM`\
+            \ services have custom domains."
+        status:
+          allOf:
+          - $ref: '#/components/schemas/CheckedCustomDomainStatus'
+          description: "The result of the check. `null` when the check could not run\
+            \ (cluster unreachable, timeout, service never deployed); `error_details`\
+            \ then gives the reason."
+          nullable: true
+        error_details:
+          description: Why the check failed or could not run. `null` when the check
+            succeeded.
+          nullable: true
+          type: string
+      required:
+      - error_details
+      - service_id
+      - service_type
+      - status
+      type: object
     OrganizationCustomDomainPaginatedResponseList:
       allOf:
       - $ref: '#/components/schemas/PaginationData'
