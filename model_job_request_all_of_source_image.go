@@ -24,7 +24,7 @@ type JobRequestAllOfSourceImage struct {
 	ImageName *string `json:"image_name,omitempty"`
 	// tag of the image container
 	Tag *string `json:"tag,omitempty"`
-	// tag of the image container
+	// id of the container registry that holds the image
 	RegistryId           *string `json:"registry_id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

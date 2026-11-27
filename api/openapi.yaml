@@ -17736,6 +17736,12 @@ paths:
       tags:
       - Jobs
     post:
+      description: |
+        Returns 404 when `source.image.registry_id` is a registry of another organization. The response does not name the registry.
+
+        Returns 400 when:
+        - `source` has both `image` and `docker`;
+        - `source.image.image_name` with `source.image.tag` is not found in the registry.
       operationId: createJob
       parameters:
       - description: Environment ID
@@ -17869,6 +17875,13 @@ paths:
     put:
       description: |
         - To edit the job you must have the admin permission.
+        - `source` can switch the job between `image` and `docker` in place. The job keeps its id, schedule, lifecycle events and variables. A switch from `docker` to `image` removes the job's Git repository link and resets its build settings. See `source` in the request body for the details.
+
+        Returns 404 when `source.image.registry_id` is a registry of another organization. The response does not name the registry.
+
+        Returns 400 when:
+        - `source` has both `image` and `docker`;
+        - `source.image.image_name` with `source.image.tag` is not found in the registry.
       operationId: editJob
       parameters:
       - description: Job ID
@@ -61796,7 +61809,7 @@ components:
           description: tag of the image container
           type: string
         registry_id:
-          description: tag of the image container
+          description: id of the container registry that holds the image
           type: string
       type: object
     JobRequest_allOf_source_docker:
@@ -61834,6 +61847,23 @@ components:
             id: qogoqube2vtez
       type: object
     JobRequest_allOf_source:
+      description: |
+        Where the job image comes from:
+        - `image`: an image from a container registry;
+        - `docker`: an image that Qovery builds from a Git repository, with a Dockerfile read from the repository (`dockerfile_path`) or sent in the request (`dockerfile_raw`).
+
+        Send `image` or `docker`, not both: a body with both returns 400, on create and on update. A `null` key counts as not sent.
+
+        On update (`PUT /job/{jobId}`), sending the other key switches the source in place. The job keeps its id, schedule, lifecycle events and variables. The switch does not deploy: a cron job keeps running its current image on schedule until the next deployment, which uses the new source.
+        - A switch from `docker` to `image` removes the job's Git repository link and its Dockerfile settings (`dockerfile_path`, `dockerfile_raw`, `docker_target_build_stage`). When `build_settings` is not sent, it resets the job's build settings to the cluster defaults. When `build_settings` is sent, they are saved, as on any edit of an image job.
+        - A switch to `docker` sends `git_repository` and a Dockerfile, as on create. When `build_settings` is not sent, the job keeps its stored build settings, or the cluster defaults when none are stored.
+        - When not sent, `auto_deploy` and `auto_preview` are set to false on any switch, from `image` to `docker` or from `docker` to `image`: a switch never turns a trigger on by itself.
+        - The job gets the missing built-in variables of its new source: `QOVERY_JOB_<ID>_GIT_COMMIT_ID` and `QOVERY_JOB_<ID>_GIT_BRANCH` for `docker`, `QOVERY_JOB_<ID>_TAG` for `image`. Those of the previous source are kept, with empty values.
+        - `<ID>` is the job's engine id, the identifier its other built-in variables use, as in `QOVERY_JOB_<ID>_ENVIRONMENT_NAME`: `Z` followed by the first 8 characters of the job id, in upper case. It is not the full job id.
+
+        With `image`, on create and on update:
+        - a `registry_id` of a registry in another organization returns 404, as for an unknown registry. The response does not name the registry;
+        - an `image_name` with a `tag` not found in the registry returns 400.
       example:
         image:
           image_name: image_name

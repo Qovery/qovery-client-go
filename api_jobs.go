@@ -168,6 +168,12 @@ func (r ApiCreateJobRequest) Execute() (*JobResponse, *http.Response, error) {
 /*
 CreateJob Create a job
 
+Returns 404 when `source.image.registry_id` is a registry of another organization. The response does not name the registry.
+
+Returns 400 when:
+- `source` has both `image` and `docker`;
+- `source.image.image_name` with `source.image.tag` is not found in the registry.
+
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param environmentId Environment ID
 	@return ApiCreateJobRequest
